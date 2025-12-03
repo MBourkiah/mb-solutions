@@ -102,14 +102,10 @@ export const metadata: Metadata = {
     // yandex: "your-yandex-verification-code",
   },
   alternates: {
-    canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://mb-solutions.de",
+    canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://mb-solutions.biz",
   },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
-  manifest: "/site.webmanifest",
+  // Icons werden automatisch von Next.js aus app/icon.svg und app/apple-icon.svg geladen
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
