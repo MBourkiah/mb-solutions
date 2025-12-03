@@ -176,12 +176,12 @@ export function FooterPremium() {
               <ul className="space-y-4">
                 <li>
                   <a
-                    href="mailto:kontakt@mb-solutions.de"
+                    href="mailto:kontakt@mb-solutions.biz"
                     className="text-base text-gray-400 hover:text-cyan-400 transition-colors inline-flex items-center gap-2.5 group"
                   >
                     <Mail className="w-5 h-5 flex-shrink-0" />
                     <span className="group-hover:translate-x-1 transition-transform">
-                      kontakt@mb-solutions.de
+                      kontakt@mb-solutions.biz
                     </span>
                   </a>
                 </li>

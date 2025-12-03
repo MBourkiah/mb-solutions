@@ -107,7 +107,7 @@ export function CTAImmersive() {
           </Link>
 
           <Link
-            href="mailto:info@mb-solutions.de"
+            href="mailto:info@mb-solutions.biz"
             className="inline-flex items-center justify-center gap-4 px-12 py-6 text-xl font-semibold text-white bg-white/[0.04] hover:bg-white/[0.08] border-2 border-white/10 hover:border-cyan-500/50 rounded-2xl backdrop-blur-xl transition-all duration-300"
           >
             <MessageSquare className="w-7 h-7" />

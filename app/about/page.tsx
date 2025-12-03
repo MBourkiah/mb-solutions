@@ -597,7 +597,7 @@ function AboutCTA() {
                 </Link>
 
                 <a
-                  href="mailto:info@mb-solutions.de"
+                  href="mailto:info@mb-solutions.biz"
                   className="group px-12 py-6 bg-background/50 hover:bg-background/80 backdrop-blur-sm border-2 border-border hover:border-accent/50 text-foreground rounded-2xl font-semibold text-xl transition-all duration-300 w-full sm:w-auto hover:scale-105"
                 >
                   <span className="flex items-center justify-center gap-3">

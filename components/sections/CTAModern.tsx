@@ -111,7 +111,7 @@ export function CTAModern() {
               </Link>
 
               <Link
-                href="mailto:info@mb-solutions.de"
+                href="mailto:info@mb-solutions.biz"
                 className="inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl font-semibold text-lg text-white bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 hover:border-cyan-500/30 backdrop-blur-xl transition-all duration-300"
               >
                 <MessageSquare className="w-6 h-6" />

@@ -1367,7 +1367,7 @@ high quality screenshot, 16:10 aspect ratio
       </Link>
 
       <Link
-        href="mailto:info@mb-solutions.de"
+        href="mailto:info@mb-solutions.biz"
         className="inline-flex items-center justify-center gap-4
                    px-12 py-6 text-xl font-semibold text-white
                    bg-white/[0.04] hover:bg-white/[0.08]

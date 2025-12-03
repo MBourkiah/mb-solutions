@@ -292,7 +292,7 @@ keine Verpflichtungen, nur ehrliche technische Expertise.
    - Gradient BG: Cyan → Blue
 
 2. **Secondary:** "E-Mail schreiben" (MessageSquare)
-   - Link: mailto:info@mb-solutions.de
+   - Link: mailto:info@mb-solutions.biz
    - BG: white/[0.03]
 
 ### Trust Signals (Bottom)

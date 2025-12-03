@@ -51,7 +51,7 @@ const contactOptions = [
   {
     icon: Mail,
     title: "Direktkontakt",
-    description: "info@mb-solutions.de · +49 (0) 123 456789",
+    description: "info@mb-solutions.biz · +49 (0) 123 456789",
     badge: "Formell",
     badgeColor: "bg-blue-500/10 text-blue-500 border-blue-500/30",
     hint: "Für detaillierte Anfragen",

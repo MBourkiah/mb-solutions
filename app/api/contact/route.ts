@@ -161,8 +161,8 @@ export async function POST(request: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     await resend.emails.send({
-      from: 'MB-Solutions <noreply@mb-solutions.de>',
-      to: 'info@mb-solutions.de',
+      from: 'MB-Solutions <noreply@mb-solutions.biz>',
+      to: 'info@mb-solutions.biz',
       replyTo: email,
       subject: `Neue Kontaktanfrage von ${name}`,
       html: `

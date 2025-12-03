@@ -681,7 +681,7 @@ export function FinalCTASection() {
           </Link>
 
           <Link
-            href="mailto:info@mb-solutions.de"
+            href="mailto:info@mb-solutions.biz"
             className="inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-bold text-lg text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-500/50 backdrop-blur-xl transition-all duration-300"
           >
             <MessageSquare className="w-6 h-6" />
