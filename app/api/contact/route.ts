@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { rateLimit, getIP } from "@/lib/rate-limit";
 
 /**
  * Contact Form API Route
@@ -10,6 +11,7 @@ import { NextRequest, NextResponse } from "next/server";
  * Features:
  * - Input validation (required fields, email format, message length)
  * - Security checks (max length limits)
+ * - Rate limiting (5 requests per minute per IP)
  * - Error handling with descriptive messages
  * - Request logging for debugging
  * - CORS headers for cross-origin requests
@@ -17,9 +19,11 @@ import { NextRequest, NextResponse } from "next/server";
  * Future enhancements:
  * - Email sending via Nodemailer, SendGrid, or Resend
  * - Database storage (Prisma, MongoDB)
- * - Rate limiting (Upstash Redis)
  * - Spam protection (reCAPTCHA)
  */
+
+// Rate limiter: 5 requests per minute per IP
+const limiter = rateLimit({ limit: 5, window: 60000 });
 
 interface ContactFormData {
   name: string;
@@ -41,6 +45,29 @@ export async function POST(request: NextRequest) {
   const startTime = Date.now();
 
   try {
+    // Rate limiting check
+    const ip = getIP(request);
+    const rateLimitResult = limiter.check(ip);
+
+    if (!rateLimitResult.success) {
+      const resetIn = Math.ceil((rateLimitResult.reset - Date.now()) / 1000);
+      return NextResponse.json(
+        {
+          success: false,
+          error: `Zu viele Anfragen. Bitte versuchen Sie es in ${resetIn} Sekunden erneut.`,
+        },
+        {
+          status: 429,
+          headers: {
+            'Retry-After': resetIn.toString(),
+            'X-RateLimit-Limit': '5',
+            'X-RateLimit-Remaining': '0',
+            'X-RateLimit-Reset': rateLimitResult.reset.toString(),
+          }
+        }
+      );
+    }
+
     // Parse request body
     const body: ContactFormData = await request.json();
 
@@ -180,10 +207,12 @@ export async function POST(request: NextRequest) {
         status: 200,
         headers: {
           "Content-Type": "application/json",
-          // Optional CORS headers (adjust as needed)
-          "Access-Control-Allow-Origin": "*",
+          // Restrict CORS to your domain only (update after domain is live)
+          "Access-Control-Allow-Origin": process.env.NEXT_PUBLIC_SITE_URL || "https://mb-solutions.biz",
           "Access-Control-Allow-Methods": "POST, OPTIONS",
           "Access-Control-Allow-Headers": "Content-Type",
+          'X-RateLimit-Limit': '5',
+          'X-RateLimit-Remaining': rateLimitResult.remaining.toString(),
         },
       }
     );
@@ -211,7 +240,7 @@ export async function OPTIONS() {
     {
       status: 200,
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": process.env.NEXT_PUBLIC_SITE_URL || "https://mb-solutions.biz",
         "Access-Control-Allow-Methods": "POST, OPTIONS",
         "Access-Control-Allow-Headers": "Content-Type",
       },
