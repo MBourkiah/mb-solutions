@@ -1,0 +1,33 @@
+# robots.txt für MB-Solutions
+# Optimiert für maximale Crawlbarkeit und SEO
+
+# Alle Robots dürfen alles crawlen
+User-agent: *
+Allow: /
+
+# Wichtige Seiten explizit erlauben (für Crawler-Priorität)
+Allow: /services
+Allow: /about
+Allow: /projects
+Allow: /contact
+
+# Unwichtige Seiten ausschließen
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Sitemap Location
+Sitemap: https://mb-solutions.biz/sitemap.xml
+
+# Crawl-Delay für höfliches Crawling (optional)
+# Crawl-delay: 1
+
+# Spezielle Rules für Google Bot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Spezielle Rules für Bing Bot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
