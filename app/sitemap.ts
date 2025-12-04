@@ -43,6 +43,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    // SEO Child-Seiten - Priorität 1 (Quick Wins)
+    {
+      url: `${baseUrl}/webdesign-koeln/wordpress-agentur-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/webdesign-koeln/responsive-webdesign`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/it-services-koeln/it-support-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/marketing-agentur-koeln/local-seo-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
     // Hauptseiten - Hohe Priorität
     {
       url: `${baseUrl}/services`,
