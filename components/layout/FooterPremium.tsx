@@ -2,6 +2,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, Phone, MapPin, ChevronUp, Linkedin, Github, Twitter } from "lucide-react";
 
 /**
@@ -95,9 +96,17 @@ export function FooterPremium() {
             <motion.div variants={itemVariants} className="lg:col-span-1 space-y-6">
               {/* Logo */}
               <Link href="/" className="inline-block group">
-                <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent group-hover:from-cyan-300 group-hover:to-blue-300 transition-all duration-300">
-                  MB-Solutions
-                </span>
+                <div className="h-9 flex items-center">
+                  <Image
+                    src="/logo.svg"
+                    alt="MB-Solutions"
+                    width={180}
+                    height={45}
+                    className="h-9 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                  />
+                </div>
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10" />
               </Link>
 
               {/* Description */}

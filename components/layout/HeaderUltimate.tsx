@@ -20,10 +20,11 @@ import Image from "next/image";
  */
 
 const navLinks = [
-  { name: "Leistungen", href: "#leistungen" },
-  { name: "Expertise", href: "#expertise" },
-  { name: "Prozess", href: "#prozess" },
-  { name: "Kontakt", href: "#kontakt" },
+  { name: "Webdesign", href: "/webdesign-koeln" },
+  { name: "IT-Services", href: "/it-services-koeln" },
+  { name: "Marketing", href: "/marketing-agentur-koeln" },
+  { name: "Über uns", href: "/about" },
+  { name: "Kontakt", href: "/contact" },
 ];
 
 export function HeaderUltimate() {
@@ -138,7 +139,7 @@ export function HeaderUltimate() {
               >
                 {/* CTA Button - Tablet & Desktop */}
                 <Link
-                  href="#kontakt"
+                  href="/contact"
                   className="hidden md:inline-flex items-center gap-2 px-4 md:px-6 py-2 md:py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl font-semibold text-xs md:text-sm text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-300"
                 >
                   <Zap className="w-4 h-4" />
@@ -287,7 +288,7 @@ function MobileMenu({ isOpen, setIsOpen }: MobileMenuProps) {
               {/* CTA Button */}
               <div className="p-4 border-t border-white/10">
                 <Link
-                  href="#kontakt"
+                  href="/contact"
                   onClick={() => setIsOpen(false)}
                   className="flex items-center justify-between w-full px-6 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl font-semibold text-white shadow-lg shadow-cyan-500/25 hover:scale-[1.02] transition-all duration-300"
                 >
