@@ -24,6 +24,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 1.0,
     },
+    // SEO-Hub-Seiten - Hohe Priorität (lokale Keywords Köln)
+    {
+      url: `${baseUrl}/webdesign-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/it-services-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/marketing-agentur-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
     // Hauptseiten - Hohe Priorität
     {
       url: `${baseUrl}/services`,
