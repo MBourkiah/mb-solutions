@@ -123,6 +123,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    // Branch Pages (Branchen-spezifisch)
+    {
+      url: `${baseUrl}/webdesign-koeln/webdesign-aerzte-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/webdesign-koeln/webdesign-anwaelte-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/webdesign-koeln/webdesign-restaurants-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/it-services-koeln/it-services-steuerberater-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/it-services-koeln/it-services-arztpraxen-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/marketing-agentur-koeln/marketing-immobilienmakler-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
     // Hauptseiten - Hohe Priorität
     {
       url: `${baseUrl}/services`,
