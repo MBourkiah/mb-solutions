@@ -68,6 +68,61 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    // SEO Child-Seiten - Priorität 2 (Expansion)
+    {
+      url: `${baseUrl}/webdesign-koeln/react-entwicklung-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/webdesign-koeln/shopify-agentur-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/webdesign-koeln/webflow-agentur-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/it-services-koeln/cloud-services-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/it-services-koeln/it-sicherheit-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/it-services-koeln/microsoft-365-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/marketing-agentur-koeln/seo-agentur-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/marketing-agentur-koeln/google-ads-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/marketing-agentur-koeln/content-marketing-koeln`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
     // Hauptseiten - Hohe Priorität
     {
       url: `${baseUrl}/services`,
