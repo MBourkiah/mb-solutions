@@ -20,50 +20,51 @@ import {
   Phone,
   Building2,
   User,
+  MapPin,
+  Clock,
+  Shield,
+  Zap,
 } from "lucide-react";
 
 /**
- * MB-Solutions Contact Page
+ * MB-Solutions Premium Contact Page
  *
- * Premium Kontaktseite mit:
- * - Hero mit Verfügbarkeits-Badge
- * - 3 Kontaktmöglichkeiten (Formular, Email, WhatsApp)
- * - Ausführliches Kontaktformular
- * - "Was passiert danach" Timeline
- * - Mini-FAQ
- * - Finale CTA
+ * Premium Kontaktseite im neuen Dark Design:
+ * ✨ Dark Theme (#0A0E27) mit Cyan-Akzenten
+ * ✨ Glassmorphism effects
+ * ✨ Premium spacing & animations
+ * ✨ Vollständiges Kontaktformular mit Validierung
+ * ✨ Timeline & FAQ Sections
  */
 
 // ========================================
 // 📝 CONTENT DATA
 // ========================================
 
-const contactOptions = [
+const contactMethods = [
   {
     icon: MessageSquare,
     title: "Kontaktformular",
-    description: "Schildern Sie mir Ihr Projekt ausführlich",
-    badge: "Empfohlen",
-    badgeColor: "bg-green-500/10 text-green-500 border-green-500/30",
-    cta: "Zum Formular",
+    description: "Ausführliche Projekt-Anfrage",
+    highlight: "Empfohlen",
+    color: "cyan",
     scrollTo: "contact-form",
   },
   {
     icon: Mail,
-    title: "Direktkontakt",
-    description: "info@mb-solutions.biz · +49 (0) 123 456789",
-    badge: "Formell",
-    badgeColor: "bg-blue-500/10 text-blue-500 border-blue-500/30",
-    hint: "Für detaillierte Anfragen",
+    title: "E-Mail",
+    description: "kontakt@mb-solutions.biz",
+    highlight: "Direkt",
+    color: "blue",
+    href: "mailto:kontakt@mb-solutions.biz",
   },
   {
-    icon: MessageCircle,
-    title: "WhatsApp",
-    description: "Per WhatsApp schreiben",
-    badge: "Schnell",
-    badgeColor: "bg-amber-500/10 text-amber-500 border-amber-500/30",
-    hint: "Für kurze Anfragen & schnelle Rückfragen",
-    link: "https://wa.me/491234567890",
+    icon: Phone,
+    title: "Telefon",
+    description: "+49 123 456 7890",
+    highlight: "Persönlich",
+    color: "purple",
+    href: "tel:+491234567890",
   },
 ];
 
@@ -71,57 +72,55 @@ const nextSteps = [
   {
     number: "01",
     title: "Anfrage prüfen",
-    description:
-      "Ich lese Ihre Nachricht und prüfe, ob Ihr Projekt zu meinem Leistungsspektrum passt. Bei Rückfragen melde ich mich direkt.",
+    description: "Wir analysieren Ihre Anforderungen und prüfen die Machbarkeit innerhalb von 24 Stunden.",
     icon: Search,
+    color: "cyan",
   },
   {
     number: "02",
-    title: "Erstgespräch vereinbaren",
-    description:
-      "In einem kostenlosen Erstgespräch (Video-Call oder Telefon) besprechen wir Ihre Anforderungen und klären offene Fragen.",
+    title: "Kostenloses Erstgespräch",
+    description: "In einem Video-Call oder Telefonat besprechen wir Details, Ziele und Timeline.",
     icon: Calendar,
+    color: "blue",
   },
   {
     number: "03",
-    title: "Angebot & Start",
-    description:
-      "Sie erhalten ein transparentes Angebot mit Projektplan und Festpreis. Bei Beauftragung starten wir direkt mit der Umsetzung.",
+    title: "Angebot & Projektstart",
+    description: "Sie erhalten ein transparentes Festpreis-Angebot. Bei Beauftragung starten wir sofort.",
     icon: FileText,
+    color: "purple",
   },
 ];
 
 const faqs = [
   {
-    question: "Wie schnell erhalte ich eine Antwort?",
-    answer:
-      "In der Regel antworte ich innerhalb von 24 Stunden (Werktage). Bei dringenden Anfragen können Sie mich auch direkt per WhatsApp kontaktieren.",
+    question: "Wie schnell erhalten wir eine Antwort?",
+    answer: "In der Regel antworten wir innerhalb von 24 Stunden (Werktage). Bei dringenden Anfragen kontaktieren Sie uns direkt per Telefon.",
   },
   {
-    question: "Was kostet eine Erstberatung?",
-    answer:
-      "Die Erstberatung ist kostenlos und unverbindlich. In einem Gespräch klären wir Ihre Anforderungen und ich erstelle Ihnen anschließend ein transparentes Angebot.",
+    question: "Was kostet die Erstberatung?",
+    answer: "Die Erstberatung ist komplett kostenlos und unverbindlich. Wir besprechen Ihre Anforderungen und erstellen ein maßgeschneidertes Angebot.",
   },
   {
-    question: "Welche Informationen sollte ich mitschicken?",
-    answer:
-      "Je mehr Details, desto besser: Beschreiben Sie Ihr Projekt, Ihre Ziele, Fristen und Budget-Vorstellungen. Auch Referenz-Websites oder Skizzen helfen.",
+    question: "Welche Informationen sollten wir bereitstellen?",
+    answer: "Je detaillierter, desto besser: Projektbeschreibung, Ziele, Budget-Vorstellungen, Timeline, Referenzen. Das hilft uns, Sie optimal zu beraten.",
   },
   {
-    question: "Sind meine Daten sicher?",
-    answer:
-      "Ja. Ihre Daten werden verschlüsselt übertragen, DSGVO-konform gespeichert und ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.",
+    question: "Sind unsere Daten sicher?",
+    answer: "Ja, absolut. Alle Daten werden verschlüsselt übertragen (SSL), DSGVO-konform gespeichert und ausschließlich für Ihre Anfrage verwendet.",
   },
 ];
 
 const projectTypes = [
-  "Webentwicklung (Website/Web-App)",
-  "API & Backend Development",
-  "Prozess-Automatisierung",
-  "IT-Beratung & Strategie",
-  "Maintenance & Support",
-  "UI/UX Design",
-  "Anderes",
+  "Webdesign & Entwicklung",
+  "E-Commerce & Online-Shop",
+  "IT-Services & Support",
+  "Cloud-Migration",
+  "IT-Sicherheit & Compliance",
+  "SEO & Online-Marketing",
+  "Corporate Website",
+  "Web-App Entwicklung",
+  "Anderes Projekt",
 ];
 
 // ========================================
@@ -130,63 +129,92 @@ const projectTypes = [
 
 function ContactHero() {
   return (
-    <section className="relative min-h-[50vh] flex items-start justify-center overflow-hidden pt-24 sm:pt-28 lg:pt-32 pb-12">
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        {/* Availability Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-500 text-sm font-semibold mb-8"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-          </span>
-          Verfügbar für neue Projekte · Antwort innerhalb von 24 Stunden
-        </motion.div>
+    <section className="relative pt-32 pb-20 overflow-hidden">
+      {/* Ambient Background */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-20 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px]" />
+      </div>
 
-        {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40, filter: "blur(20px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-          className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-8"
-        >
-          <span className="block text-balance mb-4">
-            Lassen Sie uns über
-          </span>
-          <span
-            className="block text-balance"
-            style={{
-              background:
-                "linear-gradient(135deg, #06A3C9 0%, #1A7FD8 50%, #06A3C9 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 opacity-[0.03]">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(6, 182, 212, 0.3) 1px, transparent 0)`,
+            backgroundSize: '48px 48px',
+          }}
+        />
+      </div>
+
+      <div className="relative z-10 container mx-auto px-8 md:px-16 lg:px-24 xl:px-32">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Status Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-semibold mb-8"
           >
-            Ihr Projekt sprechen
-          </span>
-        </motion.h1>
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+            </span>
+            Verfügbar für neue Projekte · Antwort innerhalb 24h
+          </motion.div>
 
-        {/* Subheadline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.6 }}
-          className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed"
-        >
-          Ob neue Website, Web-App, Automatisierung oder IT-Beratung – in einem
-          kostenlosen Erstgespräch finden wir heraus, wie ich Sie am besten
-          unterstützen kann.
-        </motion.p>
+          {/* Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight"
+          >
+            <span className="block mb-3">Lassen Sie uns</span>
+            <span className="block bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              zusammenarbeiten
+            </span>
+          </motion.h1>
+
+          {/* Subheadline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto"
+          >
+            Ob Webdesign, IT-Services oder Marketing – wir entwickeln maßgeschneiderte Lösungen
+            für Ihr Unternehmen. Kostenloses Erstgespräch, transparente Preise, schnelle Umsetzung.
+          </motion.p>
+
+          {/* Trust Indicators */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
+            className="flex flex-wrap items-center justify-center gap-6 mt-12"
+          >
+            {[
+              { icon: Clock, text: "24h Antwortzeit" },
+              { icon: Shield, text: "DSGVO-konform" },
+              { icon: Zap, text: "Schneller Start" },
+            ].map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <div key={i} className="flex items-center gap-2 text-gray-400">
+                  <Icon className="w-5 h-5 text-cyan-400" />
+                  <span className="text-sm">{item.text}</span>
+                </div>
+              );
+            })}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 }
 
-function ContactOptions() {
+function ContactMethods() {
   const scrollToForm = () => {
     const formElement = document.getElementById("contact-form");
     if (formElement) {
@@ -195,11 +223,11 @@ function ContactOptions() {
   };
 
   return (
-    <section className="relative py-12 sm:py-16 lg:py-20 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {contactOptions.map((option, index) => {
-            const Icon = option.icon;
+    <section className="relative py-16 overflow-hidden">
+      <div className="container mx-auto px-8 md:px-16 lg:px-24 xl:px-32">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {contactMethods.map((method, index) => {
+            const Icon = method.icon;
             return (
               <motion.div
                 key={index}
@@ -207,63 +235,43 @@ function ContactOptions() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.6 }}
-                whileHover={{ y: -8 }}
                 className="group relative"
               >
-                <div className="relative h-full p-8 bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl">
-                  {/* Badge */}
+                <div className="relative h-full p-8 bg-white/[0.02] hover:bg-white/[0.05] border border-white/10 hover:border-cyan-500/30 rounded-2xl transition-all duration-300">
+                  {/* Highlight Badge */}
                   <div className="absolute top-4 right-4">
-                    <span
-                      className={`px-3 py-1 text-xs font-semibold rounded-full border ${option.badgeColor}`}
-                    >
-                      {option.badge}
+                    <span className="px-3 py-1 text-xs font-semibold rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                      {method.highlight}
                     </span>
                   </div>
 
                   {/* Icon */}
-                  <motion.div
-                    className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mb-6"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                  >
-                    <Icon className="w-7 h-7 text-primary" />
-                  </motion.div>
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <Icon className="w-7 h-7 text-cyan-400" />
+                  </div>
 
                   {/* Content */}
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                    {option.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    {option.description}
-                  </p>
-
-                  {option.hint && (
-                    <p className="text-sm text-muted-foreground/70 italic mb-4">
-                      {option.hint}
-                    </p>
-                  )}
+                  <h3 className="text-xl font-bold text-white mb-3">{method.title}</h3>
+                  <p className="text-gray-400 mb-6">{method.description}</p>
 
                   {/* CTA */}
-                  {option.scrollTo && (
+                  {method.scrollTo ? (
                     <button
                       onClick={scrollToForm}
-                      className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
+                      className="inline-flex items-center gap-2 text-cyan-400 font-semibold hover:gap-3 transition-all"
                     >
-                      {option.cta}
+                      Zum Formular
                       <ArrowRight className="w-4 h-4" />
                     </button>
-                  )}
-
-                  {option.link && (
+                  ) : method.href ? (
                     <a
-                      href={option.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all"
+                      href={method.href}
+                      className="inline-flex items-center gap-2 text-cyan-400 font-semibold hover:gap-3 transition-all"
                     >
-                      Öffnen
+                      Kontaktieren
                       <ArrowRight className="w-4 h-4" />
                     </a>
-                  )}
+                  ) : null}
                 </div>
               </motion.div>
             );
@@ -276,37 +284,40 @@ function ContactOptions() {
 
 function ContactFormSection() {
   return (
-    <section id="contact-form" className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-5 gap-12 lg:gap-16 items-start">
-          {/* Left: Info (40%) */}
+    <section id="contact-form" className="relative py-20 overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
+
+      <div className="container mx-auto px-8 md:px-16 lg:px-24 xl:px-32">
+        <div className="grid lg:grid-cols-5 gap-12 items-start">
+          {/* Left: Info */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="md:col-span-2 space-y-6"
+            className="lg:col-span-2 space-y-8"
           >
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold">
-              Schicken Sie mir eine{" "}
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-                Nachricht
-              </span>
-            </h2>
+            <div>
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+                Projekt-Anfrage{" "}
+                <span className="block bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                  starten
+                </span>
+              </h2>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden
+                bei Ihnen. Je detaillierter Ihre Angaben, desto besser können wir Sie beraten.
+              </p>
+            </div>
 
-            <p className="text-base sm:text-lg text-foreground/80 leading-relaxed">
-              Füllen Sie das Formular aus und ich melde mich innerhalb von 24
-              Stunden bei Ihnen zurück. Je mehr Informationen Sie mir geben,
-              desto besser kann ich Sie beraten.
-            </p>
-
-            {/* Checkpoints */}
-            <ul className="space-y-3">
+            {/* Benefits */}
+            <ul className="space-y-4">
               {[
-                "Kostenlose Erstberatung",
-                "Unverbindliches Angebot",
+                "Kostenlose Erstberatung (30-60 Min.)",
+                "Transparentes Festpreis-Angebot",
                 "Schnelle Rückmeldung (< 24h)",
-                "DSGVO-konform",
+                "100% DSGVO-konform",
               ].map((item, i) => (
                 <motion.li
                   key={i}
@@ -316,22 +327,42 @@ function ContactFormSection() {
                   transition={{ delay: 0.3 + i * 0.1 }}
                   className="flex items-center gap-3"
                 >
-                  <div className="w-6 h-6 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center flex-shrink-0">
-                    <Check className="w-4 h-4 text-accent" />
+                  <div className="w-6 h-6 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center flex-shrink-0">
+                    <Check className="w-4 h-4 text-cyan-400" />
                   </div>
-                  <span className="text-foreground/90">{item}</span>
+                  <span className="text-gray-300">{item}</span>
                 </motion.li>
               ))}
             </ul>
+
+            {/* Contact Info */}
+            <div className="pt-6 border-t border-white/10 space-y-4">
+              <div className="flex items-center gap-3 text-gray-400">
+                <MapPin className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+                <span>Köln & Umgebung</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-400">
+                <Mail className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+                <a href="mailto:kontakt@mb-solutions.biz" className="hover:text-cyan-400 transition-colors">
+                  kontakt@mb-solutions.biz
+                </a>
+              </div>
+              <div className="flex items-center gap-3 text-gray-400">
+                <Phone className="w-5 h-5 text-cyan-400 flex-shrink-0" />
+                <a href="tel:+491234567890" className="hover:text-cyan-400 transition-colors">
+                  +49 123 456 7890
+                </a>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Right: Form (60%) */}
+          {/* Right: Form */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="md:col-span-3"
+            className="lg:col-span-3"
           >
             <ContactForm />
           </motion.div>
@@ -409,48 +440,38 @@ function ContactForm() {
       }
     } catch {
       setStatus("error");
-      setErrorMessage(
-        "Verbindung fehlgeschlagen. Bitte versuchen Sie es später erneut."
-      );
+      setErrorMessage("Verbindung fehlgeschlagen. Bitte versuchen Sie es später erneut.");
     }
   };
 
   return (
-    <div className="relative group">
-      {/* Ambient glow */}
-      <motion.div
-        className="absolute -inset-6 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl"
-        style={{
-          background: "radial-gradient(circle at center, rgba(6, 163, 201, 0.25), transparent 70%)",
-        }}
-      />
-
+    <div className="relative">
       {/* Form Card */}
-      <div className="relative p-8 sm:p-10 bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl shadow-xl">
+      <div className="relative p-8 lg:p-10 bg-white/[0.02] backdrop-blur-xl border border-white/10 rounded-2xl">
         {status === "success" ? (
           // Success State
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-center py-12 space-y-6"
+            className="text-center py-16 space-y-6"
           >
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 200, damping: 15 }}
-              className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-500/10 border-2 border-green-500/20"
+              className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-500/10 border-2 border-green-500/30"
             >
-              <CheckCircle2 className="w-10 h-10 text-green-500" />
+              <CheckCircle2 className="w-10 h-10 text-green-400" />
             </motion.div>
-            <h3 className="text-2xl font-bold">Nachricht gesendet!</h3>
-            <p className="text-muted-foreground max-w-md mx-auto">
-              Vielen Dank für Ihre Anfrage. Ich melde mich innerhalb von 24
-              Stunden bei Ihnen.
+            <h3 className="text-3xl font-bold text-white">Nachricht gesendet!</h3>
+            <p className="text-gray-300 max-w-md mx-auto text-lg">
+              Vielen Dank für Ihre Anfrage. Wir melden uns innerhalb von 24 Stunden bei Ihnen.
             </p>
             <button
               onClick={() => setStatus("idle")}
-              className="mt-6 text-primary hover:text-accent transition-colors font-semibold"
+              className="mt-8 inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors font-semibold"
             >
+              <ArrowRight className="w-5 h-5" />
               Neue Nachricht senden
             </button>
           </motion.div>
@@ -461,19 +482,17 @@ function ContactForm() {
             <div className="grid sm:grid-cols-2 gap-6">
               {/* Name */}
               <div>
-                <label className="block text-sm font-semibold mb-2">
+                <label className="block text-sm font-semibold text-gray-300 mb-2">
                   Ihr Name *
                 </label>
                 <div className="relative">
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                  <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
                   <input
                     type="text"
                     required
                     value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    className="w-full pl-11 pr-4 py-3 bg-background/50 border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary focus:shadow-[0_0_20px_rgba(6,163,201,0.15)] transition-all"
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full pl-11 pr-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
                     placeholder="Max Mustermann"
                   />
                 </div>
@@ -481,18 +500,16 @@ function ContactForm() {
 
               {/* Company */}
               <div>
-                <label className="block text-sm font-semibold mb-2">
+                <label className="block text-sm font-semibold text-gray-300 mb-2">
                   Unternehmen
                 </label>
                 <div className="relative">
-                  <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                  <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
                   <input
                     type="text"
                     value={formData.company}
-                    onChange={(e) =>
-                      setFormData({ ...formData, company: e.target.value })
-                    }
-                    className="w-full pl-11 pr-4 py-3 bg-background/50 border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary focus:shadow-[0_0_20px_rgba(6,163,201,0.15)] transition-all"
+                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                    className="w-full pl-11 pr-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
                     placeholder="Musterfirma GmbH"
                   />
                 </div>
@@ -503,19 +520,17 @@ function ContactForm() {
             <div className="grid sm:grid-cols-2 gap-6">
               {/* Email */}
               <div>
-                <label className="block text-sm font-semibold mb-2">
-                  E-Mail-Adresse *
+                <label className="block text-sm font-semibold text-gray-300 mb-2">
+                  E-Mail *
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
                   <input
                     type="email"
                     required
                     value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    className="w-full pl-11 pr-4 py-3 bg-background/50 border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary focus:shadow-[0_0_20px_rgba(6,163,201,0.15)] transition-all"
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full pl-11 pr-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
                     placeholder="ihre@email.de"
                   />
                 </div>
@@ -523,18 +538,16 @@ function ContactForm() {
 
               {/* Phone */}
               <div>
-                <label className="block text-sm font-semibold mb-2">
+                <label className="block text-sm font-semibold text-gray-300 mb-2">
                   Telefon (optional)
                 </label>
                 <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
                   <input
                     type="tel"
                     value={formData.phone}
-                    onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
-                    }
-                    className="w-full pl-11 pr-4 py-3 bg-background/50 border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary focus:shadow-[0_0_20px_rgba(6,163,201,0.15)] transition-all"
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full pl-11 pr-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
                     placeholder="+49 123 456789"
                   />
                 </div>
@@ -543,19 +556,17 @@ function ContactForm() {
 
             {/* Project Type */}
             <div>
-              <label className="block text-sm font-semibold mb-2">
+              <label className="block text-sm font-semibold text-gray-300 mb-2">
                 Worum geht es?
               </label>
               <select
                 value={formData.projectType}
-                onChange={(e) =>
-                  setFormData({ ...formData, projectType: e.target.value })
-                }
-                className="w-full px-4 py-3 bg-background/50 border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary focus:shadow-[0_0_20px_rgba(6,163,201,0.15)] transition-all"
+                onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
+                className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all"
               >
-                <option value="">Bitte wählen...</option>
+                <option value="" className="bg-[#0A0E27]">Bitte wählen...</option>
                 {projectTypes.map((type, i) => (
-                  <option key={i} value={type}>
+                  <option key={i} value={type} className="bg-[#0A0E27]">
                     {type}
                   </option>
                 ))}
@@ -564,20 +575,18 @@ function ContactForm() {
 
             {/* Message */}
             <div>
-              <label className="block text-sm font-semibold mb-2">
+              <label className="block text-sm font-semibold text-gray-300 mb-2">
                 Ihre Nachricht *
               </label>
               <textarea
                 required
                 rows={6}
                 value={formData.message}
-                onChange={(e) =>
-                  setFormData({ ...formData, message: e.target.value })
-                }
-                className="w-full px-4 py-3 bg-background/50 border border-border/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary focus:shadow-[0_0_20px_rgba(6,163,201,0.15)] transition-all resize-none"
-                placeholder="Erzählen Sie mir von Ihrem Projekt: Was möchten Sie umsetzen? Welche Ziele verfolgen Sie? Gibt es Fristen oder Budget-Vorstellungen?"
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50 transition-all resize-none"
+                placeholder="Beschreiben Sie Ihr Projekt: Was möchten Sie umsetzen? Welche Ziele verfolgen Sie? Gibt es Fristen oder Budget-Vorstellungen?"
               />
-              <p className="text-xs text-muted-foreground mt-2">
+              <p className="text-xs text-gray-500 mt-2">
                 Mindestens 20 Zeichen
               </p>
             </div>
@@ -588,17 +597,12 @@ function ContactForm() {
                 type="checkbox"
                 required
                 checked={formData.consent}
-                onChange={(e) =>
-                  setFormData({ ...formData, consent: e.target.checked })
-                }
-                className="mt-1 w-4 h-4 rounded border-border/50 bg-background/50 text-primary focus:ring-2 focus:ring-primary/50 cursor-pointer"
+                onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
+                className="mt-1 w-4 h-4 rounded border-white/10 bg-white/[0.03] text-cyan-500 focus:ring-2 focus:ring-cyan-500/50 cursor-pointer"
               />
-              <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+              <span className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
                 Ich habe die{" "}
-                <Link
-                  href="/privacy"
-                  className="text-primary hover:text-accent underline"
-                >
+                <Link href="/privacy" className="text-cyan-400 hover:text-cyan-300 underline">
                   Datenschutzerklärung
                 </Link>{" "}
                 gelesen und stimme der Verarbeitung meiner Daten zu. *
@@ -610,7 +614,7 @@ function ContactForm() {
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="flex items-center gap-2 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500"
+                className="flex items-center gap-2 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400"
               >
                 <XCircle className="w-5 h-5 flex-shrink-0" />
                 <p className="text-sm">{errorMessage}</p>
@@ -621,7 +625,7 @@ function ContactForm() {
             <button
               type="submit"
               disabled={status === "loading"}
-              className="group relative w-full px-8 py-4 bg-gradient-to-r from-accent via-primary to-accent bg-[length:200%_100%] text-white rounded-xl font-semibold text-lg shadow-lg shadow-primary/25 transition-all duration-500 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
+              className="group relative w-full px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-xl font-semibold text-lg shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
             >
               <span className="relative flex items-center justify-center gap-2">
                 {status === "loading" ? (
@@ -639,10 +643,8 @@ function ContactForm() {
             </button>
 
             {/* Privacy Note */}
-            <p className="text-xs text-center text-muted-foreground pt-2">
-              🔒 Ihre Daten werden verschlüsselt übertragen und DSGVO-konform
-              verarbeitet. Ich verwende Ihre Informationen ausschließlich zur
-              Beantwortung Ihrer Anfrage.
+            <p className="text-xs text-center text-gray-500 pt-2">
+              🔒 Ihre Daten werden verschlüsselt übertragen und DSGVO-konform verarbeitet.
             </p>
           </form>
         )}
@@ -653,61 +655,60 @@ function ContactForm() {
 
 function NextStepsSection() {
   return (
-    <section className="relative py-12 sm:py-16 lg:py-20 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="relative py-20 overflow-hidden border-t border-white/5">
+      <div className="container mx-auto px-8 md:px-16 lg:px-24 xl:px-32">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-14"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
             Was passiert{" "}
-            <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
               als Nächstes?
             </span>
           </h2>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Von der ersten Anfrage bis zum erfolgreichen Projektstart
+          </p>
         </motion.div>
 
         {/* Timeline */}
-        <div className="relative">
-          {/* Connection Line */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-accent/20 via-primary/20 to-accent/20" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          {/* Connection Line - Desktop */}
+          <div className="hidden md:block absolute top-24 left-0 right-0 h-px bg-gradient-to-r from-cyan-500/0 via-cyan-500/30 to-cyan-500/0" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
-            {nextSteps.map((step, index) => {
-              const Icon = step.icon;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.15, duration: 0.6 }}
-                  className="relative text-center"
-                >
-                  {/* Number */}
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 border-2 border-primary/40 mb-4 relative z-10 bg-background">
-                    <span className="text-2xl font-bold bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
-                      {step.number}
-                    </span>
-                  </div>
+          {nextSteps.map((step, index) => {
+            const Icon = step.icon;
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15, duration: 0.6 }}
+                className="relative text-center"
+              >
+                {/* Number Badge */}
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border-2 border-cyan-500/40 mb-4 relative z-10 backdrop-blur-sm">
+                  <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                    {step.number}
+                  </span>
+                </div>
 
-                  {/* Icon */}
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary/10 mb-4">
-                    <Icon className="w-6 h-6 text-primary" />
-                  </div>
+                {/* Icon */}
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-white/[0.03] border border-white/10 mb-6">
+                  <Icon className="w-7 h-7 text-cyan-400" />
+                </div>
 
-                  {/* Content */}
-                  <h3 className="text-lg font-bold mb-3">{step.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {step.description}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
+                {/* Content */}
+                <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
+                <p className="text-gray-400 leading-relaxed">{step.description}</p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -716,25 +717,25 @@ function NextStepsSection() {
 
 function FAQSection() {
   return (
-    <section className="relative py-12 sm:py-16 lg:py-20 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="relative py-20 overflow-hidden border-t border-white/5">
+      <div className="container mx-auto px-8 md:px-16 lg:px-24 xl:px-32">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12 sm:mb-14"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
             Häufige{" "}
-            <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
               Fragen
             </span>
           </h2>
         </motion.div>
 
         {/* FAQ Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
@@ -742,14 +743,10 @@ function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="relative p-6 bg-card/40 backdrop-blur-xl border border-border/50 rounded-2xl"
+              className="relative p-6 bg-white/[0.02] border border-white/10 rounded-2xl hover:border-cyan-500/30 transition-all"
             >
-              <h3 className="text-lg font-bold mb-3 text-primary">
-                {faq.question}
-              </h3>
-              <p className="text-muted-foreground leading-relaxed">
-                {faq.answer}
-              </p>
+              <h3 className="text-lg font-bold text-white mb-3">{faq.question}</h3>
+              <p className="text-gray-400 leading-relaxed">{faq.answer}</p>
             </motion.div>
           ))}
         </div>
@@ -767,56 +764,47 @@ function ContactCTA() {
   };
 
   return (
-    <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
-      <div className="max-w-5xl mx-auto px-6 text-center">
+    <section className="relative py-24 overflow-hidden border-t border-white/5">
+      {/* Background Effects */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/20 rounded-full blur-[150px]" />
+      </div>
+
+      <div className="relative z-10 container mx-auto px-8 md:px-16 lg:px-24 xl:px-32">
         <motion.div
-          initial={{ opacity: 0, y: 40, filter: "blur(20px)" }}
-          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
+          className="text-center max-w-4xl mx-auto"
         >
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8">
-            <span className="block mb-2">Bereit, Ihr</span>
-            <span
-              className="block"
-              style={{
-                background:
-                  "linear-gradient(135deg, #06A3C9 0%, #1A7FD8 50%, #06A3C9 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-              }}
-            >
-              Projekt zu starten?
+          <h2 className="text-5xl lg:text-6xl font-bold mb-8">
+            <span className="block mb-3">Bereit für Ihr</span>
+            <span className="block bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              nächstes Projekt?
             </span>
           </h2>
 
-          <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-12">
-            Kontaktieren Sie mich noch heute
+          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+            Starten Sie noch heute mit einer kostenlosen Beratung
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
               onClick={scrollToForm}
-              className="group relative px-8 py-4 bg-gradient-to-r from-accent via-primary to-accent bg-[length:200%_100%] text-white rounded-xl font-semibold text-lg overflow-hidden shadow-[0_4px_24px_rgba(6,182,212,0.25)] hover:shadow-[0_8px_32px_rgba(6,182,212,0.35)] transition-all duration-500 hover:brightness-110 w-full sm:w-auto"
+              className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl font-semibold text-lg text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-105 transition-all duration-300"
             >
-              <span className="relative flex items-center justify-center gap-2">
-                <Sparkles className="w-5 h-5" />
-                Formular ausfüllen
-                <ArrowRight className="w-5 h-5" />
-              </span>
+              <Sparkles className="w-5 h-5" />
+              Formular ausfüllen
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
 
             <a
-              href="https://wa.me/491234567890"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group px-8 py-4 bg-background/50 hover:bg-background/80 backdrop-blur-sm border border-border hover:border-accent/50 text-foreground rounded-xl font-semibold text-lg transition-all duration-300 w-full sm:w-auto"
+              href="tel:+491234567890"
+              className="group inline-flex items-center gap-2 px-8 py-4 bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 hover:border-cyan-500/30 rounded-xl font-semibold text-lg text-white transition-all duration-300"
             >
-              <span className="flex items-center justify-center gap-2">
-                Per WhatsApp schreiben
-                <ArrowRight className="w-5 h-5" />
-              </span>
+              <Phone className="w-5 h-5" />
+              Direkt anrufen
             </a>
           </div>
 
@@ -825,7 +813,7 @@ function ContactCTA() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-sm text-muted-foreground mt-8"
+            className="text-sm text-gray-500 mt-8"
           >
             🔒 Kostenlos, unverbindlich & DSGVO-konform
           </motion.p>
@@ -841,38 +829,24 @@ function ContactCTA() {
 
 export default function ContactPage() {
   return (
-    <main className="relative min-h-screen bg-background overflow-hidden">
+    <main className="relative min-h-screen bg-[#0A0E27] text-white overflow-hidden">
       {/* Hero Section */}
       <ContactHero />
 
-      {/* Contact Options */}
-      <div className="relative">
-        <ContactOptions />
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
-      </div>
+      {/* Contact Methods */}
+      <ContactMethods />
 
-      {/* Contact Form Section */}
-      <div className="relative">
-        <ContactFormSection />
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
-      </div>
+      {/* Contact Form */}
+      <ContactFormSection />
 
       {/* Next Steps */}
-      <div className="relative">
-        <NextStepsSection />
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
-      </div>
+      <NextStepsSection />
 
       {/* FAQ */}
-      <div className="relative">
-        <FAQSection />
-        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
-      </div>
+      <FAQSection />
 
-      {/* CTA Section */}
-      <div className="relative">
-        <ContactCTA />
-      </div>
+      {/* Final CTA */}
+      <ContactCTA />
     </main>
   );
 }
