@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 /**
- * Global Middleware für Security Headers
+ * Global Proxy für Security Headers
  *
  * Schützt vor:
  * - XSS (Cross-Site Scripting)
@@ -13,7 +13,7 @@ import type { NextRequest } from 'next/server'
  * Wird für ALLE Requests ausgeführt.
  */
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   // Clone response
   const response = NextResponse.next()
 
@@ -57,7 +57,7 @@ export function middleware(request: NextRequest) {
   return response
 }
 
-// Matcher: Für welche Routes die Middleware läuft
+// Matcher: Für welche Routes der Proxy läuft
 export const config = {
   matcher: [
     /*
