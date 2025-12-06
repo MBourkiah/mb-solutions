@@ -97,9 +97,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Add your verification codes when ready:
-    // google: "your-google-verification-code",
-    // yandex: "your-yandex-verification-code",
+    google: "Hhwn2UuSSFk-EeWALUKCNKfI-VpeLx3c8raR1srs7EI",
   },
   alternates: {
     canonical: process.env.NEXT_PUBLIC_SITE_URL || "https://mb-solutions.biz",
