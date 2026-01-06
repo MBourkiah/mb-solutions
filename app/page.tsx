@@ -16,7 +16,9 @@
  * Target: B2B mittelständische Unternehmen
  */
 
-import { HeroFullWidth } from "@/components/sections/HeroFullWidth";
+// CONVERSION-OPTIMIZED HERO (Active)
+import { HeroConversion } from "@/components/sections/HeroConversion";
+// Alternative: import { HeroFullWidth } from "@/components/sections/HeroFullWidth";
 import { TechStack } from "@/components/sections/TechStack";
 import { ServicesInteractive } from "@/components/sections/ServicesInteractive";
 import { ProcessJourney } from "@/components/sections/ProcessJourney";
@@ -47,8 +49,8 @@ export default function HomePage() {
 
       {/* Main Content */}
       <div className="relative z-10">
-        {/* 1. HERO FULL-WIDTH - Edge-to-edge mit Glass Card */}
-        <HeroFullWidth />
+        {/* 1. HERO - Conversion Optimized */}
+        <HeroConversion />
 
         {/* 2. TECH STACK - Animated Logo Marquee */}
         <TechStack />

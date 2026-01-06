@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { HeaderUltimate } from "@/components/layout/HeaderUltimate";
+// CONVERSION-OPTIMIZED HEADER (Active)
+import { HeaderConversion } from "@/components/layout/HeaderConversion";
 // Alternative Headers:
-// import { HeaderPremium } from "@/components/layout/HeaderPremium";
-// import { HeaderCommandBar } from "@/components/layout/HeaderCommandBar";
-// import { HeaderPremiumV3 } from "@/components/layout/HeaderPremiumV3";
-// import { HeaderPremiumV2 } from "@/components/layout/HeaderPremiumV2";
+// import { HeaderUltimate } from "@/components/layout/HeaderUltimate";
 import { FooterPremium } from "@/components/layout/FooterPremium";
 import { CookieConsentPremium } from "@/components/layout/CookieConsentPremium";
 import { StructuredData } from "@/components/seo/StructuredData";
@@ -126,8 +124,8 @@ export default function RootLayout({
         <StructuredData />
       </head>
       <body className={`${inter.variable} font-sans antialiased bg-[#0A0E27] text-white`}>
-        {/* Navigation - Ultimate Header with Trust Signals */}
-        <HeaderUltimate />
+        {/* Navigation - Conversion Optimized Header */}
+        <HeaderConversion />
 
         {/* Main Content */}
         <main>{children}</main>
