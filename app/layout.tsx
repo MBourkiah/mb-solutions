@@ -125,8 +125,7 @@ export default function RootLayout({
         <StructuredData />
       </head>
       <body className={`${inter.variable} font-sans antialiased bg-[#0A0E27] text-white`}>
-        {/* Navigation - Bold Anti-Agency Header */}
-        <HeaderBold />
+        {/* Header is now integrated inside HeroControlRoom component */}
 
         {/* Main Content */}
         <main>{children}</main>

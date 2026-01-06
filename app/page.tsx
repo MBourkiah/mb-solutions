@@ -16,9 +16,10 @@
  * Target: B2B mittelständische Unternehmen
  */
 
-// BOLD ANTI-AGENCY HERO (Active)
-import { HeroBold } from "@/components/sections/HeroBold";
+// CONTROL ROOM HERO + HEADER SYSTEM (Active)
+import { HeroControlRoom } from "@/components/sections/HeroControlRoom";
 // Alternative Heroes:
+// import { HeroBold } from "@/components/sections/HeroBold";
 // import { HeroConversion } from "@/components/sections/HeroConversion";
 // import { HeroFullWidth } from "@/components/sections/HeroFullWidth";
 import { TechStack } from "@/components/sections/TechStack";
@@ -51,8 +52,8 @@ export default function HomePage() {
 
       {/* Main Content */}
       <div className="relative z-10">
-        {/* 1. HERO - Bold Anti-Agency */}
-        <HeroBold />
+        {/* 1. HERO + HEADER - Control Room System */}
+        <HeroControlRoom />
 
         {/* 2. TECH STACK - Animated Logo Marquee */}
         <TechStack />
