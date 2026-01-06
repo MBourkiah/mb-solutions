@@ -1,0 +1,138 @@
+<!-- MB-Solutions App Icon - Premium 512x512 -->
+<!-- For: iOS App Store, Google Play, High-res displays -->
+<!-- Features: Gradient background, centered icon, subtle glow -->
+
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Gradient Background -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14171F"/>
+      <stop offset="50%" stop-color="#0D1117"/>
+      <stop offset="100%" stop-color="#1D2028"/>
+    </linearGradient>
+
+    <radialGradient id="ambientGlow" cx="50%" cy="50%">
+      <stop offset="0%" stop-color="#06A3C9" stop-opacity="0.2"/>
+      <stop offset="50%" stop-color="#06A3C9" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#06A3C9" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Drop shadow for depth -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Icon glow -->
+    <filter id="iconGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Rounded square background (iOS style) -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGradient)"/>
+
+  <!-- Ambient glow -->
+  <circle cx="256" cy="256" r="200" fill="url(#ambientGlow)"/>
+
+  <!-- Main Icon (Scaled & Centered) -->
+  <g transform="translate(160, 176)" filter="url(#iconGlow)">
+
+    <!-- Scaled up icon paths (192x192 from original 40x32) -->
+    <!-- Scale factor: 6x -->
+
+    <!-- "M" Letter -->
+    <path
+      d="M 0 0 L 0 160"
+      stroke="#06A3C9"
+      stroke-width="22"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <path
+      d="M 0 0 L 45 80"
+      stroke="#06A3C9"
+      stroke-width="22"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <path
+      d="M 45 0 L 45 160"
+      stroke="#06A3C9"
+      stroke-width="22"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <path
+      d="M 45 80 L 90 0"
+      stroke="#06A3C9"
+      stroke-width="22"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- "B" Letter -->
+    <path
+      d="M 45 0 Q 110 0 110 40 Q 110 80 45 80"
+      stroke="#06A3C9"
+      stroke-width="22"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+    />
+
+    <path
+      d="M 45 80 Q 120 80 120 120 Q 120 160 45 160"
+      stroke="#06A3C9"
+      stroke-width="22"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+    />
+
+    <!-- Connection Nodes (scaled) -->
+    <circle cx="45" cy="0" r="12" fill="#06A3C9"/>
+    <circle cx="45" cy="80" r="12" fill="#06A3C9"/>
+    <circle cx="45" cy="160" r="12" fill="#06A3C9"/>
+    <circle cx="120" cy="120" r="12" fill="#1A7FD8" opacity="0.9"/>
+
+    <!-- Additional glow nodes for premium effect -->
+    <circle cx="120" cy="120" r="20" fill="#1A7FD8" opacity="0.2"/>
+    <circle cx="45" cy="80" r="18" fill="#06A3C9" opacity="0.15"/>
+
+  </g>
+
+  <!-- Subtle border highlight -->
+  <rect
+    width="512"
+    height="512"
+    rx="112"
+    fill="none"
+    stroke="url(#borderGradient)"
+    stroke-width="2"
+    opacity="0.3"
+  />
+
+  <defs>
+    <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06A3C9"/>
+      <stop offset="100%" stop-color="#1A7FD8"/>
+    </linearGradient>
+  </defs>
+
+</svg>

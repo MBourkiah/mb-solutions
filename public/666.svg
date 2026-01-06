@@ -1,0 +1,141 @@
+<!-- MB-Solutions Horizontal Logo - Primary Brand Identity -->
+<!-- Icon + Wordmark | Perfect for: Website Headers, Email Signatures -->
+<!-- Canvas: 280x64 | Optimal at 180-220px width -->
+
+<svg width="280" height="64" viewBox="0 0 280 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Glow Effect (optional - can be toggled) -->
+  <defs>
+    <filter id="iconGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- ========================================
+       ICON (Left Side)
+       ======================================== -->
+  <g transform="translate(8, 16)" filter="url(#iconGlow)">
+
+    <!-- "M" Letter -->
+    <!-- Left vertical stroke -->
+    <path
+      d="M 0 0 L 0 32"
+      stroke="#06A3C9"
+      stroke-width="4.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- Left diagonal -->
+    <path
+      d="M 0 0 L 9 16"
+      stroke="#06A3C9"
+      stroke-width="4.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- Center vertical (shared with B) -->
+    <path
+      d="M 9 0 L 9 32"
+      stroke="#06A3C9"
+      stroke-width="4.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- Right diagonal of M -->
+    <path
+      d="M 9 16 L 18 0"
+      stroke="#06A3C9"
+      stroke-width="4.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+
+    <!-- "B" Letter -->
+    <!-- Top curve -->
+    <path
+      d="M 9 0 Q 22 0 22 8 Q 22 16 9 16"
+      stroke="#06A3C9"
+      stroke-width="4.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+    />
+
+    <!-- Bottom curve -->
+    <path
+      d="M 9 16 Q 24 16 24 24 Q 24 32 9 32"
+      stroke="#06A3C9"
+      stroke-width="4.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      fill="none"
+    />
+
+    <!-- Connection Nodes -->
+    <circle cx="9" cy="0" r="2.5" fill="#06A3C9"/>
+    <circle cx="9" cy="16" r="2.5" fill="#06A3C9"/>
+    <circle cx="9" cy="32" r="2.5" fill="#06A3C9"/>
+    <circle cx="24" cy="24" r="2.5" fill="#1A7FD8" opacity="0.8"/>
+
+  </g>
+
+  <!-- ========================================
+       WORDMARK (Right Side)
+       ======================================== -->
+
+  <!-- "MB" in Cyan (Accent) -->
+  <text
+    x="64"
+    y="40"
+    font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    font-size="24"
+    font-weight="600"
+    letter-spacing="-0.02em"
+    fill="#06A3C9"
+  >MB</text>
+
+  <!-- Separator "-" -->
+  <text
+    x="96"
+    y="40"
+    font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    font-size="24"
+    font-weight="600"
+    letter-spacing="-0.02em"
+    fill="#9FA6B2"
+    opacity="0.7"
+  >-</text>
+
+  <!-- "Solutions" in Muted Gray -->
+  <text
+    x="107"
+    y="40"
+    font-family="Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    font-size="24"
+    font-weight="500"
+    letter-spacing="-0.02em"
+    fill="#9FA6B2"
+  >Solutions</text>
+
+  <!-- Optional Tagline (Commented out by default) -->
+  <!--
+  <text
+    x="64"
+    y="54"
+    font-family="Inter, sans-serif"
+    font-size="10"
+    font-weight="400"
+    letter-spacing="0.05em"
+    fill="#6B7280"
+    opacity="0.6"
+  >MODERN BUSINESS SOLUTIONS</text>
+  -->
+
+</svg>

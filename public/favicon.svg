@@ -1,0 +1,65 @@
+<!-- MB-Solutions Favicon - Simplified for Small Sizes -->
+<!-- Optimized for: 16x16, 32x32, 48x48 -->
+<!-- Ultra-clean, maximum readability at tiny sizes -->
+
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Dark background (optional) -->
+  <rect width="32" height="32" rx="6" fill="#0D1117"/>
+
+  <!-- Simplified MB Monogram -->
+  <!-- Thicker strokes for better visibility at small sizes -->
+  <g transform="translate(6, 8)">
+
+    <!-- "M" - Simplified -->
+    <path
+      d="M 0 0 L 0 16"
+      stroke="#06A3C9"
+      stroke-width="3"
+      stroke-linecap="round"
+    />
+
+    <path
+      d="M 0 0 L 4.5 8"
+      stroke="#06A3C9"
+      stroke-width="3"
+      stroke-linecap="round"
+    />
+
+    <path
+      d="M 4.5 0 L 4.5 16"
+      stroke="#06A3C9"
+      stroke-width="3"
+      stroke-linecap="round"
+    />
+
+    <path
+      d="M 4.5 8 L 9 0"
+      stroke="#06A3C9"
+      stroke-width="3"
+      stroke-linecap="round"
+    />
+
+    <!-- "B" - Simplified -->
+    <path
+      d="M 4.5 0 Q 11 0 11 4 Q 11 8 4.5 8"
+      stroke="#06A3C9"
+      stroke-width="3"
+      stroke-linecap="round"
+      fill="none"
+    />
+
+    <path
+      d="M 4.5 8 Q 12 8 12 12 Q 12 16 4.5 16"
+      stroke="#06A3C9"
+      stroke-width="3"
+      stroke-linecap="round"
+      fill="none"
+    />
+
+    <!-- Single accent dot (simplified nodes) -->
+    <circle cx="12" cy="12" r="2" fill="#1A7FD8"/>
+
+  </g>
+
+</svg>

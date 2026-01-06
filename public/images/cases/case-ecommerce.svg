@@ -1,0 +1,25 @@
+<svg width="1500" height="1000" viewBox="0 0 1500 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06B6D4;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:0.1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1500" height="1000" fill="#0F1629"/>
+  <rect width="1500" height="1000" fill="url(#grad7)"/>
+
+  <pattern id="grid7" width="60" height="60" patternUnits="userSpaceOnUse">
+    <circle cx="2" cy="2" r="1" fill="#06B6D4" opacity="0.15"/>
+  </pattern>
+  <rect width="1500" height="1000" fill="url(#grid7)" opacity="0.3"/>
+
+  <!-- Shopping Cart Icon -->
+  <circle cx="750" cy="450" r="80" stroke="#06B6D4" stroke-width="8" fill="none" opacity="0.4"/>
+  <path d="M 700 420 L 720 420 L 730 470 L 770 470 L 780 420 L 800 420" stroke="#3B82F6" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.5" fill="none"/>
+  <circle cx="740" cy="490" r="8" fill="#06B6D4" opacity="0.5"/>
+  <circle cx="770" cy="490" r="8" fill="#06B6D4" opacity="0.5"/>
+
+  <text x="750" y="600" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="700" fill="#FFFFFF" text-anchor="middle">E-Commerce Platform</text>
+  <text x="750" y="650" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="#9CA3AF" text-anchor="middle">1500 × 1000 px (3:2)</text>
+</svg>

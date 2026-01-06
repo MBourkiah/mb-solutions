@@ -1,0 +1,24 @@
+{
+  "name": "MB-Solutions - Webentwicklung & IT-Services",
+  "short_name": "MB-Solutions",
+  "description": "Professionelle Next.js Webentwicklung, IT-Services und Digitalisierung für KMU",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0E27",
+  "theme_color": "#06B6D4",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

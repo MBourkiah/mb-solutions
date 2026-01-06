@@ -1,0 +1,23 @@
+OG Image Platzhalter
+====================
+
+Diese Datei dient als Reminder, dass Sie noch ein OG-Image erstellen müssen.
+
+Empfohlene Spezifikationen:
+- Dateiname: og-image.jpg
+- Größe: 1200 x 630 px
+- Format: JPG oder PNG
+- Max. Dateigröße: < 300 KB
+
+Erstellen Sie ein Bild mit:
+- Ihrem Logo
+- Firmennamen "MB-Solutions"
+- Claim/Slogan
+- Modernem, professionellem Design passend zur Website
+
+Tools zum Erstellen:
+- Canva (https://canva.com)
+- Figma (https://figma.com)
+- Adobe Photoshop
+
+Sobald erstellt, ersetzen Sie diese Datei durch "og-image.jpg"
