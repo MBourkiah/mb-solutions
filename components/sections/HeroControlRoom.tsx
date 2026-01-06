@@ -45,18 +45,15 @@ export function HeroControlRoom() {
       {/* LAYER 1: BACKGROUND IMAGE */}
       {/* ============================================ */}
       <div className="absolute inset-0 z-0">
-        {/* Placeholder for hero-bg.jpg (2560x1440px, 16:9) */}
-        {/* Replace with actual image: <Image src="/images/hero-bg.jpg" fill className="object-cover" alt="" /> */}
-        <div
-          className="absolute inset-0 bg-gradient-to-br from-[#0A0E27] via-[#0D1229] to-[#050812]"
-          style={{
-            backgroundImage: `radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
-                             radial-gradient(circle at 80% 70%, rgba(59, 130, 246, 0.06) 0%, transparent 50%)`
-          }}
+        {/* Hero Background - ACTIVE */}
+        <Image
+          src="/images/hero-bg.png"
+          fill
+          className="object-cover"
+          alt=""
+          priority
+          quality={90}
         />
-        {/* Simulated bokeh/depth effect */}
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-1/3 left-1/3 w-80 h-80 bg-blue-500/8 rounded-full blur-[100px]" />
       </div>
 
       {/* ============================================ */}
@@ -73,13 +70,13 @@ export function HeroControlRoom() {
       {/* LAYER 4: GRAIN TEXTURE OVERLAY */}
       {/* ============================================ */}
       <div className="absolute inset-0 z-30 opacity-[0.03] mix-blend-overlay pointer-events-none">
-        {/* Placeholder for grain-texture.png (1920x1080px, 16:9) */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E")`,
-            backgroundRepeat: 'repeat',
-          }}
+        {/* Grain Texture - ACTIVE (IDEOGRAM Image #2) */}
+        <Image
+          src="/images/grain-texture.png"
+          fill
+          className="object-cover"
+          alt=""
+          quality={100}
         />
       </div>
 
