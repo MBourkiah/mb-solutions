@@ -112,7 +112,7 @@ export function ProcessExecutionPipeline() {
   return (
     <section
       ref={sectionRef}
-      className="relative py-20 sm:py-24 md:py-32 overflow-hidden"
+      className="relative py-16 sm:py-20 lg:py-24 overflow-hidden"
     >
       {/* Background - Matches Services/Hero */}
       <div className="absolute inset-0 bg-[#0A0E27]" />
@@ -140,11 +140,11 @@ export function ProcessExecutionPipeline() {
         }}
       />
 
-      {/* Container */}
-      <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Container - Wider on desktop */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center mb-16 sm:mb-20">
+        <div className="text-center mb-12 lg:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -160,7 +160,7 @@ export function ProcessExecutionPipeline() {
             </div>
 
             {/* Headline */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
               Von der Idee zum Launch –<br className="hidden sm:block" /> in 3–6 Wochen
             </h2>
 
@@ -171,14 +171,14 @@ export function ProcessExecutionPipeline() {
           </motion.div>
         </div>
 
-        {/* Timeline Container */}
+        {/* Timeline Container - 2-column grid on desktop */}
         <div className="relative">
 
-          {/* Vertical Line (Desktop: left-aligned, Mobile: left-aligned with offset) */}
-          <div className="absolute left-[7px] sm:left-[7px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-cyan-500/20 via-cyan-500/40 to-cyan-500/20" />
+          {/* Vertical Line - hidden on lg+ (2-column layout doesn't need central line) */}
+          <div className="absolute left-[7px] lg:hidden top-0 bottom-0 w-[2px] bg-gradient-to-b from-cyan-500/20 via-cyan-500/40 to-cyan-500/20" />
 
-          {/* Timeline Steps */}
-          <div className="space-y-12 sm:space-y-16">
+          {/* Timeline Steps - 2 columns on desktop */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-x-8 lg:gap-y-10">
             {steps.map((step, index) => {
               const StepIcon = step.icon;
 
@@ -188,65 +188,65 @@ export function ProcessExecutionPipeline() {
                   initial={{ opacity: 0, x: 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="relative flex gap-6 sm:gap-8"
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  className="relative flex gap-4 lg:gap-5"
                 >
-                  {/* Timeline Node (left side) */}
-                  <div className="flex-shrink-0 pt-1">
+                  {/* Timeline Node (left side) - mobile only */}
+                  <div className="flex-shrink-0 pt-1 lg:hidden">
                     <TimelineNode isActive={true} index={index} />
                   </div>
 
                   {/* Card Content */}
-                  <div className="flex-1 pb-4">
-                    <div className="group relative p-6 sm:p-8 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 hover:border-cyan-500/30 transition-all duration-300">
+                  <div className="flex-1">
+                    <div className="group relative p-5 lg:p-6 rounded-xl bg-black/40 backdrop-blur-xl border border-white/10 hover:border-cyan-500/30 transition-all duration-300 h-full">
 
                       {/* Card Header */}
-                      <div className="flex items-start justify-between gap-4 mb-5">
-                        <div className="flex items-center gap-4">
-                          {/* Icon Badge */}
-                          <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                            <StepIcon className="w-6 h-6 text-cyan-400" />
+                      <div className="flex items-start justify-between gap-3 mb-4">
+                        <div className="flex items-center gap-3">
+                          {/* Icon Badge - smaller on desktop */}
+                          <div className="w-10 h-10 lg:w-11 lg:h-11 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                            <StepIcon className="w-5 h-5 lg:w-5 lg:h-5 text-cyan-400" />
                           </div>
 
                           {/* Title + Number */}
                           <div>
-                            <div className="flex items-center gap-2 mb-1">
+                            <div className="flex items-center gap-2 mb-0.5">
                               <span className="text-xs font-mono text-gray-500">
                                 STEP {step.number}
                               </span>
                             </div>
-                            <h3 className="text-xl sm:text-2xl font-bold text-white">
+                            <h3 className="text-lg lg:text-xl font-bold text-white">
                               {step.title}
                             </h3>
                           </div>
                         </div>
 
-                        {/* Duration Badge (desktop: top-right, mobile: below) */}
+                        {/* Duration Badge */}
                         <div className="hidden sm:block flex-shrink-0">
-                          <span className="inline-flex items-center px-3 py-1 rounded-full bg-cyan-500/5 border border-cyan-500/20 text-xs font-mono text-cyan-400 whitespace-nowrap">
+                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-cyan-500/5 border border-cyan-500/20 text-xs font-mono text-cyan-400 whitespace-nowrap">
                             {step.duration}
                           </span>
                         </div>
                       </div>
 
                       {/* Duration Badge (mobile only) */}
-                      <div className="sm:hidden mb-4">
-                        <span className="inline-flex items-center px-3 py-1 rounded-full bg-cyan-500/5 border border-cyan-500/20 text-xs font-mono text-cyan-400">
+                      <div className="sm:hidden mb-3">
+                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-cyan-500/5 border border-cyan-500/20 text-xs font-mono text-cyan-400">
                           {step.duration}
                         </span>
                       </div>
 
                       {/* Value Statement */}
-                      <p className="text-gray-300 text-base sm:text-lg mb-5 leading-relaxed">
+                      <p className="text-gray-300 text-sm lg:text-base mb-4 leading-relaxed">
                         {step.value}
                       </p>
 
                       {/* Outcomes (Checklist) */}
-                      <div className="space-y-3">
+                      <div className="space-y-2.5">
                         {step.outcomes.map((outcome, i) => (
-                          <div key={i} className="flex items-start gap-3">
-                            <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                            <span className="text-sm text-gray-400 leading-relaxed">
+                          <div key={i} className="flex items-start gap-2.5">
+                            <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                            <span className="text-xs lg:text-sm text-gray-400 leading-relaxed">
                               {outcome}
                             </span>
                           </div>
@@ -254,7 +254,7 @@ export function ProcessExecutionPipeline() {
                       </div>
 
                       {/* Background Step Number (subtle) */}
-                      <div className="absolute top-4 right-4 text-8xl font-black text-white/[0.02] pointer-events-none select-none">
+                      <div className="absolute top-3 right-3 text-6xl lg:text-7xl font-black text-white/[0.02] pointer-events-none select-none">
                         {step.number}
                       </div>
                     </div>
@@ -271,43 +271,43 @@ export function ProcessExecutionPipeline() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-20 p-8 sm:p-10 rounded-2xl bg-gradient-to-br from-cyan-500/5 to-blue-500/5 border border-cyan-500/20 backdrop-blur-xl"
+          className="mt-16 lg:mt-20 p-6 lg:p-8 rounded-xl bg-gradient-to-br from-cyan-500/5 to-blue-500/5 border border-cyan-500/20 backdrop-blur-xl"
         >
-          <h3 className="text-xl sm:text-2xl font-bold text-white mb-6 text-center sm:text-left">
+          <h3 className="text-lg lg:text-xl font-bold text-white mb-5 text-center sm:text-left">
             Was Sie erwarten können
           </h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
             {/* Benefit 1 */}
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                <BarChart className="w-5 h-5 text-cyan-400" />
+              <div className="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                <BarChart className="w-4 h-4 text-cyan-400" />
               </div>
               <div>
-                <div className="font-semibold text-white mb-1">Wöchentliche Updates</div>
-                <div className="text-sm text-gray-400">Live-Status, keine Überraschungen</div>
+                <div className="font-semibold text-white text-sm mb-0.5">Wöchentliche Updates</div>
+                <div className="text-xs text-gray-400">Live-Status, keine Überraschungen</div>
               </div>
             </div>
 
             {/* Benefit 2 */}
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                <ExternalLink className="w-5 h-5 text-cyan-400" />
+              <div className="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                <ExternalLink className="w-4 h-4 text-cyan-400" />
               </div>
               <div>
-                <div className="font-semibold text-white mb-1">Geteiltes Project Board</div>
-                <div className="text-sm text-gray-400">Voller Zugriff auf Fortschritt</div>
+                <div className="font-semibold text-white text-sm mb-0.5">Geteiltes Project Board</div>
+                <div className="text-xs text-gray-400">Voller Zugriff auf Fortschritt</div>
               </div>
             </div>
 
             {/* Benefit 3 */}
             <div className="flex items-start gap-3">
-              <div className="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                <CheckCircle2 className="w-5 h-5 text-cyan-400" />
+              <div className="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                <CheckCircle2 className="w-4 h-4 text-cyan-400" />
               </div>
               <div>
-                <div className="font-semibold text-white mb-1">Messbare Ziele</div>
-                <div className="text-sm text-gray-400">Performance-Metriken ab Tag 1</div>
+                <div className="font-semibold text-white text-sm mb-0.5">Messbare Ziele</div>
+                <div className="text-xs text-gray-400">Performance-Metriken ab Tag 1</div>
               </div>
             </div>
           </div>
@@ -319,9 +319,9 @@ export function ProcessExecutionPipeline() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-16 text-center"
+          className="mt-12 lg:mt-14 text-center"
         >
-          <p className="text-gray-400 mb-6">
+          <p className="text-gray-400 text-sm lg:text-base mb-5">
             Bereit für Ihr Projekt? Starten Sie mit Phase 1: Discovery.
           </p>
 
@@ -329,7 +329,7 @@ export function ProcessExecutionPipeline() {
             {/* Primary CTA */}
             <Link
               href="/contact"
-              className="group relative px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold text-lg overflow-hidden hover:shadow-xl hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105"
+              className="group relative px-7 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold text-base overflow-hidden hover:shadow-xl hover:shadow-cyan-500/30 transition-all duration-300 hover:scale-105"
             >
               <span className="relative z-10 flex items-center gap-2">
                 Projekt starten
@@ -343,7 +343,7 @@ export function ProcessExecutionPipeline() {
             {/* Secondary CTA */}
             <a
               href="#discovery"
-              className="px-8 py-4 rounded-xl border border-white/10 text-white font-semibold text-lg hover:border-cyan-500/50 hover:bg-white/5 transition-all duration-300"
+              className="px-7 py-3.5 rounded-xl border border-white/10 text-white font-semibold text-base hover:border-cyan-500/50 hover:bg-white/5 transition-all duration-300"
             >
               Ablauf ansehen
             </a>
