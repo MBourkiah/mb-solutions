@@ -89,9 +89,9 @@ export function ServicesCapabilityMatrix() {
       {/* Background - Same as Hero */}
       <div className="absolute inset-0 bg-[#0A0E27]" />
 
-      {/* Technical Grid Pattern (Control Room Aesthetic) */}
+      {/* Technical Grid Pattern (Control Room Aesthetic) - More Visible */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage: `
             linear-gradient(to right, #06B6D4 1px, transparent 1px),
@@ -101,29 +101,26 @@ export function ServicesCapabilityMatrix() {
         }}
       />
 
-      {/* Subtle Radial Glow (Spotlight Effect) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/[0.02] rounded-full blur-4xl" />
-
       <div className="relative z-10 w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
 
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
 
-          {/* System Badge */}
+          {/* System Badge - Larger & Brighter */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-cyan-500/5 border border-cyan-500/20 backdrop-blur-xl"
+            className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-cyan-500/10 border border-cyan-500/30 backdrop-blur-xl shadow-lg shadow-cyan-500/20"
           >
-            <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-pulse" />
-            <span className="text-xs font-semibold text-cyan-100 tracking-wide uppercase font-mono">
+            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+            <span className="text-sm font-bold text-cyan-300 tracking-wide uppercase font-mono">
               Performance Layer
             </span>
           </motion.div>
 
-          {/* Headline */}
+          {/* Headline - Shorter & More Direct */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -131,7 +128,7 @@ export function ServicesCapabilityMatrix() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="font-black text-white mb-4 sm:mb-5 leading-tight tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
           >
-            Wählen Sie Ihre Performance-Ebene
+            Drei Hochleistungs-Systeme
           </motion.h2>
 
           {/* Supporting Line */}
@@ -160,30 +157,44 @@ export function ServicesCapabilityMatrix() {
                 transition={{ duration: 0.6, delay: index * 0.15 }}
                 className="group relative"
               >
-                {/* Hover Glow (Cyan only) */}
-                <div className="absolute -inset-2 bg-cyan-500/10 opacity-0 group-hover:opacity-100 rounded-3xl blur-2xl transition-opacity duration-500" />
+                {/* "MOST POPULAR" Badge for Web Development */}
+                {index === 0 && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 text-white text-xs font-bold uppercase tracking-wider shadow-lg shadow-cyan-500/30">
+                      <Zap className="w-3 h-3" />
+                      Meistgewählt
+                    </span>
+                  </div>
+                )}
 
-                {/* Card Container */}
-                <div className="relative h-full p-6 sm:p-7 md:p-8 rounded-2xl bg-black/40 backdrop-blur-2xl border border-white/10 hover:border-cyan-500/30 transition-all duration-300 flex flex-col">
+                {/* Hover Glow (Cyan only) - Stronger for first card */}
+                <div className={`absolute -inset-2 rounded-3xl blur-2xl transition-opacity duration-500 ${index === 0 ? 'bg-cyan-500/15 opacity-30 group-hover:opacity-100' : 'bg-cyan-500/10 opacity-0 group-hover:opacity-100'}`} />
 
-                  {/* Status Bar (Terminal Style) */}
-                  <div className="flex items-center justify-between mb-5 pb-4 border-b border-white/5">
+                {/* Card Container - More Padding */}
+                <div className="relative h-full p-8 rounded-2xl bg-black/40 backdrop-blur-2xl border border-white/10 hover:border-cyan-500/30 transition-all duration-300 flex flex-col">
+
+                  {/* Status Bar (Terminal Style) - Unique per Service */}
+                  <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/5">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-                      <span className="text-xs font-mono text-cyan-400 tracking-wider">ONLINE</span>
+                      <span className="text-xs font-mono text-cyan-400 tracking-wider">
+                        {index === 0 ? "PRODUCTION" : index === 1 ? "STABLE" : "ACTIVE"}
+                      </span>
                     </div>
-                    <span className="text-xs font-mono text-gray-500">v2.5</span>
+                    <span className="text-xs font-mono text-gray-500">
+                      v{index === 0 ? "2.5" : index === 1 ? "2.4" : "2.3"}
+                    </span>
                   </div>
 
                   {/* Icon Badge */}
-                  <div className="mb-5">
+                  <div className="mb-6">
                     <div className="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center group-hover:bg-cyan-500/15 transition-colors">
                       <Icon className="w-7 h-7 text-cyan-400" />
                     </div>
                   </div>
 
                   {/* Title + Tagline */}
-                  <div className="mb-4">
+                  <div className="mb-5">
                     <h3 className="text-2xl font-black text-white tracking-tight mb-2">
                       {capability.title}
                     </h3>
@@ -193,12 +204,12 @@ export function ServicesCapabilityMatrix() {
                   </div>
 
                   {/* Description */}
-                  <p className="text-sm text-gray-400 leading-relaxed mb-6">
+                  <p className="text-sm text-gray-400 leading-relaxed mb-7">
                     {capability.description}
                   </p>
 
-                  {/* Key Outcomes (2×1 Grid) */}
-                  <div className="grid grid-cols-2 gap-4 mb-6">
+                  {/* Key Outcomes (2×1 Grid) - More Spacing */}
+                  <div className="grid grid-cols-2 gap-4 mb-7">
                     <div className="p-4 rounded-lg bg-white/5 border border-white/10">
                       <div className="text-3xl font-black text-white tabular-nums mb-1">
                         {capability.outcomes.primary.value}
@@ -217,12 +228,12 @@ export function ServicesCapabilityMatrix() {
                     </div>
                   </div>
 
-                  {/* Deliverables (Transparent Chips) */}
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  {/* Deliverables (Transparent Chips) - Larger Text */}
+                  <div className="flex flex-wrap gap-2 mb-7">
                     {capability.deliverables.map((item) => (
                       <span
                         key={item}
-                        className="px-2.5 py-1 rounded text-xs text-gray-400 border border-white/10 hover:border-cyan-500/30 hover:text-cyan-300 transition-colors font-medium"
+                        className="px-3 py-1.5 rounded text-sm text-gray-400 border border-white/10 hover:border-cyan-500/30 hover:text-cyan-300 transition-colors font-medium"
                       >
                         {item}
                       </span>
@@ -247,7 +258,7 @@ export function ServicesCapabilityMatrix() {
           })}
         </div>
 
-        {/* Bottom CTA */}
+        {/* Bottom CTA - More Active Language */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -255,13 +266,14 @@ export function ServicesCapabilityMatrix() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-center mt-16 sm:mt-20"
         >
-          <p className="text-sm text-gray-500 mb-6">
-            Nicht sicher, welches System Sie benötigen?
+          <p className="text-sm text-gray-400 mb-6 font-medium">
+            Unsicher? Wir analysieren Ihren Use Case kostenlos.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-500/30 rounded-xl font-semibold text-base text-white backdrop-blur-xl transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-500/30 rounded-xl font-semibold text-base text-white backdrop-blur-xl transition-all duration-300 hover:scale-[1.02]"
           >
+            <Zap className="w-4 h-4 text-cyan-400" />
             <span>Kostenlose System-Analyse</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
