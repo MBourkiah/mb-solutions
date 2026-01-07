@@ -28,6 +28,7 @@ import { useEffect, useState } from "react";
 export function HeroControlRoom() {
   const [perfScore, setPerfScore] = useState(98.4);
   const [loadTime, setLoadTime] = useState(1.8);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Simulate live metrics
   useEffect(() => {
@@ -37,6 +38,15 @@ export function HeroControlRoom() {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+
+  // Close mobile menu on body click
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [mobileMenuOpen]);
 
   return (
     <section className="relative w-screen min-h-screen flex items-center overflow-hidden">
@@ -182,28 +192,75 @@ export function HeroControlRoom() {
                     <span>Start</span>
                     <ArrowRight className="w-4 h-4" />
                   </Link>
-                  <button className="p-2 rounded-lg hover:bg-white/10 transition-colors">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
+                  <button
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    className="p-2 rounded-lg hover:bg-white/10 transition-colors"
+                    aria-label="Menu"
+                  >
+                    {mobileMenuOpen ? (
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    ) : (
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                      </svg>
+                    )}
                   </button>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Mobile Menu Overlay */}
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="lg:hidden fixed inset-0 bg-black/95 backdrop-blur-xl z-40"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <div className="flex flex-col items-center justify-center h-full gap-8 px-8">
+                <Link
+                  href="/projects"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-3xl font-black text-white hover:text-cyan-400 transition-colors"
+                >
+                  Projekte
+                </Link>
+                <Link
+                  href="#methode"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-3xl font-black text-white hover:text-cyan-400 transition-colors"
+                >
+                  Methode
+                </Link>
+                <Link
+                  href="/contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-xl font-bold text-xl shadow-xl shadow-cyan-500/30"
+                >
+                  <Zap className="w-5 h-5" />
+                  <span>Projekt starten</span>
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+            </motion.div>
+          )}
         </nav>
       </motion.header>
 
       {/* ============================================ */}
       {/* LAYER 3: MAIN CONTENT (Text + Dashboard) */}
       {/* ============================================ */}
-      <div className="relative z-20 w-full max-w-[1600px] mx-auto px-6 lg:px-12 py-32 lg:py-40">
+      <div className="relative z-20 w-full max-w-[1600px] mx-auto px-6 lg:px-12 py-24 sm:py-32 lg:py-40">
 
         {/* Asymmetric Grid: 55% Text | 45% Visual */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
           {/* LEFT: TEXT ZONE (7 columns = ~58%) */}
-          <div className="lg:col-span-7 space-y-8">
+          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
 
             {/* Badge */}
             <motion.div
@@ -216,12 +273,12 @@ export function HeroControlRoom() {
               <span className="text-sm font-semibold text-cyan-100">Verfügbar für neue Projekte</span>
             </motion.div>
 
-            {/* Headline - Enhanced text shadows for perfect readability */}
+            {/* Headline - Mobile optimized sizing */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] sm:leading-[1.05] tracking-tight"
             >
               <span
                 className="block text-white"
@@ -244,12 +301,12 @@ export function HeroControlRoom() {
               </span>
             </motion.h1>
 
-            {/* Subline */}
+            {/* Subline - Mobile optimized */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-xl text-gray-300 leading-relaxed max-w-xl"
+              className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-xl"
             >
               Unter 2 Sekunden Ladezeit. Conversion-optimiertes Design.{" "}
               <span className="text-white font-semibold">Null Agentur-Theater.</span>
