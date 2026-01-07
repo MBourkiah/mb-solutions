@@ -89,6 +89,9 @@ export function ServicesCapabilityMatrix() {
       {/* Background - Same as Hero */}
       <div className="absolute inset-0 bg-[#0A0E27]" />
 
+      {/* Top Fade Transition (from Hero) */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0A0E27] to-transparent pointer-events-none z-10" />
+
       {/* Technical Grid Pattern (Control Room Aesthetic) - More Visible */}
       <div
         className="absolute inset-0 opacity-[0.06]"
