@@ -23,7 +23,10 @@ import { HeroControlRoom } from "@/components/sections/HeroControlRoom";
 // import { HeroConversion } from "@/components/sections/HeroConversion";
 // import { HeroFullWidth } from "@/components/sections/HeroFullWidth";
 import { TechStack } from "@/components/sections/TechStack";
-import { ServicesInteractive } from "@/components/sections/ServicesInteractive";
+// SERVICES CONTROL ROOM (Active)
+import { ServicesControlRoom } from "@/components/sections/ServicesControlRoom";
+// Alternative:
+// import { ServicesInteractive } from "@/components/sections/ServicesInteractive";
 import { ProcessJourney } from "@/components/sections/ProcessJourney";
 import { CaseStudies } from "@/components/sections/CaseStudies";
 import { TrustExpertise } from "@/components/sections/TrustExpertise";
@@ -58,8 +61,8 @@ export default function HomePage() {
         {/* 2. TECH STACK - Animated Logo Marquee */}
         <TechStack />
 
-        {/* 3. SERVICES INTERACTIVE - Tab-Switcher */}
-        <ServicesInteractive />
+        {/* 3. SERVICES CONTROL ROOM - Mission Control Dashboard */}
+        <ServicesControlRoom />
 
         {/* 4. PROCESS JOURNEY - Horizontal Timeline */}
         <ProcessJourney />
