@@ -2,13 +2,13 @@
  * MB-Solutions - Full-Width Redesign
  *
  * NEUE STRUKTUR (8 Sections):
- * 1. 🔥 HeroFullWidth - Edge-to-edge Hero mit Floating Glass Card
- * 2. ⚡ TechStack - Animated Logo Marquee
- * 3. 🎯 ServicesInteractive - Tab-Switcher statt Grid
- * 4. 🚀 ProcessJourney - Horizontal Timeline
- * 5. 📊 CaseStudies - Asymmetrisches Bento-Grid
- * 6. 💎 TrustExpertise - Metrics + Tech Badge Wall
- * 7. ⭐ Testimonials - Social Proof
+ * 1. 🔥 HeroControlRoom - Control Room Hero mit Terminal-Style Header
+ * 2. ⚡ ServicesCapabilityMatrix - Product-Style Performance Layer
+ * 3. 🎯 ProcessControlRoom - Terminal-Style Pipeline
+ * 4. 📊 CaseStudies - Asymmetrisches Bento-Grid
+ * 5. 💎 TrustExpertise - Metrics + Tech Badge Wall
+ * 6. ⭐ Testimonials - Social Proof
+ * 7. ❓ FAQ - Häufig gestellte Fragen
  * 8. 🎉 CTAImmersive - Full-Screen CTA
  *
  * Design: Vercel/Linear/Stripe-Niveau
@@ -27,7 +27,10 @@ import { ServicesCapabilityMatrix } from "@/components/sections/ServicesCapabili
 // Alternatives:
 // import { ServicesControlRoom } from "@/components/sections/ServicesControlRoom";
 // import { ServicesInteractive } from "@/components/sections/ServicesInteractive";
-import { ProcessJourney } from "@/components/sections/ProcessJourney";
+// PROCESS CONTROL ROOM (Active - Terminal-Style Pipeline)
+import { ProcessControlRoom } from "@/components/sections/ProcessControlRoom";
+// Alternative:
+// import { ProcessJourney } from "@/components/sections/ProcessJourney";
 import { CaseStudies } from "@/components/sections/CaseStudies";
 import { TrustExpertise } from "@/components/sections/TrustExpertise";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -61,8 +64,8 @@ export default function HomePage() {
         {/* 2. SERVICES CAPABILITY MATRIX - Product-Style Performance Layer */}
         <ServicesCapabilityMatrix />
 
-        {/* 3. PROCESS JOURNEY - Horizontal Timeline */}
-        <ProcessJourney />
+        {/* 3. PROCESS CONTROL ROOM - Terminal-Style Pipeline */}
+        <ProcessControlRoom />
 
         {/* 4. CASE STUDIES - Asymmetrisches Bento-Grid */}
         <CaseStudies />
