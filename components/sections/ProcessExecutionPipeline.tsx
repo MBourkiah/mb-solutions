@@ -113,20 +113,9 @@ export function ProcessExecutionPipeline() {
       {/* Top Fade Transition */}
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-[#0A0E27] to-transparent pointer-events-none z-10" />
 
-      {/* Extremely Subtle Grid (3% opacity) */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #06B6D4 1px, transparent 1px),
-            linear-gradient(to bottom, #06B6D4 1px, transparent 1px)
-          `,
-          backgroundSize: '48px 48px'
-        }}
-      />
 
-      {/* Container */}
-      <div className="relative z-20 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Container - Full Width */}
+      <div className="relative z-20 w-full px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
         <div className="text-center mb-12 lg:mb-14">
@@ -194,7 +183,7 @@ export function ProcessExecutionPipeline() {
               WebkitOverflowScrolling: 'touch'
             }}
           >
-            <div className="flex gap-6 lg:gap-8 px-2 min-w-max">
+            <div className="flex gap-6 lg:gap-8 px-4 lg:px-8 min-w-max">
               {steps.map((step, index) => {
                 const StepIcon = step.icon;
 
@@ -208,8 +197,8 @@ export function ProcessExecutionPipeline() {
                     className="relative group"
                     style={{ scrollSnapAlign: 'start' }}
                   >
-                    {/* Card */}
-                    <div className="w-[340px] sm:w-[380px] h-full p-6 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 hover:border-cyan-500/30 transition-all duration-300">
+                    {/* Card - Wider */}
+                    <div className="w-[380px] sm:w-[420px] h-full p-7 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 hover:border-cyan-500/30 transition-all duration-300 shadow-xl shadow-black/20">
 
                       {/* Header */}
                       <div className="flex items-start justify-between mb-5">
