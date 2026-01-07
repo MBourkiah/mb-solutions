@@ -129,12 +129,12 @@ export function ProcessExecutionPipeline() {
 
             {/* Headline */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
-              Vom Briefing zum Launch –<br className="hidden sm:block" /> strukturiert & transparent
+              Vom Briefing zum Launch –<br className="hidden sm:block" /> in 3–6 Wochen
             </h2>
 
             {/* Subheadline */}
             <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto">
-              Kein Wasserfall. Kein Chaos. Nur ein klarer, agiler Prozess mit wöchentlichen Updates.
+              Strukturierter Prozess. Transparente Kommunikation. Messbare Ergebnisse.
             </p>
           </motion.div>
         </div>
@@ -145,7 +145,7 @@ export function ProcessExecutionPipeline() {
           {/* LEFT: Timeline Rail */}
           <div className="relative">
             {/* Vertical Line */}
-            <div className="absolute left-6 top-8 bottom-8 w-[2px] bg-gradient-to-b from-cyan-500/30 via-cyan-500/50 to-cyan-500/30" />
+            <div className="absolute left-5 top-8 bottom-8 w-[2px] bg-gradient-to-b from-cyan-500/30 via-cyan-500/50 to-cyan-500/30" />
 
             {/* Steps */}
             <div className="space-y-6">
@@ -163,14 +163,14 @@ export function ProcessExecutionPipeline() {
                     transition={{ duration: 0.2 }}
                   >
                     <div className="flex items-center gap-4">
-                      {/* Checkpoint Node */}
+                      {/* Checkpoint Node - Smaller */}
                       <div className="relative z-10 flex-shrink-0">
-                        <div className={`w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
+                        <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
                           isActive
                             ? "border-cyan-400 bg-cyan-400 shadow-lg shadow-cyan-500/50"
                             : "border-gray-700 bg-[#0A0E27] group-hover:border-cyan-500/50"
                         }`}>
-                          <span className={`text-sm font-bold font-mono transition-colors ${
+                          <span className={`text-xs font-bold font-mono transition-colors ${
                             isActive ? "text-[#0A0E27]" : "text-gray-500 group-hover:text-cyan-400"
                           }`}>
                             {step.number}
@@ -217,41 +217,49 @@ export function ProcessExecutionPipeline() {
               transition={{ duration: 0.3 }}
               className="relative p-8 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10"
             >
-              {/* Header */}
-              <div className="flex items-start gap-6 mb-6">
-                {/* Icon */}
-                <div className="w-16 h-16 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                  <StepIcon className="w-8 h-8 text-cyan-400" />
-                </div>
+              {/* Header - Compact */}
+              <div className="flex items-center justify-between mb-6 pb-5 border-b border-white/10">
+                <div className="flex items-center gap-4">
+                  {/* Icon - Smaller */}
+                  <div className="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                    <StepIcon className="w-7 h-7 text-cyan-400" />
+                  </div>
 
-                {/* Title + Duration */}
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
+                  {/* Title + Step Number */}
+                  <div>
+                    <div className="text-xs font-mono text-gray-500 mb-1">STEP {currentStep.number}</div>
                     <h3 className="text-2xl font-bold text-white">
                       {currentStep.title}
                     </h3>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-mono text-cyan-400">
-                      <Clock className="w-3 h-3" />
-                      {currentStep.duration}
-                    </span>
                   </div>
-                  <p className="text-lg text-gray-300 leading-relaxed">
-                    {currentStep.benefit}
-                  </p>
                 </div>
+
+                {/* Duration Badge - Right Side */}
+                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-mono text-cyan-400 whitespace-nowrap">
+                  <Clock className="w-3.5 h-3.5" />
+                  {currentStep.duration}
+                </span>
               </div>
 
-              {/* Outcomes */}
+              {/* Benefit Statement */}
+              <p className="text-base text-gray-300 leading-relaxed mb-6">
+                {currentStep.benefit}
+              </p>
+
+              {/* Outcomes - More Compact */}
               <div className="space-y-3">
+                <div className="text-xs font-mono text-cyan-400 uppercase tracking-wider mb-3">
+                  Deliverables
+                </div>
                 {currentStep.outcomes.map((outcome, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.1 }}
-                    className="flex items-start gap-3 p-3 rounded-lg bg-white/5"
+                    className="flex items-start gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
                   >
-                    <CheckCircle2 className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
                     <span className="text-sm text-gray-400 leading-relaxed">
                       {outcome}
                     </span>
@@ -328,24 +336,24 @@ export function ProcessExecutionPipeline() {
           })}
         </div>
 
-        {/* "What You Get" Strip */}
+        {/* "What You Get" Strip - Compact */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-16 lg:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-4 p-6 rounded-xl bg-gradient-to-r from-cyan-500/5 via-blue-500/5 to-cyan-500/5 border border-cyan-500/20"
+          className="mt-16 lg:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-3 p-5 rounded-xl bg-gradient-to-r from-cyan-500/5 via-blue-500/5 to-cyan-500/5 border border-cyan-500/20"
         >
           {[
             { icon: BarChart, title: "Wöchentliche Updates", desc: "Live-Status" },
             { icon: CheckCircle2, title: "Geteiltes Projekt-Board", desc: "Voller Zugriff" },
             { icon: Clock, title: "Messbare Ziele ab Tag 1", desc: "KPIs tracken" }
           ].map((item, i) => (
-            <div key={i} className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                <item.icon className="w-5 h-5 text-cyan-400" />
+            <div key={i} className="flex items-center gap-2.5">
+              <div className="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                <item.icon className="w-4 h-4 text-cyan-400" />
               </div>
               <div>
-                <div className="text-sm font-semibold text-white">{item.title}</div>
+                <div className="text-xs font-semibold text-white">{item.title}</div>
                 <div className="text-xs text-gray-500">{item.desc}</div>
               </div>
             </div>
