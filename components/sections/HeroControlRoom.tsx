@@ -29,6 +29,8 @@ export function HeroControlRoom() {
   const [perfScore, setPerfScore] = useState(98.4);
   const [loadTime, setLoadTime] = useState(1.8);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   // Simulate live metrics
   useEffect(() => {
@@ -39,7 +41,32 @@ export function HeroControlRoom() {
     return () => clearInterval(interval);
   }, []);
 
-  // Close mobile menu on body click
+  // Scroll-sensitive header: Hide on down-scroll, show on up-scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Always show header at top of page
+      if (currentScrollY < 10) {
+        setHeaderVisible(true);
+      }
+      // Show header when scrolling up
+      else if (currentScrollY < lastScrollY) {
+        setHeaderVisible(true);
+      }
+      // Hide header when scrolling down (but only after 100px)
+      else if (currentScrollY > 100 && currentScrollY > lastScrollY) {
+        setHeaderVisible(false);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [lastScrollY]);
+
+  // Body scroll lock for mobile menu
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -94,13 +121,16 @@ export function HeroControlRoom() {
       </div>
 
       {/* ============================================ */}
-      {/* LAYER 5: FLOATING HEADER (Control Bar) */}
+      {/* LAYER 5: SCROLL-SENSITIVE HEADER (Hide on down-scroll, show on up-scroll) */}
       {/* ============================================ */}
       <motion.header
         initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute top-0 left-0 right-0 z-50"
+        animate={{
+          y: headerVisible ? 0 : -100,
+          opacity: headerVisible ? 1 : 0
+        }}
+        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed top-0 left-0 right-0 z-50"
       >
         <nav className="relative">
           {/* Top Status Bar - Only on Desktop */}
