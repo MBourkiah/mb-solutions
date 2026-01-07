@@ -22,9 +22,10 @@ import { HeroControlRoom } from "@/components/sections/HeroControlRoom";
 // import { HeroBold } from "@/components/sections/HeroBold";
 // import { HeroConversion } from "@/components/sections/HeroConversion";
 // import { HeroFullWidth } from "@/components/sections/HeroFullWidth";
-// SERVICES CONTROL ROOM (Active)
-import { ServicesControlRoom } from "@/components/sections/ServicesControlRoom";
-// Alternative:
+// SERVICES CAPABILITY MATRIX (Active - Product-Style Design)
+import { ServicesCapabilityMatrix } from "@/components/sections/ServicesCapabilityMatrix";
+// Alternatives:
+// import { ServicesControlRoom } from "@/components/sections/ServicesControlRoom";
 // import { ServicesInteractive } from "@/components/sections/ServicesInteractive";
 import { ProcessJourney } from "@/components/sections/ProcessJourney";
 import { CaseStudies } from "@/components/sections/CaseStudies";
@@ -57,8 +58,8 @@ export default function HomePage() {
         {/* 1. HERO + HEADER - Control Room System */}
         <HeroControlRoom />
 
-        {/* 2. SERVICES CONTROL ROOM - Mission Control Dashboard */}
-        <ServicesControlRoom />
+        {/* 2. SERVICES CAPABILITY MATRIX - Product-Style Performance Layer */}
+        <ServicesCapabilityMatrix />
 
         {/* 3. PROCESS JOURNEY - Horizontal Timeline */}
         <ProcessJourney />
