@@ -5,6 +5,7 @@ import { ArrowRight, TrendingUp, Zap, Timer } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { ProductHeader } from "@/components/layout/ProductHeader";
 
 /**
  * CONTROL ROOM HERO + HEADER SYSTEM
@@ -28,9 +29,6 @@ import { useEffect, useState } from "react";
 export function HeroControlRoom() {
   const [perfScore, setPerfScore] = useState(98.4);
   const [loadTime, setLoadTime] = useState(1.8);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [headerVisible, setHeaderVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
 
   // Simulate live metrics
   useEffect(() => {
@@ -40,40 +38,6 @@ export function HeroControlRoom() {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
-
-  // Scroll-sensitive header: Hide on down-scroll, show on up-scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      // Always show header at top of page
-      if (currentScrollY < 10) {
-        setHeaderVisible(true);
-      }
-      // Show header when scrolling up
-      else if (currentScrollY < lastScrollY) {
-        setHeaderVisible(true);
-      }
-      // Hide header when scrolling down (but only after 100px)
-      else if (currentScrollY > 100 && currentScrollY > lastScrollY) {
-        setHeaderVisible(false);
-      }
-
-      setLastScrollY(currentScrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
-
-  // Body scroll lock for mobile menu
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-  }, [mobileMenuOpen]);
 
   return (
     <section className="relative w-screen min-h-screen flex items-center overflow-hidden">
@@ -121,165 +85,9 @@ export function HeroControlRoom() {
       </div>
 
       {/* ============================================ */}
-      {/* LAYER 5: SCROLL-SENSITIVE HEADER (Hide on down-scroll, show on up-scroll) */}
+      {/* LAYER 5: PRODUCT HEADER - Terminal/Command Center Style */}
       {/* ============================================ */}
-      <motion.header
-        initial={{ y: -20, opacity: 0 }}
-        animate={{
-          y: headerVisible ? 0 : -100,
-          opacity: headerVisible ? 1 : 0
-        }}
-        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-        className="fixed top-0 left-0 right-0 z-50"
-      >
-        <nav className="relative">
-          {/* Top Status Bar - Only on Desktop */}
-          <div className="hidden lg:block bg-black/40 backdrop-blur-xl border-b border-cyan-500/20">
-            <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
-              <div className="flex items-center justify-between h-8 text-xs">
-                {/* Left: System Status */}
-                <div className="flex items-center gap-4 font-mono text-gray-500">
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-                    <span>ONLINE</span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-cyan-400">⚡</span>
-                    <span>127 DEPLOYMENTS</span>
-                  </div>
-                </div>
-                {/* Right: Location */}
-                <div className="font-mono text-gray-500">
-                  <span className="text-cyan-400">📍</span> KÖLN, DE
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Main Nav Bar */}
-          <div className="bg-gradient-to-b from-black/50 to-black/30 backdrop-blur-2xl border-b border-white/10">
-            <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
-              <div className="flex items-center justify-between h-16">
-
-                {/* Logo - Original zurück */}
-                <Link href="/" className="flex items-center group">
-                  <Image
-                    src="/logo.svg"
-                    alt="MB-Solutions"
-                    width={140}
-                    height={35}
-                    priority
-                    className="h-7 w-auto opacity-90 group-hover:opacity-100 transition-opacity"
-                  />
-                </Link>
-
-                {/* Desktop Navigation */}
-                <div className="hidden lg:flex items-center gap-6">
-                  <Link
-                    href="/projects"
-                    className="group flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-cyan-400 transition-colors"
-                  >
-                    <div className="w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <span>Projekte</span>
-                  </Link>
-                  <Link
-                    href="#methode"
-                    className="group flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-cyan-400 transition-colors"
-                  >
-                    <div className="w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <span>Methode</span>
-                  </Link>
-
-                  {/* Live Metrics Display */}
-                  <div className="flex items-center gap-3 pl-4 border-l border-white/10">
-                    <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-md">
-                      <TrendingUp className="w-3 h-3 text-green-400" />
-                      <span className="text-xs font-mono text-white">98.4</span>
-                    </div>
-                    <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-md">
-                      <Timer className="w-3 h-3 text-cyan-400" />
-                      <span className="text-xs font-mono text-white">1.7s</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CTA Button */}
-                <Link
-                  href="/contact"
-                  className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-bold text-sm hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40"
-                >
-                  <Zap className="w-4 h-4" />
-                  <span>Projekt starten</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-
-                {/* Mobile: CTA + Menu */}
-                <div className="flex lg:hidden items-center gap-3">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-bold text-sm"
-                  >
-                    <span>Start</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                  <button
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className="p-2 rounded-lg hover:bg-white/10 transition-colors"
-                    aria-label="Menu"
-                  >
-                    {mobileMenuOpen ? (
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                      </svg>
-                    ) : (
-                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                      </svg>
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile Menu Overlay */}
-          {mobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="lg:hidden fixed inset-0 bg-black/95 backdrop-blur-xl z-40"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <div className="flex flex-col items-center justify-center h-full gap-8 px-8">
-                <Link
-                  href="/projects"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-3xl font-black text-white hover:text-cyan-400 transition-colors"
-                >
-                  Projekte
-                </Link>
-                <Link
-                  href="#methode"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-3xl font-black text-white hover:text-cyan-400 transition-colors"
-                >
-                  Methode
-                </Link>
-                <Link
-                  href="/contact"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-xl font-bold text-xl shadow-xl shadow-cyan-500/30"
-                >
-                  <Zap className="w-5 h-5" />
-                  <span>Projekt starten</span>
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              </div>
-            </motion.div>
-          )}
-        </nav>
-      </motion.header>
+      <ProductHeader />
 
       {/* ============================================ */}
       {/* LAYER 3: MAIN CONTENT (Text + Dashboard) */}
