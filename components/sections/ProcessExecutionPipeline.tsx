@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, Palette, Code, Rocket, BarChart, ArrowRight, CheckCircle2, Clock } from "lucide-react";
+import { useState, useRef } from "react";
+import { motion } from "framer-motion";
+import { MessageSquare, Palette, Code, Rocket, BarChart, ArrowRight, CheckCircle2, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 interface ProcessStep {
@@ -79,9 +79,31 @@ const steps: ProcessStep[] = [
 ];
 
 export function ProcessExecutionPipeline() {
-  const [activeStep, setActiveStep] = useState(0);
-  const currentStep = steps[activeStep];
-  const StepIcon = currentStep.icon;
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const handleScroll = () => {
+    if (!scrollContainerRef.current) return;
+
+    const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
+    setCanScrollLeft(scrollLeft > 0);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
+  };
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (!scrollContainerRef.current) return;
+
+    const scrollAmount = 400;
+    const newScrollLeft = direction === 'left'
+      ? scrollContainerRef.current.scrollLeft - scrollAmount
+      : scrollContainerRef.current.scrollLeft + scrollAmount;
+
+    scrollContainerRef.current.scrollTo({
+      left: newScrollLeft,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <section className="relative py-16 lg:py-20 overflow-hidden">
@@ -103,16 +125,11 @@ export function ProcessExecutionPipeline() {
         }}
       />
 
-      {/* Vertical Gradient Glow (Behind Timeline Rail - Desktop Only) */}
-      <div className="hidden lg:block absolute left-0 top-1/4 bottom-1/4 w-[400px] opacity-20 pointer-events-none">
-        <div className="w-full h-full bg-gradient-to-r from-cyan-500/20 via-cyan-500/5 to-transparent blur-3xl" />
-      </div>
-
       {/* Container */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-20 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center mb-12 lg:mb-16">
+        <div className="text-center mb-12 lg:mb-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -139,201 +156,132 @@ export function ProcessExecutionPipeline() {
           </motion.div>
         </div>
 
-        {/* DESKTOP: Split Layout (Timeline + Detail Panel) */}
-        <div className="hidden lg:grid lg:grid-cols-[320px_1fr] lg:gap-12 lg:items-start">
+        {/* Horizontal Scrolling Timeline Container */}
+        <div className="relative">
 
-          {/* LEFT: Timeline Rail */}
-          <div className="relative">
-            {/* Vertical Line */}
-            <div className="absolute left-5 top-8 bottom-8 w-[2px] bg-gradient-to-b from-cyan-500/30 via-cyan-500/50 to-cyan-500/30" />
+          {/* Scroll Buttons (Desktop only) */}
+          {canScrollLeft && (
+            <button
+              onClick={() => scroll('left')}
+              className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 z-30 w-12 h-12 items-center justify-center rounded-full bg-black/60 backdrop-blur-xl border border-white/10 text-white hover:bg-black/80 transition-all shadow-xl"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+          )}
 
-            {/* Steps */}
-            <div className="space-y-6">
+          {canScrollRight && (
+            <button
+              onClick={() => scroll('right')}
+              className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 z-30 w-12 h-12 items-center justify-center rounded-full bg-black/60 backdrop-blur-xl border border-white/10 text-white hover:bg-black/80 transition-all shadow-xl"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          )}
+
+          {/* Fade Gradients on sides */}
+          <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#0A0E27] to-transparent pointer-events-none z-20" />
+          <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#0A0E27] to-transparent pointer-events-none z-20" />
+
+          {/* Scrollable Container */}
+          <div
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="overflow-x-auto overflow-y-visible scrollbar-hide pb-4 -mb-4"
+            style={{
+              scrollSnapType: 'x mandatory',
+              WebkitOverflowScrolling: 'touch'
+            }}
+          >
+            <div className="flex gap-6 lg:gap-8 px-2 min-w-max">
               {steps.map((step, index) => {
-                const isActive = activeStep === index;
-                const Icon = step.icon;
+                const StepIcon = step.icon;
 
                 return (
-                  <motion.button
+                  <motion.div
                     key={step.id}
-                    onClick={() => setActiveStep(index)}
-                    onMouseEnter={() => setActiveStep(index)}
-                    className="relative w-full text-left group"
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="relative group"
+                    style={{ scrollSnapAlign: 'start' }}
                   >
-                    <div className="flex items-center gap-4">
-                      {/* Checkpoint Node - Smaller */}
-                      <div className="relative z-10 flex-shrink-0">
-                        <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center transition-all duration-300 ${
-                          isActive
-                            ? "border-cyan-400 bg-cyan-400 shadow-lg shadow-cyan-500/50"
-                            : "border-gray-700 bg-[#0A0E27] group-hover:border-cyan-500/50"
-                        }`}>
-                          <span className={`text-xs font-bold font-mono transition-colors ${
-                            isActive ? "text-[#0A0E27]" : "text-gray-500 group-hover:text-cyan-400"
-                          }`}>
-                            {step.number}
-                          </span>
+                    {/* Card */}
+                    <div className="w-[340px] sm:w-[380px] h-full p-6 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 hover:border-cyan-500/30 transition-all duration-300">
+
+                      {/* Header */}
+                      <div className="flex items-start justify-between mb-5">
+                        <div className="flex items-center gap-3">
+                          {/* Icon */}
+                          <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
+                            <StepIcon className="w-6 h-6 text-cyan-400" />
+                          </div>
+
+                          {/* Step Number */}
+                          <div>
+                            <div className="text-xs font-mono text-gray-500 mb-1">STEP {step.number}</div>
+                            <h3 className="text-xl font-bold text-white">{step.title}</h3>
+                          </div>
                         </div>
                       </div>
 
-                      {/* Step Info */}
-                      <div className="flex-1 min-w-0">
-                        <div className={`font-bold text-sm mb-0.5 transition-colors ${
-                          isActive ? "text-white" : "text-gray-500 group-hover:text-gray-300"
-                        }`}>
-                          {step.title}
-                        </div>
-                        <div className={`text-xs font-mono transition-colors ${
-                          isActive ? "text-cyan-400" : "text-gray-600"
-                        }`}>
+                      {/* Duration Badge */}
+                      <div className="mb-4">
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-mono text-cyan-400">
+                          <Clock className="w-3 h-3" />
                           {step.duration}
-                        </div>
+                        </span>
                       </div>
 
-                      {/* Active Indicator */}
-                      {isActive && (
-                        <motion.div
-                          layoutId="activeIndicator"
-                          className="w-1 h-8 bg-cyan-400 rounded-full"
-                          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                        />
-                      )}
+                      {/* Benefit */}
+                      <p className="text-sm text-gray-300 leading-relaxed mb-5">
+                        {step.benefit}
+                      </p>
+
+                      {/* Deliverables */}
+                      <div className="space-y-2.5">
+                        <div className="text-xs font-mono text-cyan-400 uppercase tracking-wider mb-3">
+                          Deliverables
+                        </div>
+                        {step.outcomes.map((outcome, i) => (
+                          <div key={i} className="flex items-start gap-2">
+                            <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                            <span className="text-xs text-gray-400 leading-relaxed">
+                              {outcome}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Background Step Number */}
+                      <div className="absolute top-4 right-4 text-8xl font-black text-white/[0.02] pointer-events-none select-none">
+                        {step.number}
+                      </div>
                     </div>
-                  </motion.button>
+
+                    {/* Arrow Connector (Not on last item) */}
+                    {index < steps.length - 1 && (
+                      <div className="hidden lg:block absolute top-1/2 -right-7 -translate-y-1/2 z-10">
+                        <ArrowRight className="w-6 h-6 text-cyan-500/40" />
+                      </div>
+                    )}
+                  </motion.div>
                 );
               })}
             </div>
           </div>
 
-          {/* RIGHT: Detail Panel */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeStep}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.3 }}
-              className="relative p-8 rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10"
-            >
-              {/* Header - Compact */}
-              <div className="flex items-center justify-between mb-6 pb-5 border-b border-white/10">
-                <div className="flex items-center gap-4">
-                  {/* Icon - Smaller */}
-                  <div className="w-14 h-14 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                    <StepIcon className="w-7 h-7 text-cyan-400" />
-                  </div>
-
-                  {/* Title + Step Number */}
-                  <div>
-                    <div className="text-xs font-mono text-gray-500 mb-1">STEP {currentStep.number}</div>
-                    <h3 className="text-2xl font-bold text-white">
-                      {currentStep.title}
-                    </h3>
-                  </div>
-                </div>
-
-                {/* Duration Badge - Right Side */}
-                <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-mono text-cyan-400 whitespace-nowrap">
-                  <Clock className="w-3.5 h-3.5" />
-                  {currentStep.duration}
-                </span>
-              </div>
-
-              {/* Benefit Statement */}
-              <p className="text-base text-gray-300 leading-relaxed mb-6">
-                {currentStep.benefit}
-              </p>
-
-              {/* Outcomes - More Compact */}
-              <div className="space-y-3">
-                <div className="text-xs font-mono text-cyan-400 uppercase tracking-wider mb-3">
-                  Deliverables
-                </div>
-                {currentStep.outcomes.map((outcome, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex items-start gap-3 p-3 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
-                  >
-                    <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-gray-400 leading-relaxed">
-                      {outcome}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Background Number */}
-              <div className="absolute top-6 right-6 text-9xl font-black text-white/[0.02] pointer-events-none select-none">
-                {currentStep.number}
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* MOBILE: Vertical Accordion List */}
-        <div className="lg:hidden space-y-4">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
-            const isActive = activeStep === index;
-
-            return (
-              <motion.div
-                key={step.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="relative"
-              >
-                <button
-                  onClick={() => setActiveStep(isActive ? -1 : index)}
-                  className="w-full text-left p-5 rounded-xl bg-black/40 backdrop-blur-xl border border-white/10 hover:border-cyan-500/30 transition-all"
-                >
-                  <div className="flex items-center gap-4 mb-3">
-                    <div className="w-10 h-10 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-5 h-5 text-cyan-400" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs font-mono text-gray-500">STEP {step.number}</span>
-                      </div>
-                      <h3 className="text-lg font-bold text-white">{step.title}</h3>
-                    </div>
-                    <span className="text-xs font-mono text-cyan-400 whitespace-nowrap">
-                      {step.duration}
-                    </span>
-                  </div>
-
-                  <AnimatePresence>
-                    {isActive && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <p className="text-sm text-gray-300 mb-3">{step.benefit}</p>
-                        <div className="space-y-2">
-                          {step.outcomes.map((outcome, i) => (
-                            <div key={i} className="flex items-start gap-2">
-                              <CheckCircle2 className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
-                              <span className="text-xs text-gray-400">{outcome}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </button>
-              </motion.div>
-            );
-          })}
+          {/* Scroll Indicator (Mobile) */}
+          <div className="lg:hidden flex justify-center gap-2 mt-6">
+            {steps.map((_, index) => (
+              <div
+                key={index}
+                className="w-2 h-2 rounded-full bg-cyan-500/30"
+              />
+            ))}
+          </div>
         </div>
 
         {/* "What You Get" Strip - Compact */}
@@ -391,6 +339,16 @@ export function ProcessExecutionPipeline() {
 
       {/* Bottom Fade */}
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0A0E27] to-transparent pointer-events-none z-10" />
+
+      <style jsx>{`
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </section>
   );
 }
