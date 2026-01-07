@@ -22,20 +22,20 @@ export function StatementHeader() {
       {/* DESKTOP & MOBILE HEADER */}
       <header className="fixed top-0 left-0 right-0 z-50">
         {/* Slim Status Bar */}
-        <div className="bg-black/40 backdrop-blur-xl border-b border-cyan-500/20">
+        <div className="bg-black/30 backdrop-blur-xl border-b border-white/5">
           <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
-            <div className="flex items-center justify-between h-7 text-[10px] font-mono uppercase tracking-widest">
-              <div className="flex items-center gap-4 text-gray-500">
+            <div className="flex items-center justify-between h-6 text-[11px]">
+              <div className="flex items-center gap-3 text-gray-500">
                 <div className="flex items-center gap-1.5">
                   <div className="w-1 h-1 bg-green-400 rounded-full animate-pulse" />
-                  <span>System Online</span>
+                  <span className="font-medium">Online</span>
                 </div>
-                <div className="hidden sm:flex items-center gap-1.5 text-cyan-400">
-                  <Zap className="w-2.5 h-2.5" />
-                  <span>127 Active Projects</span>
+                <div className="hidden sm:flex items-center gap-1.5">
+                  <Zap className="w-3 h-3 text-cyan-400" />
+                  <span className="font-medium">127 Projekte</span>
                 </div>
               </div>
-              <div className="text-gray-500">Köln, DE</div>
+              <div className="text-gray-500 font-medium">Köln</div>
             </div>
           </div>
         </div>
@@ -87,23 +87,13 @@ export function StatementHeader() {
                 </Link>
               </nav>
 
-              {/* RIGHT: CTA with Energy */}
+              {/* RIGHT: CTA */}
               <Link
                 href="/contact"
-                className="group relative hidden lg:flex items-center gap-2 px-5 py-2.5 overflow-hidden"
+                className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-semibold text-sm hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
               >
-                {/* Animated border */}
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 rounded-lg opacity-100" />
-                <div className="absolute inset-[2px] bg-[#0A0E27] rounded-[6px]" />
-
-                {/* Content */}
-                <span className="relative z-10 text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 group-hover:from-white group-hover:to-white transition-all">
-                  Projekt starten
-                </span>
-                <Zap className="relative z-10 w-4 h-4 text-cyan-400 group-hover:text-white transition-colors group-hover:drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
-
-                {/* Shimmer effect */}
-                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                Projekt starten
+                <Zap className="w-4 h-4" />
               </Link>
 
               {/* Mobile Menu Toggle */}
