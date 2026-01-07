@@ -22,7 +22,6 @@ import { HeroControlRoom } from "@/components/sections/HeroControlRoom";
 // import { HeroBold } from "@/components/sections/HeroBold";
 // import { HeroConversion } from "@/components/sections/HeroConversion";
 // import { HeroFullWidth } from "@/components/sections/HeroFullWidth";
-import { TechStack } from "@/components/sections/TechStack";
 // SERVICES CONTROL ROOM (Active)
 import { ServicesControlRoom } from "@/components/sections/ServicesControlRoom";
 // Alternative:
@@ -58,28 +57,25 @@ export default function HomePage() {
         {/* 1. HERO + HEADER - Control Room System */}
         <HeroControlRoom />
 
-        {/* 2. TECH STACK - Animated Logo Marquee */}
-        <TechStack />
-
-        {/* 3. SERVICES CONTROL ROOM - Mission Control Dashboard */}
+        {/* 2. SERVICES CONTROL ROOM - Mission Control Dashboard */}
         <ServicesControlRoom />
 
-        {/* 4. PROCESS JOURNEY - Horizontal Timeline */}
+        {/* 3. PROCESS JOURNEY - Horizontal Timeline */}
         <ProcessJourney />
 
-        {/* 5. CASE STUDIES - Asymmetrisches Bento-Grid */}
+        {/* 4. CASE STUDIES - Asymmetrisches Bento-Grid */}
         <CaseStudies />
 
-        {/* 6. TRUST & EXPERTISE - Metrics + Tech Badges */}
+        {/* 5. TRUST & EXPERTISE - Metrics + Tech Badges */}
         <TrustExpertise />
 
-        {/* 7. TESTIMONIALS - Social Proof */}
+        {/* 6. TESTIMONIALS - Social Proof */}
         <Testimonials />
 
-        {/* 8. FAQ - Häufig gestellte Fragen (SEO Featured Snippets) */}
+        {/* 7. FAQ - Häufig gestellte Fragen (SEO Featured Snippets) */}
         <FAQ />
 
-        {/* 9. CTA IMMERSIVE - Full-Screen Final Push */}
+        {/* 8. CTA IMMERSIVE - Full-Screen Final Push */}
         <CTAImmersive />
       </div>
     </main>
