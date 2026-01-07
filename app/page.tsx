@@ -63,10 +63,14 @@ export default function HomePage() {
         <HeroControlRoom />
 
         {/* 2. SERVICES CAPABILITY MATRIX - Product-Style Performance Layer */}
-        <ServicesCapabilityMatrix />
+        <section id="systeme">
+          <ServicesCapabilityMatrix />
+        </section>
 
         {/* 3. PROCESS EXECUTION PIPELINE - Vertical Timeline */}
-        <ProcessExecutionPipeline />
+        <section id="ablauf">
+          <ProcessExecutionPipeline />
+        </section>
 
         {/* 4. CASE STUDIES - Asymmetrisches Bento-Grid */}
         <CaseStudies />

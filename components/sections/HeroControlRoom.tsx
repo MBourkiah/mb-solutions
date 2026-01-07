@@ -5,7 +5,7 @@ import { ArrowRight, TrendingUp, Zap, Timer } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { ProductHeader } from "@/components/layout/ProductHeader";
+import { CommandHeader } from "@/components/layout/CommandHeader";
 
 /**
  * CONTROL ROOM HERO + HEADER SYSTEM
@@ -85,9 +85,9 @@ export function HeroControlRoom() {
       </div>
 
       {/* ============================================ */}
-      {/* LAYER 5: PRODUCT HEADER - Terminal/Command Center Style */}
+      {/* LAYER 5: COMMAND HEADER - Floating Pill Interface */}
       {/* ============================================ */}
-      <ProductHeader />
+      <CommandHeader />
 
       {/* ============================================ */}
       {/* LAYER 3: MAIN CONTENT (Text + Dashboard) */}
