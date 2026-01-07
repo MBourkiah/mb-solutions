@@ -92,55 +92,105 @@ export function HeroControlRoom() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="absolute top-0 left-0 right-0 z-50"
       >
-        <nav className="relative bg-black/30 backdrop-blur-2xl border-b border-white/10">
-          <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
-            <div className="flex items-center justify-between h-16">
-
-              {/* Logo - Smaller, more refined */}
-              <Link href="/" className="flex items-center group">
-                <Image
-                  src="/logo.svg"
-                  alt="MB-Solutions"
-                  width={140}
-                  height={35}
-                  priority
-                  className="h-7 w-auto opacity-90 group-hover:opacity-100 transition-opacity"
-                />
-              </Link>
-
-              {/* Desktop Navigation - Control Panel Style */}
-              <div className="hidden md:flex items-center gap-1">
-                <Link
-                  href="/projects"
-                  className="px-4 py-2 text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200"
-                >
-                  Projekte
-                </Link>
-                <Link
-                  href="#methode"
-                  className="px-4 py-2 text-sm font-semibold text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200"
-                >
-                  Methode
-                </Link>
+        <nav className="relative">
+          {/* Top Status Bar - Terminal Style */}
+          <div className="bg-black/40 backdrop-blur-xl border-b border-cyan-500/20">
+            <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+              <div className="flex items-center justify-between h-8 text-xs">
+                {/* Left: System Status */}
+                <div className="flex items-center gap-4 font-mono text-gray-500">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
+                    <span>ONLINE</span>
+                  </div>
+                  <div className="hidden sm:flex items-center gap-1.5">
+                    <span className="text-cyan-400">⚡</span>
+                    <span>127 DEPLOYMENTS</span>
+                  </div>
+                </div>
+                {/* Right: Location */}
+                <div className="font-mono text-gray-500">
+                  <span className="text-cyan-400">📍</span> KÖLN, DE
+                </div>
               </div>
+            </div>
+          </div>
 
-              {/* Primary CTA - Bold & Direct */}
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-bold text-sm hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40"
-              >
-                <Zap className="w-4 h-4" />
-                <span className="hidden sm:inline">Projekt starten</span>
-                <span className="sm:hidden">Start</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+          {/* Main Nav Bar */}
+          <div className="bg-gradient-to-b from-black/50 to-black/30 backdrop-blur-2xl border-b border-white/10">
+            <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+              <div className="flex items-center justify-between h-16">
 
-              {/* Mobile Menu Button */}
-              <button className="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
+                {/* Logo */}
+                <Link href="/" className="flex items-center group">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center font-black text-white text-sm group-hover:scale-110 transition-transform">
+                      MB
+                    </div>
+                    <span className="text-sm font-bold text-white hidden sm:inline">Solutions</span>
+                  </div>
+                </Link>
+
+                {/* Desktop Navigation - Tech UI Style */}
+                <div className="hidden lg:flex items-center gap-6">
+                  <Link
+                    href="/projects"
+                    className="group flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-cyan-400 transition-colors"
+                  >
+                    <div className="w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span>PROJEKTE</span>
+                  </Link>
+                  <Link
+                    href="#methode"
+                    className="group flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-cyan-400 transition-colors"
+                  >
+                    <div className="w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span>METHODE</span>
+                  </Link>
+
+                  {/* Live Metrics Display */}
+                  <div className="flex items-center gap-3 pl-4 border-l border-white/10">
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-md">
+                      <TrendingUp className="w-3 h-3 text-green-400" />
+                      <span className="text-xs font-mono text-white">98.4</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-md">
+                      <Timer className="w-3 h-3 text-cyan-400" />
+                      <span className="text-xs font-mono text-white">1.7s</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA Button - Glowing Terminal Style */}
+                <Link
+                  href="/contact"
+                  className="group relative inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-bold text-sm overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50"
+                >
+                  {/* Animated glow effect */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity"
+                    animate={{
+                      x: ['-100%', '100%'],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: 'linear',
+                    }}
+                  />
+                  <Zap className="w-4 h-4 relative z-10" />
+                  <span className="hidden sm:inline relative z-10">PROJEKT STARTEN</span>
+                  <span className="sm:hidden relative z-10">START</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform relative z-10" />
+                </Link>
+
+                {/* Mobile Menu */}
+                <button className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </nav>
