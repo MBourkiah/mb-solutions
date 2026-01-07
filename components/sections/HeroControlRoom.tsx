@@ -5,13 +5,11 @@ import { ArrowRight, TrendingUp, Zap, Timer } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { CommandHeader } from "@/components/layout/CommandHeader";
 
 /**
- * CONTROL ROOM HERO + HEADER SYSTEM
+ * CONTROL ROOM HERO SECTION
  *
  * Design Philosophy: "The Control Room"
- * - Header floats INSIDE hero (not above)
  * - Full-width, edge-to-edge system
  * - Asymmetric layout: 55% text, 45% visual
  * - Deep atmospheric background
@@ -23,7 +21,6 @@ import { CommandHeader } from "@/components/layout/CommandHeader";
  * 2. Gradient vignette (text contrast)
  * 3. Content (text + dashboard panel)
  * 4. Grain texture (premium feel)
- * 5. Floating header (control bar)
  */
 
 export function HeroControlRoom() {
@@ -83,11 +80,6 @@ export function HeroControlRoom() {
           quality={100}
         />
       </div>
-
-      {/* ============================================ */}
-      {/* LAYER 5: COMMAND HEADER - Floating Pill Interface */}
-      {/* ============================================ */}
-      <CommandHeader />
 
       {/* ============================================ */}
       {/* LAYER 3: MAIN CONTENT (Text + Dashboard) */}

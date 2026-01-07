@@ -16,6 +16,8 @@
  * Target: B2B mittelständische Unternehmen
  */
 
+// STATEMENT HEADER (Top-level, independent)
+import { StatementHeader } from "@/components/layout/StatementHeader";
 // CONTROL ROOM HERO + HEADER SYSTEM (Active)
 import { HeroControlRoom } from "@/components/sections/HeroControlRoom";
 // Alternative Heroes:
@@ -41,6 +43,9 @@ import { CTAImmersive } from "@/components/sections/CTAImmersive";
 export default function HomePage() {
   return (
     <main className="relative bg-[#0A0E27] text-white overflow-hidden">
+      {/* STATEMENT HEADER - Top Level, Independent */}
+      <StatementHeader />
+
       {/* Subtle Ambient Background Gradients */}
       <div className="fixed inset-0 pointer-events-none opacity-20">
         <div
@@ -59,7 +64,7 @@ export default function HomePage() {
 
       {/* Main Content */}
       <div className="relative z-10">
-        {/* 1. HERO + HEADER - Control Room System */}
+        {/* 1. HERO - Control Room System */}
         <HeroControlRoom />
 
         {/* 2. SERVICES CAPABILITY MATRIX - Product-Style Performance Layer */}
