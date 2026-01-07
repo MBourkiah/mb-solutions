@@ -4,7 +4,7 @@
  * NEUE STRUKTUR (8 Sections):
  * 1. 🔥 HeroControlRoom - Control Room Hero mit Terminal-Style Header
  * 2. ⚡ ServicesCapabilityMatrix - Product-Style Performance Layer
- * 3. 🎯 ProcessControlRoom - Terminal-Style Pipeline
+ * 3. 🎯 ProcessExecutionPipeline - Vertical Timeline
  * 4. 📊 CaseStudies - Asymmetrisches Bento-Grid
  * 5. 💎 TrustExpertise - Metrics + Tech Badge Wall
  * 6. ⭐ Testimonials - Social Proof
@@ -27,9 +27,10 @@ import { ServicesCapabilityMatrix } from "@/components/sections/ServicesCapabili
 // Alternatives:
 // import { ServicesControlRoom } from "@/components/sections/ServicesControlRoom";
 // import { ServicesInteractive } from "@/components/sections/ServicesInteractive";
-// PROCESS CONTROL ROOM (Active - Terminal-Style Pipeline)
-import { ProcessControlRoom } from "@/components/sections/ProcessControlRoom";
-// Alternative:
+// PROCESS EXECUTION PIPELINE (Active - Vertical Timeline)
+import { ProcessExecutionPipeline } from "@/components/sections/ProcessExecutionPipeline";
+// Alternatives:
+// import { ProcessControlRoom } from "@/components/sections/ProcessControlRoom";
 // import { ProcessJourney } from "@/components/sections/ProcessJourney";
 import { CaseStudies } from "@/components/sections/CaseStudies";
 import { TrustExpertise } from "@/components/sections/TrustExpertise";
@@ -64,8 +65,8 @@ export default function HomePage() {
         {/* 2. SERVICES CAPABILITY MATRIX - Product-Style Performance Layer */}
         <ServicesCapabilityMatrix />
 
-        {/* 3. PROCESS CONTROL ROOM - Terminal-Style Pipeline */}
-        <ProcessControlRoom />
+        {/* 3. PROCESS EXECUTION PIPELINE - Vertical Timeline */}
+        <ProcessExecutionPipeline />
 
         {/* 4. CASE STUDIES - Asymmetrisches Bento-Grid */}
         <CaseStudies />
