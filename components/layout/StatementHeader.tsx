@@ -26,16 +26,17 @@ export function StatementHeader() {
           <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
             <div className="flex items-center justify-between h-6 text-[11px]">
               <div className="flex items-center gap-3 text-gray-500">
-                <div className="flex items-center gap-1.5">
-                  <div className="w-1 h-1 bg-green-400 rounded-full animate-pulse" />
-                  <span className="font-medium">Online</span>
-                </div>
+                <a href="mailto:kontakt@mb-solutions.de" className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors">
+                  <span className="font-medium">kontakt@mb-solutions.de</span>
+                </a>
                 <div className="hidden sm:flex items-center gap-1.5">
                   <Zap className="w-3 h-3 text-cyan-400" />
                   <span className="font-medium">127 Projekte</span>
                 </div>
               </div>
-              <div className="text-gray-500 font-medium">Köln</div>
+              <a href="tel:+4922112345678" className="text-gray-500 hover:text-cyan-400 font-medium transition-colors">
+                +49 221 1234 5678
+              </a>
             </div>
           </div>
         </div>
