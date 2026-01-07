@@ -93,8 +93,8 @@ export function HeroControlRoom() {
         className="absolute top-0 left-0 right-0 z-50"
       >
         <nav className="relative">
-          {/* Top Status Bar - Terminal Style */}
-          <div className="bg-black/40 backdrop-blur-xl border-b border-cyan-500/20">
+          {/* Top Status Bar - Only on Desktop */}
+          <div className="hidden lg:block bg-black/40 backdrop-blur-xl border-b border-cyan-500/20">
             <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
               <div className="flex items-center justify-between h-8 text-xs">
                 {/* Left: System Status */}
@@ -103,7 +103,7 @@ export function HeroControlRoom() {
                     <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
                     <span>ONLINE</span>
                   </div>
-                  <div className="hidden sm:flex items-center gap-1.5">
+                  <div className="flex items-center gap-1.5">
                     <span className="text-cyan-400">⚡</span>
                     <span>127 DEPLOYMENTS</span>
                   </div>
@@ -121,31 +121,33 @@ export function HeroControlRoom() {
             <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
               <div className="flex items-center justify-between h-16">
 
-                {/* Logo */}
+                {/* Logo - Original zurück */}
                 <Link href="/" className="flex items-center group">
-                  <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-lg flex items-center justify-center font-black text-white text-sm group-hover:scale-110 transition-transform">
-                      MB
-                    </div>
-                    <span className="text-sm font-bold text-white hidden sm:inline">Solutions</span>
-                  </div>
+                  <Image
+                    src="/logo.svg"
+                    alt="MB-Solutions"
+                    width={140}
+                    height={35}
+                    priority
+                    className="h-7 w-auto opacity-90 group-hover:opacity-100 transition-opacity"
+                  />
                 </Link>
 
-                {/* Desktop Navigation - Tech UI Style */}
+                {/* Desktop Navigation */}
                 <div className="hidden lg:flex items-center gap-6">
                   <Link
                     href="/projects"
                     className="group flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-cyan-400 transition-colors"
                   >
                     <div className="w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <span>PROJEKTE</span>
+                    <span>Projekte</span>
                   </Link>
                   <Link
                     href="#methode"
                     className="group flex items-center gap-2 text-sm font-semibold text-gray-300 hover:text-cyan-400 transition-colors"
                   >
                     <div className="w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <span>METHODE</span>
+                    <span>Methode</span>
                   </Link>
 
                   {/* Live Metrics Display */}
@@ -161,35 +163,31 @@ export function HeroControlRoom() {
                   </div>
                 </div>
 
-                {/* CTA Button - Glowing Terminal Style */}
+                {/* CTA Button */}
                 <Link
                   href="/contact"
-                  className="group relative inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-bold text-sm overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/50"
+                  className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-bold text-sm hover:from-cyan-400 hover:to-blue-400 transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40"
                 >
-                  {/* Animated glow effect */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-400 opacity-0 group-hover:opacity-100 transition-opacity"
-                    animate={{
-                      x: ['-100%', '100%'],
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: 'linear',
-                    }}
-                  />
-                  <Zap className="w-4 h-4 relative z-10" />
-                  <span className="hidden sm:inline relative z-10">PROJEKT STARTEN</span>
-                  <span className="sm:hidden relative z-10">START</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform relative z-10" />
+                  <Zap className="w-4 h-4" />
+                  <span>Projekt starten</span>
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
 
-                {/* Mobile Menu */}
-                <button className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                </button>
+                {/* Mobile: CTA + Menu */}
+                <div className="flex lg:hidden items-center gap-3">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-bold text-sm"
+                  >
+                    <span>Start</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <button className="p-2 rounded-lg hover:bg-white/10 transition-colors">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
