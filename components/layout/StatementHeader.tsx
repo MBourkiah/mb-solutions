@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Zap } from "lucide-react";
 
 export function StatementHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -19,68 +20,109 @@ export function StatementHeader() {
   return (
     <>
       {/* DESKTOP & MOBILE HEADER */}
-      <header className="sticky top-0 z-50 bg-[#0A0E27]/95 backdrop-blur-xl border-b border-white/10">
-        <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+      <header className="fixed top-0 left-0 right-0 z-50">
+        {/* Slim Status Bar */}
+        <div className="bg-black/40 backdrop-blur-xl border-b border-cyan-500/20">
+          <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+            <div className="flex items-center justify-between h-7 text-[10px] font-mono uppercase tracking-widest">
+              <div className="flex items-center gap-4 text-gray-500">
+                <div className="flex items-center gap-1.5">
+                  <div className="w-1 h-1 bg-green-400 rounded-full animate-pulse" />
+                  <span>System Online</span>
+                </div>
+                <div className="hidden sm:flex items-center gap-1.5 text-cyan-400">
+                  <Zap className="w-2.5 h-2.5" />
+                  <span>127 Active Projects</span>
+                </div>
+              </div>
+              <div className="text-gray-500">Köln, DE</div>
+            </div>
+          </div>
+        </div>
 
-            {/* LEFT: Logo */}
-            <Link href="/" className="flex items-center group">
-              <Image
-                src="/logo.svg"
-                alt="MB-Solutions"
-                width={160}
-                height={40}
-                priority
-                className="h-8 lg:h-9 w-auto opacity-90 group-hover:opacity-100 transition-opacity"
-              />
-            </Link>
+        {/* Main Header */}
+        <div className="bg-gradient-to-b from-black/60 via-black/50 to-transparent backdrop-blur-2xl border-b border-white/5">
+          <div className="max-w-[1600px] mx-auto px-6 lg:px-12">
+            <div className="flex items-center justify-between h-14 lg:h-16">
 
-            {/* CENTER: Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-8">
-              <Link
-                href="/services"
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
-              >
-                Leistungen
+              {/* LEFT: Logo */}
+              <Link href="/" className="flex items-center group relative">
+                <Image
+                  src="/logo.svg"
+                  alt="MB-Solutions"
+                  width={160}
+                  height={40}
+                  priority
+                  className="h-7 lg:h-8 w-auto opacity-90 group-hover:opacity-100 transition-opacity relative z-10"
+                />
+                {/* Glow effect on hover */}
+                <div className="absolute inset-0 blur-xl bg-cyan-500/0 group-hover:bg-cyan-500/20 transition-all duration-500 -z-10" />
               </Link>
-              <Link
-                href="/projects"
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
-              >
-                Projekte
-              </Link>
-              <Link
-                href="#methode"
-                className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
-              >
-                Methode
-              </Link>
-            </nav>
 
-            {/* RIGHT: CTA (Desktop) */}
-            <Link
-              href="/contact"
-              className="hidden lg:inline-flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-lg font-semibold text-sm hover:from-cyan-400 hover:to-blue-400 transition-all shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40"
-            >
-              Projekt starten
-            </Link>
+              {/* CENTER: Desktop Navigation */}
+              <nav className="hidden lg:flex items-center gap-1">
+                <Link
+                  href="/services"
+                  className="group relative px-4 py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors"
+                >
+                  <span className="relative z-10">Leistungen</span>
+                  <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 rounded-lg transition-all" />
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-8 h-px bg-cyan-400 transition-all duration-300" />
+                </Link>
+                <Link
+                  href="/projects"
+                  className="group relative px-4 py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors"
+                >
+                  <span className="relative z-10">Projekte</span>
+                  <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 rounded-lg transition-all" />
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-8 h-px bg-cyan-400 transition-all duration-300" />
+                </Link>
+                <Link
+                  href="#methode"
+                  className="group relative px-4 py-2 text-sm font-medium text-gray-400 hover:text-white transition-colors"
+                >
+                  <span className="relative z-10">Methode</span>
+                  <div className="absolute inset-0 bg-white/0 group-hover:bg-white/5 rounded-lg transition-all" />
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-8 h-px bg-cyan-400 transition-all duration-300" />
+                </Link>
+              </nav>
 
-            {/* RIGHT: Mobile Menu Toggle */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? (
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              )}
-            </button>
+              {/* RIGHT: CTA with Energy */}
+              <Link
+                href="/contact"
+                className="group relative hidden lg:flex items-center gap-2 px-5 py-2.5 overflow-hidden"
+              >
+                {/* Animated border */}
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-blue-500 to-cyan-500 rounded-lg opacity-100" />
+                <div className="absolute inset-[2px] bg-[#0A0E27] rounded-[6px]" />
+
+                {/* Content */}
+                <span className="relative z-10 text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 group-hover:from-white group-hover:to-white transition-all">
+                  Projekt starten
+                </span>
+                <Zap className="relative z-10 w-4 h-4 text-cyan-400 group-hover:text-white transition-colors group-hover:drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]" />
+
+                {/* Shimmer effect */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              </Link>
+
+              {/* Mobile Menu Toggle */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="lg:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? (
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -116,9 +158,10 @@ export function StatementHeader() {
           <Link
             href="/contact"
             onClick={() => setMobileMenuOpen(false)}
-            className="absolute bottom-12 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-xl font-bold text-lg shadow-xl shadow-cyan-500/30"
+            className="absolute bottom-12 flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-xl font-bold text-lg shadow-xl shadow-cyan-500/30"
           >
-            Projekt starten
+            <span>Projekt starten</span>
+            <Zap className="w-5 h-5" />
           </Link>
         </div>
       )}
