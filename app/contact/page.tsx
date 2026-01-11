@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState, FormEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { StatementHeader } from "@/components/layout/StatementHeader";
 import {
   Mail,
   MessageSquare,
@@ -875,6 +876,9 @@ function ContactCTA() {
 export default function ContactPage() {
   return (
     <main className="relative min-h-screen bg-[#0A0E27] text-white overflow-hidden">
+      {/* Header */}
+      <StatementHeader />
+
       {/* Hero Section */}
       <ContactHero />
 
