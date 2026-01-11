@@ -5,15 +5,19 @@ import { Plus, Minus } from "lucide-react";
 import { useState } from "react";
 
 /**
- * FAQ Section mit Schema.org FAQPage Markup
+ * FAQ SECTION
  *
- * SEO Benefits:
- * - Erscheint in Google Featured Snippets
- * - Beantwortet häufige Kundenanfragen
- * - Verbessert E-A-T (Expertise, Authority, Trust)
- * - Reduziert Support-Anfragen
+ * Design Philosophy: "The Knowledge Base"
+ * - Clean accordion design (matches aesthetic)
+ * - SEO-optimized with Schema.org markup
+ * - Glassmorphism cards on expand
+ * - Product-focused language (not agency-speak)
+ * - Reduces pre-sales friction
  *
- * Inspiration: Mitbewerber-Analyse (webdesign.koeln)
+ * Layout: Centered single column
+ * - Maximum readability
+ * - Generous spacing
+ * - Clear interaction states
  */
 
 interface FAQItem {
@@ -23,158 +27,194 @@ interface FAQItem {
 
 const faqs: FAQItem[] = [
   {
-    question: "Was kostet eine professionelle Webseite?",
-    answer: "Die Kosten variieren je nach Umfang und Komplexität. Eine einfache Business-Website startet ab 2.500€, während komplexe Web-Anwendungen ab 8.000€ beginnen. Wir bieten transparente Festpreise und flexible Zahlungsmodelle. Jedes Projekt erhält eine kostenlose Tech-Analyse vorab."
+    question: "Was kostet eine Next.js Web-Anwendung?",
+    answer: "Transparente Festpreise: Business-Site ab 3.500€, E-Commerce ab 8.000€, Custom Web-App ab 12.000€. Alle Preise inkl. Performance-Optimierung, SEO-Setup, DSGVO-Compliance und 30 Tage Support. Keine versteckten Kosten."
   },
   {
-    question: "Wie lange dauert die Entwicklung einer Website?",
-    answer: "Ein Standard-Projekt dauert 4-8 Wochen von Konzept bis Launch. Komplexere Anwendungen 8-16 Wochen. Wir arbeiten agil und liefern regelmäßige Updates. Ihr Projekt hat oberste Priorität mit garantierten Meilensteinen."
+    question: "Wie lange dauert die Entwicklung?",
+    answer: "15 Werktage von Konzept bis Production. Agile Sprints mit täglichen Updates. Sie haben GitHub-Zugriff und sehen jeden Commit. Garantierte Meilensteine, keine 'dauert noch'-Emails."
   },
   {
-    question: "Ist meine Website DSGVO-konform?",
-    answer: "Ja, DSGVO-Konformität ist bei uns Standard. Alle Websites werden mit Cookie-Consent, Datenschutz-konformen Analytics (Plausible/Matomo) und SSL-Verschlüsselung ausgeliefert. Inklusive aller rechtlich notwendigen Seiten (Datenschutz, Impressum)."
+    question: "Was unterscheidet euch von Agenturen?",
+    answer: "Wir sind keine Agentur. Wir bauen Performance-optimierte Systeme, keine WordPress-Templates. Direkter Zugang zum Tech-Lead, 47min Response Time, messbare Ergebnisse (98+ Lighthouse Score). Null Pitch-Decks, null Bullshit."
   },
   {
-    question: "Welches CMS oder Framework verwenden Sie?",
-    answer: "Wir spezialisieren uns auf Next.js 14+ mit React - das modernste Framework für Performance und SEO. Alternativ: WordPress für Content-fokussierte Sites oder Headless CMS (Strapi, Sanity) für maximale Flexibilität. Die Wahl richtet sich nach Ihren Anforderungen."
+    question: "Ist DSGVO-Konformität enthalten?",
+    answer: "Ja, als Standard. SSL-Verschlüsselung, Cookie-Consent (DSGVO-konform), datenschutz-konforme Analytics (Plausible/Matomo), vollständige Dokumentation. Inklusive Impressum & Datenschutz-Seiten."
   },
   {
-    question: "Bieten Sie auch Wartung und Support an?",
-    answer: "Ja, wir bieten Full-Service Support mit Antwortzeit <2h. Wartungspakete ab 99€/Monat inkl. Updates, Backups, Security-Monitoring und technischem Support. Oder flexibel nach Aufwand. Sie sind nie allein."
+    question: "Welche Technologien nutzt ihr?",
+    answer: "Next.js 15, React 19, TypeScript, Tailwind CSS. Hosting auf Vercel Edge Network. Kein WordPress, keine Legacy-Frameworks. Enterprise-Grade Stack mit Active Maintenance und Production Support."
   },
   {
-    question: "Wird meine Website in Google gefunden?",
-    answer: "Ja, alle Websites werden SEO-optimiert ausgeliefert: optimierte Meta-Tags, Schema.org Markup, perfekte Performance (98+ Lighthouse Score), mobile-first Design. Optional: Laufendes SEO-Coaching und Content-Marketing für Top-Rankings."
+    question: "Bietet ihr Wartung und Support?",
+    answer: "Ja. 30 Tage Hotline nach Launch (inklusive). Danach: Support-Pakete ab 149€/Monat (Updates, Backups, Monitoring, 2h Response Time) oder stundenweise nach Aufwand. Sie sind nie allein."
+  },
+  {
+    question: "Wird meine Site in Google gefunden?",
+    answer: "Garantiert. Alle Sites werden SEO-ready ausgeliefert: Meta-Tags, Schema.org Markup, 98+ Lighthouse Score, Mobile-First. Optional: Laufendes SEO-Coaching (Content, Backlinks, Technical SEO)."
   },
   {
     question: "Kann ich die Website selbst bearbeiten?",
-    answer: "Ja, Sie erhalten ein intuitives CMS (WordPress oder Headless) zur Content-Pflege. Inklusive Schulung und Dokumentation. Bei Next.js: Git-basierter Workflow mit Review-System. Wir passen uns Ihrem technischen Level an."
-  },
-  {
-    question: "Was unterscheidet MB-Solutions von anderen Agenturen?",
-    answer: "Performance-First (98+ Lighthouse), moderne Tech-Stack (Next.js/React), persönlicher Service (Antwort <2h), transparente Preise, DSGVO-Expertise, und Full-Stack-Kompetenz. Sie arbeiten direkt mit Senior-Entwicklern, nicht mit Junior-Teams."
+    answer: "Ja. Entweder via Headless CMS (Sanity/Contentful) oder direkter GitHub-Zugriff. Wir schulen euer Team (30min Video-Call) und liefern vollständige Dokumentation. Volle Kontrolle, kein Vendor Lock-in."
   }
 ];
 
 export function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  // Schema.org FAQPage JSON-LD
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
+  const toggleFAQ = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section className="relative py-20 md:py-32 overflow-hidden">
-      {/* Schema.org JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
+    <section className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
 
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E27] via-[#0F1629] to-[#0A0E27]" />
+      <div className="absolute inset-0 bg-[#0A0E27]" />
+
+      {/* Top Fade */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0A0E27] to-transparent pointer-events-none z-10" />
+
+      {/* Technical Grid Pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, #06B6D4 1px, transparent 1px),
+            linear-gradient(to bottom, #06B6D4 1px, transparent 1px)
+          `,
+          backgroundSize: '80px 80px'
+        }}
+      />
 
       {/* Content */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-12">
+      <div className="relative z-20 w-full max-w-[900px] mx-auto px-6 lg:px-12">
 
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            Häufig gestellte Fragen
-          </h2>
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-            Antworten auf die wichtigsten Fragen zu unseren Services
-          </p>
-        </motion.div>
+        {/* Section Header */}
+        <div className="mb-16 sm:mb-20 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-6"
+          >
+            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+            <span className="text-sm font-mono text-cyan-400 uppercase tracking-wider">FAQ</span>
+          </motion.div>
 
-        {/* FAQ Items */}
-        <div className="space-y-4">
-          {faqs.map((faq, index) => {
-            const isOpen = openIndex === index;
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6"
+          >
+            Noch Fragen?<br />
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+              Hier sind die Antworten.
+            </span>
+          </motion.h2>
 
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group"
-              >
-                <button
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full text-left p-6 rounded-2xl bg-white/[0.02] hover:bg-white/[0.04] border border-white/10 hover:border-cyan-500/30 backdrop-blur-xl transition-all duration-300"
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <h3 className="text-lg md:text-xl font-bold text-white pr-8">
-                      {faq.question}
-                    </h3>
-                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500/20 transition-colors">
-                      {isOpen ? (
-                        <Minus className="w-4 h-4 text-cyan-400" />
-                      ) : (
-                        <Plus className="w-4 h-4 text-cyan-400" />
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Answer */}
-                  <motion.div
-                    initial={false}
-                    animate={{
-                      height: isOpen ? "auto" : 0,
-                      opacity: isOpen ? 1 : 0,
-                      marginTop: isOpen ? 16 : 0,
-                    }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="overflow-hidden"
-                  >
-                    <p className="text-gray-400 leading-relaxed">
-                      {faq.answer}
-                    </p>
-                  </motion.div>
-                </button>
-              </motion.div>
-            );
-          })}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-lg text-gray-400"
+          >
+            Die 8 häufigsten Fragen. Direkt, ehrlich, ohne Marketing-Sprech.
+          </motion.p>
         </div>
 
-        {/* CTA */}
+        {/* FAQ Accordion */}
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05 }}
+              className="rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10 backdrop-blur-sm overflow-hidden"
+            >
+              {/* Question Button */}
+              <button
+                onClick={() => toggleFAQ(index)}
+                className="w-full px-6 lg:px-8 py-5 flex items-center justify-between text-left hover:bg-white/[0.02] transition-colors"
+              >
+                <h3 className="text-base lg:text-lg font-bold text-white pr-4">
+                  {faq.question}
+                </h3>
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center">
+                  {openIndex === index ? (
+                    <Minus className="w-4 h-4 text-cyan-400" />
+                  ) : (
+                    <Plus className="w-4 h-4 text-cyan-400" />
+                  )}
+                </div>
+              </button>
+
+              {/* Answer Panel */}
+              {openIndex === index && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="px-6 lg:px-8 pb-6 border-t border-white/10"
+                >
+                  <p className="text-sm lg:text-base text-gray-400 leading-relaxed pt-4">
+                    {faq.answer}
+                  </p>
+                </motion.div>
+              )}
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 text-center"
+          className="mt-16 text-center"
         >
-          <p className="text-gray-400 mb-6">
-            Ihre Frage wurde nicht beantwortet?
+          <p className="text-sm text-gray-500 mb-6">
+            Weitere Fragen? Wir antworten innerhalb von 47 Minuten.
           </p>
           <a
-            href="#kontakt"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl font-bold text-white hover:scale-105 transition-transform duration-300"
+            href="/contact"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-xl font-bold text-base hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
           >
-            Jetzt persönlich beraten lassen
+            <span>Jetzt Anfragen</span>
           </a>
         </motion.div>
 
       </div>
+
+      {/* Bottom Fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0A0E27] to-transparent pointer-events-none z-10" />
+
+      {/* Schema.org FAQPage Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })
+        }}
+      />
+
     </section>
   );
 }

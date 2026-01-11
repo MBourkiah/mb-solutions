@@ -1,15 +1,13 @@
 /**
  * MB-Solutions - Full-Width Redesign
  *
- * NEUE STRUKTUR (8 Sections):
+ * NEUE STRUKTUR (6 Sections):
  * 1. 🔥 HeroControlRoom - Control Room Hero mit Terminal-Style Header
  * 2. ⚡ ServicesCapabilityMatrix - Product-Style Performance Layer
  * 3. 🎯 ProcessExecutionPipeline - Vertical Timeline
- * 4. 📊 CaseStudies - Asymmetrisches Bento-Grid
- * 5. 💎 TrustExpertise - Metrics + Tech Badge Wall
- * 6. ⭐ Testimonials - Social Proof
- * 7. ❓ FAQ - Häufig gestellte Fragen
- * 8. 🎉 CTAImmersive - Full-Screen CTA
+ * 4. 💎 TrustExpertise - Metrics + Tech Badge Wall
+ * 5. ❓ FAQ - Häufig gestellte Fragen
+ * 6. 🎉 CTAImmersive - Full-Screen CTA
  *
  * Design: Vercel/Linear/Stripe-Niveau
  * Layout: Full-Width, Edge-to-Edge, NO standard 3-column grids
@@ -34,9 +32,7 @@ import { ProcessExecutionPipeline } from "@/components/sections/ProcessExecution
 // Alternatives:
 // import { ProcessControlRoom } from "@/components/sections/ProcessControlRoom";
 // import { ProcessJourney } from "@/components/sections/ProcessJourney";
-import { CaseStudies } from "@/components/sections/CaseStudies";
 import { TrustExpertise } from "@/components/sections/TrustExpertise";
-import { Testimonials } from "@/components/sections/Testimonials";
 import { FAQ } from "@/components/sections/FAQ";
 import { CTAImmersive } from "@/components/sections/CTAImmersive";
 
@@ -77,19 +73,13 @@ export default function HomePage() {
           <ProcessExecutionPipeline />
         </section>
 
-        {/* 4. CASE STUDIES - Asymmetrisches Bento-Grid */}
-        <CaseStudies />
-
-        {/* 5. TRUST & EXPERTISE - Metrics + Tech Badges */}
+        {/* 4. TRUST & EXPERTISE - Metrics + Tech Badges */}
         <TrustExpertise />
 
-        {/* 6. TESTIMONIALS - Social Proof */}
-        <Testimonials />
-
-        {/* 7. FAQ - Häufig gestellte Fragen (SEO Featured Snippets) */}
+        {/* 5. FAQ - Häufig gestellte Fragen (SEO Featured Snippets) */}
         <FAQ />
 
-        {/* 8. CTA IMMERSIVE - Full-Screen Final Push */}
+        {/* 6. CTA IMMERSIVE - Full-Screen Final Push */}
         <CTAImmersive />
       </div>
     </main>
