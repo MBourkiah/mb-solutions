@@ -1,39 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Code2, Server, TrendingUp } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
 /**
- * HERO SECTION - "SYSTEM EXHIBITION" FRAMEWORK
+ * HERO SECTION - Multi-Service Focus
  *
- * Design Philosophy: Demonstration over Persuasion
- * - Asymmetric layout (60/40) - text-first, not centered
- * - Background image with gradient overlay
- * - Services list instead of terminal
- * - No testimonials → Operational guarantees instead
- * - No marketing language → Factual system description
- * - Editorial restraint → Whitespace is intentional
+ * Design Philosophy:
+ * - Presents all three services equally (Webdesign, IT-Services, Marketing)
+ * - Less technical, more business-focused
+ * - Clean, professional, welcoming
+ * - Background with proper contrast
  */
-
-const services = [
-  {
-    icon: Code2,
-    title: "Webdesign",
-    description: "Next.js Web-Anwendungen mit 98+ Performance Score"
-  },
-  {
-    icon: Server,
-    title: "IT-Services",
-    description: "Cloud-Infrastruktur, CI/CD, Monitoring & Support"
-  },
-  {
-    icon: TrendingUp,
-    title: "Marketing",
-    description: "SEO, Analytics-Setup & Conversion-Optimierung"
-  }
-];
 
 export function HeroControlRoom() {
   return (
@@ -54,14 +34,14 @@ export function HeroControlRoom() {
       </div>
 
       {/* ============================================ */}
-      {/* LAYER 2: GRADIENT VIGNETTE (Text Contrast) */}
+      {/* LAYER 2: GRADIENT VIGNETTE */}
       {/* ============================================ */}
       <div
         className="absolute inset-0 z-10"
         style={{
           background: `
-            radial-gradient(ellipse 70% 50% at 35% 45%, transparent 0%, rgba(5, 8, 18, 0.85) 100%),
-            linear-gradient(to right, rgba(10, 14, 39, 0.95) 0%, rgba(10, 14, 39, 0.6) 50%, transparent 70%)
+            radial-gradient(ellipse 70% 50% at 50% 50%, transparent 0%, rgba(5, 8, 18, 0.9) 100%),
+            linear-gradient(to bottom, rgba(10, 14, 39, 0.7) 0%, rgba(10, 14, 39, 0.9) 100%)
           `
         }}
       />
@@ -82,224 +62,157 @@ export function HeroControlRoom() {
       {/* ============================================ */}
       {/* LAYER 4: MAIN CONTENT */}
       {/* ============================================ */}
-      <div className="relative z-20 w-full max-w-[1600px] mx-auto px-6 lg:px-12 py-32 lg:py-40">
+      <div className="relative z-20 w-full max-w-[1400px] mx-auto px-6 lg:px-12 py-32 lg:py-40">
 
-        {/* Asymmetric Grid: 60% Text | 40% Services */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-20">
+        {/* Centered Content */}
+        <div className="text-center max-w-5xl mx-auto">
 
-          {/* ============================================ */}
-          {/* LEFT: TEXT ZONE (3 columns = 60%) */}
-          {/* ============================================ */}
-          <div className="lg:col-span-3 space-y-10">
+          {/* Availability Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-cyan-500/20 backdrop-blur-sm mb-8"
+          >
+            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+            <span className="text-sm font-semibold text-cyan-100">Verfügbar für neue Projekte</span>
+          </motion.div>
 
-            {/* Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight text-white max-w-3xl"
+          {/* Main Headline */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight mb-8"
+          >
+            <span
+              className="block text-white"
               style={{
                 textShadow: '0 2px 40px rgba(0, 0, 0, 0.9), 0 0 60px rgba(6, 182, 212, 0.2)'
               }}
             >
-              Wir bauen Web-Anwendungen.<br />
-              <span className="text-gray-500">
-                Keine Pitches. Keine Wartezeiten.
-              </span>
-            </motion.h1>
-
-            {/* Subline */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-2xl"
+              Ihre digitale Präsenz.
+            </span>
+            <span
+              className="block mt-2"
+              style={{
+                background: 'linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #8B5CF6 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                textShadow: '0 0 80px rgba(6, 182, 212, 0.4)'
+              }}
             >
-              Next.js-Systeme für Mittelständler, die keine Agentur-Theater wollen –
-              messbare Performance, direkter Zugang zum Tech-Lead, volle Code-Ownership.
-            </motion.p>
+              Professionell umgesetzt.
+            </span>
+          </motion.h1>
 
-            {/* Operating Standards - SLA Style */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="pt-6"
-            >
-              <div className="inline-block mb-6 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-                <span className="text-xs font-mono text-gray-500 uppercase tracking-wider">
-                  Operating Standards
-                </span>
-              </div>
-
-              <div className="space-y-4 max-w-xl">
-                {/* Standard 1 */}
-                <div className="flex items-baseline gap-4 text-sm sm:text-base">
-                  <span className="text-gray-400 min-w-[180px]">Response Time</span>
-                  <div className="flex-1 h-px bg-gradient-to-r from-gray-700 to-transparent" />
-                  <span className="text-cyan-400 font-mono font-semibold">&lt; 47 Minuten</span>
-                </div>
-
-                {/* Standard 2 */}
-                <div className="flex items-baseline gap-4 text-sm sm:text-base">
-                  <span className="text-gray-400 min-w-[180px]">Code Ownership</span>
-                  <div className="flex-1 h-px bg-gradient-to-r from-gray-700 to-transparent" />
-                  <span className="text-white font-semibold">Vollständig</span>
-                </div>
-
-                {/* Standard 3 */}
-                <div className="flex items-baseline gap-4 text-sm sm:text-base">
-                  <span className="text-gray-400 min-w-[180px]">Performance Target</span>
-                  <div className="flex-1 h-px bg-gradient-to-r from-gray-700 to-transparent" />
-                  <span className="text-cyan-400 font-mono font-semibold">98+ Lighthouse</span>
-                </div>
-
-                {/* Standard 4 */}
-                <div className="flex items-baseline gap-4 text-sm sm:text-base">
-                  <span className="text-gray-400 min-w-[180px]">Deployment Timeline</span>
-                  <div className="flex-1 h-px bg-gradient-to-r from-gray-700 to-transparent" />
-                  <span className="text-white font-semibold">15 Werktage</span>
-                </div>
-
-                {/* Standard 5 */}
-                <div className="flex items-baseline gap-4 text-sm sm:text-base">
-                  <span className="text-gray-400 min-w-[180px]">GitHub Access</span>
-                  <div className="flex-1 h-px bg-gradient-to-r from-gray-700 to-transparent" />
-                  <span className="text-white font-semibold">Ab Tag 1</span>
-                </div>
-              </div>
-
-              {/* Fine Print */}
-              <p className="mt-6 text-xs text-gray-600 italic max-w-md">
-                Kein Vendor Lock-in. Kein &quot;wir melden uns&quot;. Sie besitzen den Code,
-                die Infrastruktur und alle Zugänge von Anfang an.
-              </p>
-            </motion.div>
-
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 pt-4"
-            >
-              {/* Primary CTA */}
-              <Link
-                href="/contact"
-                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl font-bold text-base text-white shadow-xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.02] transition-all duration-300"
-              >
-                <span>Projekt anfragen</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-
-              {/* Secondary CTA - Text Link */}
-              <Link
-                href="#ablauf"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl font-semibold text-base text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 backdrop-blur-sm transition-all duration-300"
-              >
-                <span>Ablauf ansehen</span>
-                <span className="text-gray-500">(2 Min.)</span>
-              </Link>
-            </motion.div>
-
-          </div>
-
-          {/* ============================================ */}
-          {/* RIGHT: SERVICES LIST (2 columns = 40%) */}
-          {/* ============================================ */}
-          <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.4 }}
-            className="lg:col-span-2 hidden lg:block"
+          {/* Subline */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="text-lg sm:text-xl text-gray-300 leading-relaxed mb-12 max-w-3xl mx-auto"
           >
-            <div className="space-y-6">
+            Von modernem Webdesign über zuverlässige IT-Infrastruktur bis zu
+            zielgerichtetem Online-Marketing – alles aus einer Hand.
+          </motion.p>
 
-              {/* Services Header */}
-              <div className="mb-8">
-                <div className="inline-block mb-4 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 backdrop-blur-sm">
-                  <span className="text-xs font-mono text-cyan-400 uppercase tracking-wider">
-                    Leistungen
-                  </span>
-                </div>
-                <h2 className="text-2xl font-black text-white">
-                  Drei Systeme.<br />
-                  Ein Ziel: Mehr Umsatz.
-                </h2>
+          {/* Three Service Pillars */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+          >
+            {/* Service 1: Webdesign */}
+            <div className="group p-8 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/10 hover:border-cyan-500/30 backdrop-blur-xl transition-all duration-300 hover:scale-[1.02]">
+              <div className="w-14 h-14 mb-6 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                <svg className="w-7 h-7 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
               </div>
+              <h3 className="text-xl font-bold text-white mb-3">Webdesign</h3>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                Moderne, responsive Websites und Web-Anwendungen, die Ihre Marke perfekt repräsentieren
+              </p>
+            </div>
 
-              {/* Services Cards */}
-              {services.map((service, index) => (
-                <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                  className="group p-6 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/10 hover:border-cyan-500/30 backdrop-blur-xl transition-all duration-300"
-                >
-                  <div className="flex items-start gap-4">
-                    {/* Icon */}
-                    <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 flex-shrink-0 group-hover:scale-110 transition-transform">
-                      <service.icon className="w-6 h-6 text-cyan-400" />
-                    </div>
+            {/* Service 2: IT-Services */}
+            <div className="group p-8 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/10 hover:border-blue-500/30 backdrop-blur-xl transition-all duration-300 hover:scale-[1.02]">
+              <div className="w-14 h-14 mb-6 rounded-xl bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-blue-500/30 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                <svg className="w-7 h-7 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">IT-Services</h3>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                Zuverlässige Cloud-Infrastruktur, Hosting, Wartung und technischer Support für Ihren digitalen Erfolg
+              </p>
+            </div>
 
-                    {/* Content */}
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-white mb-2">
-                        {service.title}
-                      </h3>
-                      <p className="text-sm text-gray-400 leading-relaxed">
-                        {service.description}
-                      </p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
+            {/* Service 3: Marketing */}
+            <div className="group p-8 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/10 hover:border-purple-500/30 backdrop-blur-xl transition-all duration-300 hover:scale-[1.02]">
+              <div className="w-14 h-14 mb-6 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+                <svg className="w-7 h-7 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Marketing</h3>
+              <p className="text-sm text-gray-400 leading-relaxed">
+                SEO-Optimierung, Analytics-Setup und datengetriebene Strategien für messbare Online-Erfolge
+              </p>
+            </div>
+          </motion.div>
 
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+          >
+            {/* Primary CTA */}
+            <Link
+              href="/contact"
+              className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl font-bold text-lg text-white shadow-xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.02] transition-all duration-300"
+            >
+              <span>Kostenloses Erstgespräch</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+
+            {/* Secondary CTA */}
+            <Link
+              href="#systeme"
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-semibold text-lg text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 backdrop-blur-sm transition-all duration-300"
+            >
+              <span>Leistungen entdecken</span>
+            </Link>
+          </motion.div>
+
+          {/* Trust Signals */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="flex flex-wrap items-center justify-center gap-6 pt-8 text-sm text-gray-500"
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-green-400" />
+              <span>Antwort &lt; 2 Stunden</span>
+            </div>
+            <div className="hidden sm:block w-px h-4 bg-gray-700" />
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-cyan-400" />
+              <span>Transparente Festpreise</span>
+            </div>
+            <div className="hidden sm:block w-px h-4 bg-gray-700" />
+            <div className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+              <span>Persönlicher Ansprechpartner</span>
             </div>
           </motion.div>
 
         </div>
-
-        {/* Mobile Services - Simplified for small screens */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="lg:hidden mt-12 space-y-4"
-        >
-          <div className="mb-6">
-            <div className="inline-block mb-3 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 backdrop-blur-sm">
-              <span className="text-xs font-mono text-cyan-400 uppercase tracking-wider">
-                Leistungen
-              </span>
-            </div>
-            <h2 className="text-xl font-black text-white">
-              Drei Systeme. Ein Ziel: Mehr Umsatz.
-            </h2>
-          </div>
-
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="p-5 rounded-xl bg-gradient-to-br from-white/[0.06] to-white/[0.02] border border-white/10 backdrop-blur-sm"
-            >
-              <div className="flex items-start gap-3">
-                <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/30 flex-shrink-0">
-                  <service.icon className="w-5 h-5 text-cyan-400" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-base font-bold text-white mb-1">
-                    {service.title}
-                  </h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </motion.div>
 
       </div>
 
