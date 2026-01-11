@@ -189,26 +189,26 @@ export function HeroControlRoom() {
             </Link>
           </motion.div>
 
-          {/* Trust Signals - Much More Visible */}
+          {/* Trust Signals - In Professional Container */}
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex flex-wrap items-center justify-center gap-8 pt-4 text-base"
+            className="inline-flex flex-wrap items-center justify-center gap-8 px-8 py-5 rounded-2xl bg-white/[0.06] border border-white/20 backdrop-blur-sm shadow-xl"
           >
             <div className="flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-green-400 shadow-lg shadow-green-400/50" />
-              <span className="text-gray-200 font-semibold">Antwort &lt; 2 Stunden</span>
+              <div className="w-2.5 h-2.5 rounded-full bg-green-400 shadow-lg shadow-green-400/50" />
+              <span className="text-white font-bold">Antwort &lt; 2 Stunden</span>
             </div>
-            <div className="hidden sm:block w-px h-5 bg-gray-600" />
+            <div className="hidden sm:block w-px h-6 bg-white/20" />
             <div className="flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-cyan-400 shadow-lg shadow-cyan-400/50" />
-              <span className="text-gray-200 font-semibold">Transparente Festpreise</span>
+              <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-lg shadow-cyan-400/50" />
+              <span className="text-white font-bold">Transparente Festpreise</span>
             </div>
-            <div className="hidden sm:block w-px h-5 bg-gray-600" />
+            <div className="hidden sm:block w-px h-6 bg-white/20" />
             <div className="flex items-center gap-3">
-              <div className="w-2 h-2 rounded-full bg-blue-400 shadow-lg shadow-blue-400/50" />
-              <span className="text-gray-200 font-semibold">Persönlicher Ansprechpartner</span>
+              <div className="w-2.5 h-2.5 rounded-full bg-blue-400 shadow-lg shadow-blue-400/50" />
+              <span className="text-white font-bold">Persönlicher Ansprechpartner</span>
             </div>
           </motion.div>
 
