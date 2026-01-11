@@ -180,7 +180,7 @@ export function HeroControlRoom() {
                   {/* Dashboard Image */}
                   <div className="relative">
                     <Image
-                      src="/images/hero-dashboard.webp"
+                      src="/images/hero/hero-dashboard.webp"
                       alt="Performance Dashboard"
                       width={600}
                       height={400}
