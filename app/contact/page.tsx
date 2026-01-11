@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
 import { StatementHeader } from "@/components/layout/StatementHeader";
 import { ContactBentoGrid } from "@/components/sections/ContactBentoGrid";
 import {
@@ -76,120 +74,7 @@ const faqs = [
 // 🎨 COMPONENTS
 // ========================================
 
-function ContactHero() {
-  return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero-bg.png"
-          fill
-          className="object-cover"
-          alt=""
-          priority
-          quality={90}
-        />
-      </div>
-
-      {/* Strong Dark Overlay */}
-      <div className="absolute inset-0 z-10 bg-gradient-to-br from-[#050812] via-[#0A0E27]/95 to-[#050812]/90" />
-
-      {/* Grain Texture */}
-      <div className="absolute inset-0 z-30 opacity-[0.08] mix-blend-overlay pointer-events-none">
-        <Image
-          src="/images/grain-texture.png"
-          fill
-          className="object-cover"
-          alt=""
-          quality={100}
-        />
-      </div>
-
-      {/* Accent Glow - Top Right */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-cyan-500/10 via-blue-500/5 to-transparent rounded-full blur-[120px] pointer-events-none z-20" />
-
-      <div className="relative z-40 w-full max-w-[1400px] mx-auto px-6 lg:px-12 py-32 lg:py-40">
-        <div className="flex items-center justify-center min-h-[70vh]">
-          <div className="max-w-4xl mx-auto text-center space-y-12">
-
-            {/* Status Badge */}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="flex justify-center"
-            >
-              <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/30 backdrop-blur-xl">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-                </span>
-                <span className="text-sm font-bold text-green-100 tracking-wide">Verfügbar für neue Projekte</span>
-              </div>
-            </motion.div>
-
-            {/* Headline */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="space-y-4"
-            >
-              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tight">
-                <span className="block text-white">
-                  Lassen Sie uns
-                </span>
-                <span className="block bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  zusammenarbeiten.
-                </span>
-              </h1>
-            </motion.div>
-
-            {/* Subline */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto"
-            >
-              Ob Webdesign, IT-Services oder Marketing – wir entwickeln maßgeschneiderte Lösungen
-              für Ihr Unternehmen. Kostenloses Erstgespräch, transparente Preise, schnelle Umsetzung.
-            </motion.p>
-
-            {/* Stats Row */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex items-center justify-center gap-8 lg:gap-12 flex-wrap pt-4"
-            >
-              <div className="text-center">
-                <div className="text-3xl font-black text-white mb-1">&lt;24h</div>
-                <div className="text-xs text-gray-400 font-medium">Antwortzeit</div>
-              </div>
-              <div className="w-px h-10 bg-gray-700" />
-              <div className="text-center">
-                <div className="text-3xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-1">100%</div>
-                <div className="text-xs text-gray-400 font-medium">DSGVO-konform</div>
-              </div>
-              <div className="w-px h-10 bg-gray-700" />
-              <div className="text-center">
-                <div className="text-3xl font-black text-white mb-1">Kostenlos</div>
-                <div className="text-xs text-gray-400 font-medium">Erstgespräch</div>
-              </div>
-            </motion.div>
-
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0A0E27] to-transparent pointer-events-none z-30" />
-    </section>
-  );
-}
-
-// ContactMethods and ContactFormSection removed - replaced by ContactBentoGrid
+// ContactHero, ContactMethods and ContactFormSection removed - replaced by ContactBentoGrid
 
 function NextStepsSection() {
   return (
@@ -379,9 +264,6 @@ export default function ContactPage() {
     <main className="relative min-h-screen bg-[#0A0E27] text-white overflow-hidden">
       {/* Header */}
       <StatementHeader />
-
-      {/* Hero Section */}
-      <ContactHero />
 
       {/* Bento Grid - Unique Asymmetric Layout */}
       <ContactBentoGrid />
