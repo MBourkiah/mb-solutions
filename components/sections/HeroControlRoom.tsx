@@ -1,318 +1,268 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, TrendingUp, Zap, Timer } from "lucide-react";
+import { ArrowRight, Terminal } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
-import { useEffect, useState } from "react";
 
 /**
- * CONTROL ROOM HERO SECTION
+ * HERO SECTION - "SYSTEM EXHIBITION" FRAMEWORK
  *
- * Design Philosophy: "The Control Room"
- * - Full-width, edge-to-edge system
- * - Asymmetric layout: 55% text, 45% visual
- * - Deep atmospheric background
- * - Floating performance dashboard
- * - Feels like a product, not an agency
+ * Design Philosophy: Demonstration over Persuasion
+ * - Asymmetric layout (60/40) - text-first, not centered
+ * - No testimonials → Operational guarantees instead
+ * - No marketing language → Factual system description
+ * - Editorial restraint → Whitespace is intentional
+ * - Filter, not funnel → Show reality, not pitch
  *
- * Visual Layers:
- * 1. Background image (dark tech environment)
- * 2. Gradient vignette (text contrast)
- * 3. Content (text + dashboard panel)
- * 4. Grain texture (premium feel)
+ * Trust Building:
+ * - SLA-style operating standards (not promises)
+ * - Code ownership guarantee
+ * - Structural proof through transparency
+ *
+ * Anti-AI Checklist:
+ * ✓ Not centered
+ * ✓ No decorative icons
+ * ✓ No testimonials
+ * ✓ No urgency language
+ * ✓ No "führend/innovativ" claims
+ * ✓ No benefit bullet lists
  */
 
 export function HeroControlRoom() {
-  const [perfScore, setPerfScore] = useState(98.4);
-  const [loadTime, setLoadTime] = useState(1.8);
-
-  // Simulate live metrics
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPerfScore(prev => Math.min(99.9, prev + (Math.random() * 0.3 - 0.1)));
-      setLoadTime(prev => Math.max(1.2, Math.min(2.1, prev + (Math.random() * 0.2 - 0.1))));
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section className="relative w-screen min-h-screen flex items-center overflow-hidden">
 
-      {/* ============================================ */}
-      {/* LAYER 1: BACKGROUND IMAGE */}
-      {/* ============================================ */}
-      <div className="absolute inset-0 z-0">
-        {/* Hero Background - ACTIVE */}
-        <Image
-          src="/images/hero-bg.png"
-          fill
-          className="object-cover"
-          alt=""
-          priority
-          quality={90}
-        />
-      </div>
+      {/* Dark Navy Base */}
+      <div className="absolute inset-0 bg-[#0A0E27]" />
 
-      {/* ============================================ */}
-      {/* LAYER 2: ENHANCED GRADIENT VIGNETTE (Perfect Text Contrast) */}
-      {/* ============================================ */}
+      {/* Subtle Gradient Vignette - Left Side Only */}
       <div
-        className="absolute inset-0 z-10"
+        className="absolute inset-0"
         style={{
           background: `
-            radial-gradient(ellipse 70% 50% at 35% 45%, transparent 0%, rgba(5, 8, 18, 0.85) 100%),
-            linear-gradient(to right, rgba(10, 14, 39, 0.95) 0%, rgba(10, 14, 39, 0.6) 50%, transparent 70%)
+            radial-gradient(ellipse 50% 60% at 25% 50%, rgba(6, 182, 212, 0.03) 0%, transparent 100%)
           `
         }}
       />
 
-      {/* ============================================ */}
-      {/* LAYER 4: GRAIN TEXTURE OVERLAY */}
-      {/* ============================================ */}
-      <div className="absolute inset-0 z-30 opacity-[0.06] mix-blend-overlay pointer-events-none">
-        {/* Grain Texture - ACTIVE (IDEOGRAM Image #2) - Increased to 6% for visible premium effect */}
-        <Image
-          src="/images/grain-texture.png"
-          fill
-          className="object-cover"
-          alt=""
-          quality={100}
-        />
-      </div>
+      {/* Content Container */}
+      <div className="relative z-20 w-full max-w-[1600px] mx-auto px-6 lg:px-12 py-32 lg:py-40">
 
-      {/* ============================================ */}
-      {/* LAYER 3: MAIN CONTENT (Text + Dashboard) */}
-      {/* ============================================ */}
-      <div className="relative z-20 w-full max-w-[1600px] mx-auto px-6 lg:px-12 py-24 sm:py-32 lg:py-40">
+        {/* Asymmetric Grid: 60% Text | 40% Visual */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 lg:gap-20">
 
-        {/* Asymmetric Grid: 55% Text | 45% Visual */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* ============================================ */}
+          {/* LEFT: TEXT ZONE (3 columns = 60%) */}
+          {/* ============================================ */}
+          <div className="lg:col-span-3 space-y-10">
 
-          {/* LEFT: TEXT ZONE (7 columns = ~58%) */}
-          <div className="lg:col-span-7 space-y-6 sm:space-y-8">
-
-            {/* Badge */}
-            <motion.div
+            {/* Headline */}
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-cyan-500/20 backdrop-blur-sm"
+              transition={{ duration: 0.7 }}
+              className="text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight text-white max-w-3xl"
             >
-              <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-              <span className="text-sm font-semibold text-cyan-100">Verfügbar für neue Projekte</span>
-            </motion.div>
-
-            {/* Headline - Mobile optimized sizing */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] sm:leading-[1.05] tracking-tight"
-            >
-              <span
-                className="block text-white"
-                style={{
-                  textShadow: '0 2px 40px rgba(0, 0, 0, 0.9), 0 0 60px rgba(6, 182, 212, 0.2)'
-                }}
-              >
-                Wir bauen keine Websites.
-              </span>
-              <span
-                className="block mt-2"
-                style={{
-                  background: 'linear-gradient(135deg, #06B6D4 0%, #3B82F6 50%, #8B5CF6 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  textShadow: '0 0 80px rgba(6, 182, 212, 0.4)'
-                }}
-              >
-                Wir bauen Umsatzmaschinen.
+              Wir bauen Web-Anwendungen.<br />
+              <span className="text-gray-500">
+                Keine Pitches. Keine Wartezeiten.
               </span>
             </motion.h1>
 
-            {/* Subline - Mobile optimized */}
+            {/* Subline */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-xl"
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="text-lg sm:text-xl text-gray-400 leading-relaxed max-w-2xl"
             >
-              Unter 2 Sekunden Ladezeit. Conversion-optimiertes Design.{" "}
-              <span className="text-white font-semibold">Null Agentur-Theater.</span>
+              Next.js-Systeme für Mittelständler, die keine Agentur-Theater wollen –
+              messbare Performance, direkter Zugang zum Tech-Lead, volle Code-Ownership.
             </motion.p>
+
+            {/* Operating Standards - SLA Style */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="pt-6"
+            >
+              <div className="inline-block mb-6 px-4 py-1.5 rounded-full bg-white/5 border border-white/10">
+                <span className="text-xs font-mono text-gray-500 uppercase tracking-wider">
+                  Operating Standards
+                </span>
+              </div>
+
+              <div className="space-y-4 max-w-xl">
+                {/* Standard 1 */}
+                <div className="flex items-baseline gap-4 text-sm sm:text-base">
+                  <span className="text-gray-500 min-w-[180px]">Response Time</span>
+                  <div className="flex-1 h-px bg-gradient-to-r from-gray-800 to-transparent" />
+                  <span className="text-cyan-400 font-mono font-semibold">&lt; 47 Minuten</span>
+                </div>
+
+                {/* Standard 2 */}
+                <div className="flex items-baseline gap-4 text-sm sm:text-base">
+                  <span className="text-gray-500 min-w-[180px]">Code Ownership</span>
+                  <div className="flex-1 h-px bg-gradient-to-r from-gray-800 to-transparent" />
+                  <span className="text-white font-semibold">Vollständig</span>
+                </div>
+
+                {/* Standard 3 */}
+                <div className="flex items-baseline gap-4 text-sm sm:text-base">
+                  <span className="text-gray-500 min-w-[180px]">Performance Target</span>
+                  <div className="flex-1 h-px bg-gradient-to-r from-gray-800 to-transparent" />
+                  <span className="text-cyan-400 font-mono font-semibold">98+ Lighthouse</span>
+                </div>
+
+                {/* Standard 4 */}
+                <div className="flex items-baseline gap-4 text-sm sm:text-base">
+                  <span className="text-gray-500 min-w-[180px]">Deployment Timeline</span>
+                  <div className="flex-1 h-px bg-gradient-to-r from-gray-800 to-transparent" />
+                  <span className="text-white font-semibold">15 Werktage</span>
+                </div>
+
+                {/* Standard 5 */}
+                <div className="flex items-baseline gap-4 text-sm sm:text-base">
+                  <span className="text-gray-500 min-w-[180px]">GitHub Access</span>
+                  <div className="flex-1 h-px bg-gradient-to-r from-gray-800 to-transparent" />
+                  <span className="text-white font-semibold">Ab Tag 1</span>
+                </div>
+              </div>
+
+              {/* Fine Print */}
+              <p className="mt-6 text-xs text-gray-600 italic max-w-md">
+                Kein Vendor Lock-in. Kein &quot;wir melden uns&quot;. Sie besitzen den Code,
+                die Infrastruktur und alle Zugänge von Anfang an.
+              </p>
+            </motion.div>
 
             {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 pt-4"
             >
+              {/* Primary CTA */}
               <Link
-                href="/projects"
-                className="group inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl font-bold text-lg text-white shadow-xl shadow-cyan-500/30 hover:shadow-cyan-500/50 hover:scale-[1.02] transition-all duration-300"
+                href="/contact"
+                className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-gray-900 rounded-xl font-bold text-base hover:bg-gray-100 transition-all duration-300"
               >
-                <Zap className="w-5 h-5" />
-                <span>Live-Demo ansehen</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <span>Projekt anfragen</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
 
+              {/* Secondary CTA - Text Link */}
               <Link
-                href="#methode"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-semibold text-lg text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 backdrop-blur-sm transition-all duration-300"
+                href="#ablauf"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-gray-400 hover:text-white transition-colors text-base font-medium"
               >
-                <span>Unsere Methode</span>
+                <span>Ablauf ansehen</span>
+                <span className="text-gray-600">(2 Min.)</span>
               </Link>
-            </motion.div>
-
-            {/* Trust Line - Specific, measurable metrics */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex flex-wrap items-center gap-6 pt-4 text-sm"
-            >
-              <div className="flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-green-400" />
-                <span className="text-white font-semibold">+340% ROI</span>
-                <span className="text-gray-500">Ø bei Kunden</span>
-              </div>
-              <div className="w-px h-4 bg-gray-700" />
-              <div className="flex items-center gap-2">
-                <Timer className="w-4 h-4 text-cyan-400" />
-                <span className="text-white font-semibold">47 Min.</span>
-                <span className="text-gray-500">Reaktionszeit</span>
-              </div>
-              <div className="w-px h-4 bg-gray-700" />
-              <span className="text-white font-medium">127 Live-Projekte</span>
             </motion.div>
 
           </div>
 
-          {/* RIGHT: FLOATING DASHBOARD PANEL (5 columns = ~42%) */}
+          {/* ============================================ */}
+          {/* RIGHT: CODE/TERMINAL VISUAL (2 columns = 40%) */}
+          {/* ============================================ */}
           <motion.div
-            initial={{ opacity: 0, x: 40, rotateY: -10 }}
-            animate={{ opacity: 1, x: 0, rotateY: 0 }}
-            transition={{ duration: 1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5 hidden lg:block"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.4 }}
+            className="lg:col-span-2 hidden lg:block"
           >
-            <div
-              className="relative"
-              style={{ transform: 'perspective(1000px) rotateY(-2deg)' }}
-            >
+            <div className="relative">
 
-              {/* Dashboard Panel Container */}
-              <div className="relative p-8 rounded-2xl bg-gradient-to-br from-white/[0.08] to-white/[0.02] border border-white/10 backdrop-blur-2xl shadow-2xl">
+              {/* Terminal Window Mock */}
+              <div className="p-6 rounded-2xl bg-black/40 border border-white/10 backdrop-blur-sm shadow-2xl">
 
-                {/* Panel Header */}
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-xs font-mono text-gray-400 uppercase tracking-wider">
-                    Live Performance
-                  </span>
-                  <div className="flex items-center gap-2">
+                {/* Terminal Header */}
+                <div className="flex items-center gap-2 mb-6 pb-4 border-b border-white/10">
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
+                    <div className="w-3 h-3 rounded-full bg-green-500/50" />
+                  </div>
+                  <div className="flex-1 flex items-center justify-center">
+                    <Terminal className="w-4 h-4 text-gray-600 mr-2" />
+                    <span className="text-xs font-mono text-gray-600">production-deploy</span>
+                  </div>
+                </div>
+
+                {/* Terminal Content - File Structure */}
+                <div className="font-mono text-sm space-y-3">
+                  {/* Line 1 */}
+                  <div className="flex items-center gap-3">
+                    <span className="text-gray-600">$</span>
+                    <span className="text-gray-500">npm run build</span>
+                  </div>
+
+                  {/* Line 2 */}
+                  <div className="pl-5 text-gray-600">
+                    <span className="text-cyan-400">✓</span> Compiled successfully
+                  </div>
+
+                  {/* Line 3 - File tree */}
+                  <div className="pl-5 space-y-1.5 pt-2">
+                    <div className="text-gray-600">
+                      <span className="text-gray-700">├──</span> <span className="text-gray-500">app/</span>
+                    </div>
+                    <div className="text-gray-600 pl-5">
+                      <span className="text-gray-700">├──</span> <span className="text-white">page.tsx</span>
+                    </div>
+                    <div className="text-gray-600 pl-5">
+                      <span className="text-gray-700">├──</span> <span className="text-white">layout.tsx</span>
+                    </div>
+                    <div className="text-gray-600">
+                      <span className="text-gray-700">├──</span> <span className="text-gray-500">components/</span>
+                    </div>
+                    <div className="text-gray-600 pl-5">
+                      <span className="text-gray-700">└──</span> <span className="text-white">Hero.tsx</span>
+                    </div>
+                    <div className="text-gray-600">
+                      <span className="text-gray-700">└──</span> <span className="text-gray-500">public/</span>
+                    </div>
+                  </div>
+
+                  {/* Performance Metrics */}
+                  <div className="pt-4 border-t border-white/10 space-y-2">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Performance</span>
+                      <span className="text-cyan-400 font-semibold">98</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Accessibility</span>
+                      <span className="text-green-400 font-semibold">100</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Best Practices</span>
+                      <span className="text-cyan-400 font-semibold">100</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">SEO</span>
+                      <span className="text-green-400 font-semibold">100</span>
+                    </div>
+                  </div>
+
+                  {/* Deploy Success */}
+                  <div className="pt-4 flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                    <span className="text-xs text-green-400 font-medium">LIVE</span>
+                    <span className="text-green-400 text-xs">Deployed to production</span>
                   </div>
                 </div>
-
-                {/* Main Metric - Performance Score */}
-                <motion.div
-                  key={perfScore}
-                  initial={{ scale: 1.05 }}
-                  animate={{ scale: 1 }}
-                  className="mb-8"
-                >
-                  <div className="text-6xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent tabular-nums mb-2">
-                    {perfScore.toFixed(1)}
-                  </div>
-                  <div className="text-sm text-gray-400 flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-green-400" />
-                    <span>Lighthouse Score</span>
-                  </div>
-                </motion.div>
-
-                {/* Simulated Graph Placeholder */}
-                <div className="mb-6 h-32 rounded-lg bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/20 p-4 flex items-end justify-between gap-2">
-                  {/* Simulated bar chart */}
-                  {[85, 92, 88, 95, 91, 98, 94, 97, 99, 98].map((height, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ scaleY: 0 }}
-                      animate={{ scaleY: 1 }}
-                      transition={{ duration: 0.6, delay: 0.5 + i * 0.05 }}
-                      className="flex-1 bg-gradient-to-t from-cyan-400 to-blue-400 rounded-sm origin-bottom opacity-60"
-                      style={{ height: `${height}%` }}
-                    />
-                  ))}
-                </div>
-
-                {/* Metric Cards Grid */}
-                <div className="grid grid-cols-2 gap-4">
-                  {/* Load Time Card */}
-                  <motion.div
-                    key={loadTime}
-                    initial={{ scale: 1.02 }}
-                    animate={{ scale: 1 }}
-                    className="p-4 rounded-xl bg-white/5 border border-white/10"
-                  >
-                    <div className="flex items-center gap-2 mb-2">
-                      <Timer className="w-4 h-4 text-cyan-400" />
-                      <span className="text-xs text-gray-400">Load Time</span>
-                    </div>
-                    <div className="text-2xl font-black text-white tabular-nums">
-                      {loadTime.toFixed(1)}s
-                    </div>
-                  </motion.div>
-
-                  {/* Uptime Card */}
-                  <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Zap className="w-4 h-4 text-green-400" />
-                      <span className="text-xs text-gray-400">Uptime</span>
-                    </div>
-                    <div className="text-2xl font-black text-white">
-                      99.9%
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom Note */}
-                <p className="mt-6 text-xs text-gray-500 italic">
-                  "Aber kann man das messen?"<br />
-                  Ja. Genau das ist der Punkt.
-                </p>
 
               </div>
 
-              {/* Floating Shadow Effect */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-3xl blur-3xl -z-10 opacity-50" />
+              {/* Subtle Glow */}
+              <div className="absolute -inset-6 bg-cyan-500/5 rounded-3xl blur-2xl -z-10" />
 
             </div>
           </motion.div>
 
         </div>
-
-        {/* Mobile Dashboard - Simplified metrics for small screens */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="lg:hidden mt-12 grid grid-cols-2 gap-4"
-        >
-          <div className="p-5 rounded-xl bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/20">
-            <div className="text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent tabular-nums mb-2">
-              {perfScore.toFixed(1)}
-            </div>
-            <div className="text-xs text-gray-400">Lighthouse Score</div>
-          </div>
-          <div className="p-5 rounded-xl bg-white/[0.05] border border-white/10">
-            <div className="text-4xl font-black text-white tabular-nums mb-2">
-              {loadTime.toFixed(1)}s
-            </div>
-            <div className="text-xs text-gray-400">Load Time</div>
-          </div>
-        </motion.div>
 
       </div>
 
