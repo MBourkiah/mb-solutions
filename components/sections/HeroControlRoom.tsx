@@ -6,14 +6,15 @@ import Link from "next/link";
 import Image from "next/image";
 
 /**
- * HERO SECTION - Clean & Modern
+ * HERO SECTION - Clean & Modern with Visual Showcase
  *
  * Design Philosophy:
  * - Minimalist approach - less is more
  * - Focus on strong typography
- * - Asymmetric layout (text left, visual accent right)
+ * - Asymmetric layout (text left, 3D visual showcase right)
  * - Background with dramatic contrast
  * - Single strong CTA
+ * - 3D floating project previews (instead of static dashboard)
  */
 
 export function HeroControlRoom() {
@@ -153,85 +154,138 @@ export function HeroControlRoom() {
 
           </div>
 
-          {/* RIGHT: Visual Element - 5 columns */}
+          {/* RIGHT: Visual Showcase - 5 columns */}
           <motion.div
             initial={{ opacity: 0, x: 60 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
             className="lg:col-span-5 hidden lg:block"
           >
-            {/* Floating Metrics Dashboard */}
-            <div className="relative">
+            {/* 3D Floating Screens Stack */}
+            <div className="relative h-[600px]">
 
-              {/* Main Card */}
-              <div className="p-8 rounded-3xl bg-gradient-to-br from-white/10 to-white/5 border border-white/20 backdrop-blur-2xl shadow-2xl">
-
-                {/* Header */}
-                <div className="flex items-center justify-between mb-8">
-                  <div className="flex items-center gap-3">
-                    <div className="w-3 h-3 rounded-full bg-green-400 animate-pulse shadow-lg shadow-green-400/50" />
-                    <span className="text-sm font-bold text-gray-300 uppercase tracking-wider">Live Status</span>
+              {/* Screen 1 - Front (E-Commerce) */}
+              <motion.div
+                initial={{ opacity: 0, y: 40, rotateX: 15 }}
+                animate={{ opacity: 1, y: 0, rotateX: 8 }}
+                transition={{
+                  duration: 1.2,
+                  delay: 0.6,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  repeatDelay: 3
+                }}
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] z-30"
+                style={{ perspective: "1000px", transformStyle: "preserve-3d" }}
+              >
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-cyan-500/30 border border-white/20 backdrop-blur-xl bg-gradient-to-br from-white/10 to-white/5">
+                  {/* Browser Chrome */}
+                  <div className="flex items-center gap-2 px-4 py-3 bg-black/40 border-b border-white/10">
+                    <div className="flex gap-1.5">
+                      <div className="w-3 h-3 rounded-full bg-red-500/80" />
+                      <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+                      <div className="w-3 h-3 rounded-full bg-green-500/80" />
+                    </div>
+                    <div className="flex-1 ml-4 px-3 py-1 rounded-md bg-black/30 border border-white/10">
+                      <span className="text-xs text-gray-400 font-mono">mb-solutions.de</span>
+                    </div>
                   </div>
-                  <div className="px-3 py-1 rounded-lg bg-cyan-500/20 border border-cyan-400/30">
-                    <span className="text-xs font-bold text-cyan-300">ACTIVE</span>
+
+                  {/* Screen Content - Gradient Placeholder */}
+                  <div className="aspect-[16/10] bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-purple-500/20 relative overflow-hidden">
+                    {/* Animated Grid Lines */}
+                    <div className="absolute inset-0 opacity-20">
+                      <div className="absolute inset-0" style={{
+                        backgroundImage: 'linear-gradient(rgba(6, 182, 212, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(6, 182, 212, 0.3) 1px, transparent 1px)',
+                        backgroundSize: '40px 40px'
+                      }} />
+                    </div>
+
+                    {/* Floating Metric Badge */}
+                    <div className="absolute top-6 right-6 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500/30 to-blue-500/30 border border-cyan-400/40 backdrop-blur-xl">
+                      <div className="text-2xl font-black text-white">98+</div>
+                      <div className="text-xs text-cyan-300">Performance</div>
+                    </div>
+
+                    {/* Content Bars Simulation */}
+                    <div className="absolute bottom-6 left-6 right-6 space-y-3">
+                      <div className="h-4 bg-white/20 rounded-lg w-3/4" />
+                      <div className="h-4 bg-white/15 rounded-lg w-1/2" />
+                      <div className="h-8 bg-gradient-to-r from-cyan-500/40 to-blue-600/40 rounded-xl w-32" />
+                    </div>
+                  </div>
+
+                  {/* Bottom Glow */}
+                  <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-full h-20 bg-gradient-to-t from-cyan-500/30 to-transparent blur-2xl" />
+                </div>
+              </motion.div>
+
+              {/* Screen 2 - Mid (Analytics Dashboard) */}
+              <motion.div
+                initial={{ opacity: 0, y: 60, rotateX: 20 }}
+                animate={{ opacity: 1, y: 100, rotateX: 12 }}
+                transition={{
+                  duration: 1.4,
+                  delay: 0.8,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  repeatDelay: 3
+                }}
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[380px] z-20"
+                style={{ perspective: "1000px", transformStyle: "preserve-3d" }}
+              >
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-blue-500/20 border border-white/10 backdrop-blur-xl bg-gradient-to-br from-white/8 to-white/3">
+                  {/* Browser Chrome */}
+                  <div className="flex items-center gap-2 px-4 py-3 bg-black/40 border-b border-white/10">
+                    <div className="flex gap-1.5">
+                      <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+                      <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
+                    </div>
+                  </div>
+
+                  <div className="aspect-[16/10] bg-gradient-to-br from-blue-500/15 via-purple-500/15 to-pink-500/15 relative overflow-hidden">
+                    {/* Chart Simulation */}
+                    <div className="absolute inset-0 p-6 flex items-end gap-2">
+                      <div className="flex-1 h-[40%] bg-blue-400/30 rounded-t-lg" />
+                      <div className="flex-1 h-[70%] bg-cyan-400/30 rounded-t-lg" />
+                      <div className="flex-1 h-[55%] bg-purple-400/30 rounded-t-lg" />
+                      <div className="flex-1 h-[85%] bg-blue-400/30 rounded-t-lg" />
+                    </div>
                   </div>
                 </div>
+              </motion.div>
 
-                {/* Large Metric */}
-                <div className="mb-8">
-                  <div className="text-7xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-3">
-                    98.7
+              {/* Screen 3 - Back (Marketing Campaign) */}
+              <motion.div
+                initial={{ opacity: 0, y: 80, rotateX: 25 }}
+                animate={{ opacity: 1, y: 200, rotateX: 16 }}
+                transition={{
+                  duration: 1.6,
+                  delay: 1,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  repeatDelay: 3
+                }}
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[360px] z-10"
+                style={{ perspective: "1000px", transformStyle: "preserve-3d" }}
+              >
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-purple-500/20 border border-white/5 backdrop-blur-xl bg-gradient-to-br from-white/6 to-white/2">
+                  {/* Browser Chrome */}
+                  <div className="flex items-center gap-2 px-4 py-2.5 bg-black/40 border-b border-white/10">
+                    <div className="flex gap-1.5">
+                      <div className="w-2 h-2 rounded-full bg-red-500/60" />
+                      <div className="w-2 h-2 rounded-full bg-yellow-500/60" />
+                      <div className="w-2 h-2 rounded-full bg-green-500/60" />
+                    </div>
                   </div>
-                  <div className="text-gray-400 text-sm font-medium">Avg. Performance Score</div>
+
+                  <div className="aspect-[16/10] bg-gradient-to-br from-purple-500/10 via-pink-500/10 to-orange-500/10" />
                 </div>
+              </motion.div>
 
-                {/* Mini Stats Grid */}
-                <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="p-4 rounded-xl bg-black/20 border border-white/10">
-                    <div className="text-2xl font-black text-white mb-1">99.9%</div>
-                    <div className="text-xs text-gray-500">Uptime</div>
-                  </div>
-                  <div className="p-4 rounded-xl bg-black/20 border border-white/10">
-                    <div className="text-2xl font-black text-cyan-400 mb-1">1.2s</div>
-                    <div className="text-xs text-gray-500">Load Time</div>
-                  </div>
-                </div>
-
-                {/* Progress Bars */}
-                <div className="space-y-3">
-                  <div>
-                    <div className="flex justify-between text-xs text-gray-500 mb-2">
-                      <span>Performance</span>
-                      <span>98%</span>
-                    </div>
-                    <div className="h-2 bg-black/30 rounded-full overflow-hidden">
-                      <div className="h-full w-[98%] bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex justify-between text-xs text-gray-500 mb-2">
-                      <span>SEO</span>
-                      <span>100%</span>
-                    </div>
-                    <div className="h-2 bg-black/30 rounded-full overflow-hidden">
-                      <div className="h-full w-full bg-gradient-to-r from-green-400 to-cyan-500 rounded-full" />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex justify-between text-xs text-gray-500 mb-2">
-                      <span>Accessibility</span>
-                      <span>100%</span>
-                    </div>
-                    <div className="h-2 bg-black/30 rounded-full overflow-hidden">
-                      <div className="h-full w-full bg-gradient-to-r from-blue-400 to-purple-500 rounded-full" />
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-              {/* Glow Effect */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-3xl blur-3xl -z-10 opacity-60" />
+              {/* Ambient Glow Effects */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-br from-cyan-500/20 via-blue-500/10 to-purple-500/10 rounded-full blur-[100px] -z-10" />
 
             </div>
           </motion.div>
