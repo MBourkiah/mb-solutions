@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState, FormEvent } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Mail,
   MessageSquare,
@@ -129,87 +130,113 @@ const projectTypes = [
 
 function ContactHero() {
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden">
-      {/* Ambient Background */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-20 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px]" />
-      </div>
-
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 opacity-[0.03]">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(6, 182, 212, 0.3) 1px, transparent 0)`,
-            backgroundSize: '48px 48px',
-          }}
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/hero-bg.png"
+          fill
+          className="object-cover"
+          alt=""
+          priority
+          quality={90}
         />
       </div>
 
-      <div className="relative z-10 container mx-auto px-8 md:px-16 lg:px-24 xl:px-32">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Status Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-semibold mb-8"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
-            </span>
-            Verfügbar für neue Projekte · Antwort innerhalb 24h
-          </motion.div>
+      {/* Strong Dark Overlay */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-br from-[#050812] via-[#0A0E27]/95 to-[#050812]/90" />
 
-          {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight"
-          >
-            <span className="block mb-3">Lassen Sie uns</span>
-            <span className="block bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              zusammenarbeiten
-            </span>
-          </motion.h1>
+      {/* Grain Texture */}
+      <div className="absolute inset-0 z-30 opacity-[0.08] mix-blend-overlay pointer-events-none">
+        <Image
+          src="/images/grain-texture.png"
+          fill
+          className="object-cover"
+          alt=""
+          quality={100}
+        />
+      </div>
 
-          {/* Subheadline */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto"
-          >
-            Ob Webdesign, IT-Services oder Marketing – wir entwickeln maßgeschneiderte Lösungen
-            für Ihr Unternehmen. Kostenloses Erstgespräch, transparente Preise, schnelle Umsetzung.
-          </motion.p>
+      {/* Accent Glow - Top Right */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-cyan-500/10 via-blue-500/5 to-transparent rounded-full blur-[120px] pointer-events-none z-20" />
 
-          {/* Trust Indicators */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            className="flex flex-wrap items-center justify-center gap-6 mt-12"
-          >
-            {[
-              { icon: Clock, text: "24h Antwortzeit" },
-              { icon: Shield, text: "DSGVO-konform" },
-              { icon: Zap, text: "Schneller Start" },
-            ].map((item, i) => {
-              const Icon = item.icon;
-              return (
-                <div key={i} className="flex items-center gap-2 text-gray-400">
-                  <Icon className="w-5 h-5 text-cyan-400" />
-                  <span className="text-sm">{item.text}</span>
-                </div>
-              );
-            })}
-          </motion.div>
+      <div className="relative z-40 w-full max-w-[1400px] mx-auto px-6 lg:px-12 py-32 lg:py-40">
+        <div className="flex items-center justify-center min-h-[70vh]">
+          <div className="max-w-4xl mx-auto text-center space-y-12">
+
+            {/* Status Badge */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="flex justify-center"
+            >
+              <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/30 backdrop-blur-xl">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+                </span>
+                <span className="text-sm font-bold text-green-100 tracking-wide">Verfügbar für neue Projekte</span>
+              </div>
+            </motion.div>
+
+            {/* Headline */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="space-y-4"
+            >
+              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tight">
+                <span className="block text-white">
+                  Lassen Sie uns
+                </span>
+                <span className="block bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                  zusammenarbeiten.
+                </span>
+              </h1>
+            </motion.div>
+
+            {/* Subline */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-3xl mx-auto"
+            >
+              Ob Webdesign, IT-Services oder Marketing – wir entwickeln maßgeschneiderte Lösungen
+              für Ihr Unternehmen. Kostenloses Erstgespräch, transparente Preise, schnelle Umsetzung.
+            </motion.p>
+
+            {/* Stats Row */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="flex items-center justify-center gap-8 lg:gap-12 flex-wrap pt-4"
+            >
+              <div className="text-center">
+                <div className="text-3xl font-black text-white mb-1">&lt;24h</div>
+                <div className="text-xs text-gray-400 font-medium">Antwortzeit</div>
+              </div>
+              <div className="w-px h-10 bg-gray-700" />
+              <div className="text-center">
+                <div className="text-3xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-1">100%</div>
+                <div className="text-xs text-gray-400 font-medium">DSGVO-konform</div>
+              </div>
+              <div className="w-px h-10 bg-gray-700" />
+              <div className="text-center">
+                <div className="text-3xl font-black text-white mb-1">Kostenlos</div>
+                <div className="text-xs text-gray-400 font-medium">Erstgespräch</div>
+              </div>
+            </motion.div>
+
+          </div>
         </div>
       </div>
+
+      {/* Bottom Fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0A0E27] to-transparent pointer-events-none z-30" />
     </section>
   );
 }
@@ -223,9 +250,15 @@ function ContactMethods() {
   };
 
   return (
-    <section className="relative py-16 overflow-hidden">
-      <div className="container mx-auto px-8 md:px-16 lg:px-24 xl:px-32">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <section className="relative py-20 sm:py-24 md:py-28 lg:py-32 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-[#0A0E27]" />
+
+      {/* Smooth Gradient Fade */}
+      <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-[#0A0E27] via-[#0A0E27]/80 to-transparent pointer-events-none z-10" />
+
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 lg:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
           {contactMethods.map((method, index) => {
             const Icon = method.icon;
             return (
@@ -284,11 +317,14 @@ function ContactMethods() {
 
 function ContactFormSection() {
   return (
-    <section id="contact-form" className="relative py-20 overflow-hidden">
+    <section id="contact-form" className="relative py-20 sm:py-24 md:py-28 lg:py-32 overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-[#050812]" />
+
       {/* Background Glow */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
 
-      <div className="container mx-auto px-8 md:px-16 lg:px-24 xl:px-32">
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-5 gap-12 items-start">
           {/* Left: Info */}
           <motion.div
@@ -299,13 +335,13 @@ function ContactFormSection() {
             className="lg:col-span-2 space-y-8"
           >
             <div>
-              <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight tracking-tight">
                 Projekt-Anfrage{" "}
                 <span className="block bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                   starten
                 </span>
               </h2>
-              <p className="text-lg text-gray-300 leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed">
                 Füllen Sie das Formular aus und wir melden uns innerhalb von 24 Stunden
                 bei Ihnen. Je detaillierter Ihre Angaben, desto besser können wir Sie beraten.
               </p>
@@ -655,22 +691,25 @@ function ContactForm() {
 
 function NextStepsSection() {
   return (
-    <section className="relative py-20 overflow-hidden border-t border-white/5">
-      <div className="container mx-auto px-8 md:px-16 lg:px-24 xl:px-32">
+    <section className="relative py-20 sm:py-24 md:py-28 lg:py-32 overflow-hidden border-t border-white/5">
+      {/* Background */}
+      <div className="absolute inset-0 bg-[#0A0E27]" />
+
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-16 sm:mb-20 md:mb-24"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight tracking-tight">
             Was passiert{" "}
             <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
               als Nächstes?
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Von der ersten Anfrage bis zum erfolgreichen Projektstart
           </p>
         </motion.div>
@@ -717,16 +756,19 @@ function NextStepsSection() {
 
 function FAQSection() {
   return (
-    <section className="relative py-20 overflow-hidden border-t border-white/5">
-      <div className="container mx-auto px-8 md:px-16 lg:px-24 xl:px-32">
+    <section className="relative py-20 sm:py-24 md:py-28 lg:py-32 overflow-hidden border-t border-white/5">
+      {/* Background */}
+      <div className="absolute inset-0 bg-[#050812]" />
+
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-16 sm:mb-20 md:mb-24"
         >
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-tight tracking-tight">
             Häufige{" "}
             <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
               Fragen
@@ -764,13 +806,16 @@ function ContactCTA() {
   };
 
   return (
-    <section className="relative py-24 overflow-hidden border-t border-white/5">
+    <section className="relative py-20 sm:py-24 md:py-28 lg:py-32 overflow-hidden border-t border-white/5">
+      {/* Background */}
+      <div className="absolute inset-0 bg-[#0A0E27]" />
+
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/20 rounded-full blur-[150px]" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-8 md:px-16 lg:px-24 xl:px-32">
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-6 lg:px-12">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -778,14 +823,14 @@ function ContactCTA() {
           transition={{ duration: 1 }}
           className="text-center max-w-4xl mx-auto"
         >
-          <h2 className="text-5xl lg:text-6xl font-bold mb-8">
-            <span className="block mb-3">Bereit für Ihr</span>
+          <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight tracking-tight">
+            <span className="block mb-3 text-white">Bereit für Ihr</span>
             <span className="block bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">
               nächstes Projekt?
             </span>
           </h2>
 
-          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
             Starten Sie noch heute mit einer kostenlosen Beratung
           </p>
 
