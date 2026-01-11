@@ -65,22 +65,15 @@ export function StatementHeader() {
           <div className="flex items-center justify-between h-16 lg:h-20">
 
             {/* LEFT: Logo */}
-            <Link href="/" className="flex items-center gap-3 group relative z-10">
-              <div className="flex items-center gap-2.5">
-                {/* Icon Box */}
-                <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/30 group-hover:scale-110 transition-transform">
-                  <span className="text-white font-black text-sm lg:text-base">MB</span>
-                </div>
-                {/* Text */}
-                <div className="hidden sm:block">
-                  <div className="text-white font-black text-base lg:text-lg tracking-tight">
-                    MB-Solutions
-                  </div>
-                  <div className="text-cyan-400 text-[10px] lg:text-xs font-semibold tracking-wider uppercase">
-                    Digital Agency
-                  </div>
-                </div>
-              </div>
+            <Link href="/" className="flex items-center group relative z-10">
+              <Image
+                src="/logo.svg"
+                alt="MB-Solutions"
+                width={180}
+                height={45}
+                priority
+                className="h-8 lg:h-9 w-auto opacity-90 group-hover:opacity-100 transition-opacity"
+              />
             </Link>
 
             {/* CENTER: Desktop Navigation */}
@@ -150,19 +143,17 @@ export function StatementHeader() {
             >
               {/* Menu Header */}
               <div className="p-6 border-b border-white/10">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/30">
-                    <span className="text-white font-black text-base">MB</span>
-                  </div>
-                  <div>
-                    <div className="text-white font-black text-base">MB-Solutions</div>
-                    <div className="text-cyan-400 text-xs font-semibold">Digital Agency</div>
-                  </div>
-                </div>
+                <Image
+                  src="/logo.svg"
+                  alt="MB-Solutions"
+                  width={160}
+                  height={40}
+                  className="h-8 w-auto opacity-90"
+                />
               </div>
 
               {/* Menu Content */}
-              <div className="flex flex-col justify-between h-[calc(100%-88px)]">
+              <div className="flex flex-col justify-between h-[calc(100%-80px)]">
 
                 {/* Navigation Links */}
                 <nav className="flex flex-col p-6 gap-2">
