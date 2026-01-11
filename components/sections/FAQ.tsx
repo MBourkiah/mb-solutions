@@ -1,23 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, MessageCircle, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 /**
  * FAQ SECTION
  *
- * Design Philosophy: "The Knowledge Base"
- * - Clean accordion design (matches aesthetic)
- * - SEO-optimized with Schema.org markup
- * - Glassmorphism cards on expand
- * - Product-focused language (not agency-speak)
- * - Reduces pre-sales friction
- *
- * Layout: Centered single column
- * - Maximum readability
- * - Generous spacing
- * - Clear interaction states
+ * Visual Design: "Split Documentation Layout"
+ * - Medium background (#0D1224) - lighter than TrustExpertise
+ * - Two-column layout: Sticky intro left, accordion right
+ * - Gradient accent divider
+ * - Card-based accordion (not full-width bars)
+ * - Top-right glow for visual interest
  */
 
 interface FAQItem {
@@ -36,7 +31,7 @@ const faqs: FAQItem[] = [
   },
   {
     question: "Was unterscheidet euch von Agenturen?",
-    answer: "Wir sind keine Agentur. Wir bauen Performance-optimierte Systeme, keine WordPress-Templates. Direkter Zugang zum Tech-Lead, 47min Response Time, messbare Ergebnisse (98+ Lighthouse Score). Null Pitch-Decks, null Bullshit."
+    answer: "Wir sind keine Agentur. Wir bauen performance-optimierte Systeme, keine WordPress-Templates. Direkter Zugang zum Tech-Lead, 47min Response Time, messbare Ergebnisse (98+ Lighthouse Score). Null Pitch-Decks, null Bullshit."
   },
   {
     question: "Ist DSGVO-Konformität enthalten?",
@@ -70,126 +65,150 @@ export function FAQ() {
   return (
     <section className="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
 
-      {/* Background */}
-      <div className="absolute inset-0 bg-[#0A0E27]" />
+      {/* Medium Background - Lighter than TrustExpertise */}
+      <div className="absolute inset-0 bg-[#0D1224]" />
 
-      {/* Top Fade */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0A0E27] to-transparent pointer-events-none z-10" />
+      {/* Top-Right Glow */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-gradient-to-bl from-blue-600/15 via-cyan-600/10 to-transparent rounded-full blur-[120px] pointer-events-none" />
 
-      {/* Technical Grid Pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, #06B6D4 1px, transparent 1px),
-            linear-gradient(to bottom, #06B6D4 1px, transparent 1px)
-          `,
-          backgroundSize: '80px 80px'
-        }}
-      />
+      {/* Vertical Gradient Lines */}
+      <div className="absolute inset-0 opacity-[0.04]">
+        <div className="absolute top-0 left-1/3 w-px h-full bg-gradient-to-b from-cyan-400 via-blue-400 to-transparent" />
+        <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-blue-400 via-cyan-400 to-transparent" />
+      </div>
 
       {/* Content */}
-      <div className="relative z-20 w-full max-w-[900px] mx-auto px-6 lg:px-12">
+      <div className="relative z-20 w-full max-w-[1400px] mx-auto px-6 lg:px-12">
 
-        {/* Section Header */}
-        <div className="mb-16 sm:mb-20 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-500/20 mb-6"
-          >
-            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-            <span className="text-sm font-mono text-cyan-400 uppercase tracking-wider">FAQ</span>
-          </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6"
-          >
-            Noch Fragen?<br />
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-              Hier sind die Antworten.
-            </span>
-          </motion.h2>
+          {/* LEFT: Sticky Intro - 4 columns */}
+          <div className="lg:col-span-4">
+            <div className="lg:sticky lg:top-32">
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-lg text-gray-400"
-          >
-            Die 8 häufigsten Fragen. Direkt, ehrlich, ohne Marketing-Sprech.
-          </motion.p>
-        </div>
-
-        {/* FAQ Accordion */}
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.05 }}
-              className="rounded-2xl bg-gradient-to-br from-white/[0.04] to-white/[0.01] border border-white/10 backdrop-blur-sm overflow-hidden"
-            >
-              {/* Question Button */}
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full px-6 lg:px-8 py-5 flex items-center justify-between text-left hover:bg-white/[0.02] transition-colors"
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 border border-blue-400/30 backdrop-blur-sm mb-6"
               >
-                <h3 className="text-base lg:text-lg font-bold text-white pr-4">
-                  {faq.question}
-                </h3>
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center">
-                  {openIndex === index ? (
-                    <Minus className="w-4 h-4 text-cyan-400" />
-                  ) : (
-                    <Plus className="w-4 h-4 text-cyan-400" />
-                  )}
-                </div>
-              </button>
+                <MessageCircle className="w-4 h-4 text-blue-400" />
+                <span className="text-sm font-mono text-blue-300 uppercase tracking-wider">FAQ</span>
+              </motion.div>
 
-              {/* Answer Panel */}
-              {openIndex === index && (
-                <motion.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="px-6 lg:px-8 pb-6 border-t border-white/10"
+              <motion.h2
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="text-4xl sm:text-5xl font-black text-white mb-6"
+              >
+                Noch Fragen?<br />
+                <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
+                  Hier sind die Antworten.
+                </span>
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="text-base text-gray-300 mb-8 leading-relaxed"
+              >
+                Die 8 häufigsten Fragen. Direkt, ehrlich, ohne Marketing-Sprech.
+              </motion.p>
+
+              {/* Quick Contact Box */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-cyan-500/5 border border-blue-500/20 backdrop-blur-sm"
+              >
+                <h3 className="text-sm font-bold text-white mb-2">Nicht dabei?</h3>
+                <p className="text-xs text-gray-400 mb-4">
+                  Wir antworten innerhalb von 47 Minuten.
+                </p>
+                <a
+                  href="/contact"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors"
                 >
-                  <p className="text-sm lg:text-base text-gray-400 leading-relaxed pt-4">
-                    {faq.answer}
-                  </p>
-                </motion.div>
-              )}
-            </motion.div>
-          ))}
-        </div>
+                  <span>Jetzt anfragen</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </motion.div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center"
-        >
-          <p className="text-sm text-gray-500 mb-6">
-            Weitere Fragen? Wir antworten innerhalb von 47 Minuten.
-          </p>
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-xl font-bold text-base hover:shadow-lg hover:shadow-cyan-500/30 transition-all"
-          >
-            <span>Jetzt Anfragen</span>
-          </a>
-        </motion.div>
+            </div>
+          </div>
+
+          {/* RIGHT: FAQ Accordion - 8 columns */}
+          <div className="lg:col-span-8">
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.04 }}
+                  className="group"
+                >
+                  <div className="rounded-2xl bg-gradient-to-br from-white/[0.06] to-white/[0.02] border border-white/10 hover:border-blue-400/30 backdrop-blur-sm overflow-hidden transition-all duration-300">
+
+                    {/* Question Button */}
+                    <button
+                      onClick={() => toggleFAQ(index)}
+                      className="w-full px-6 lg:px-8 py-6 flex items-start justify-between text-left group-hover:bg-white/[0.02] transition-colors"
+                    >
+                      <div className="flex items-start gap-4 flex-1">
+                        {/* Number Badge */}
+                        <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-blue-500/20 border border-blue-400/30 flex items-center justify-center">
+                          <span className="text-sm font-mono font-bold text-blue-400">
+                            {String(index + 1).padStart(2, '0')}
+                          </span>
+                        </div>
+
+                        {/* Question */}
+                        <h3 className="text-base lg:text-lg font-bold text-white pr-4 leading-tight">
+                          {faq.question}
+                        </h3>
+                      </div>
+
+                      {/* Toggle Icon */}
+                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center transition-transform">
+                        {openIndex === index ? (
+                          <Minus className="w-4 h-4 text-cyan-400" />
+                        ) : (
+                          <Plus className="w-4 h-4 text-cyan-400" />
+                        )}
+                      </div>
+                    </button>
+
+                    {/* Answer Panel */}
+                    {openIndex === index && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="border-t border-white/10 bg-black/20"
+                      >
+                        <div className="px-6 lg:px-8 py-6 pl-20">
+                          <p className="text-sm lg:text-base text-gray-300 leading-relaxed">
+                            {faq.answer}
+                          </p>
+                        </div>
+                      </motion.div>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+        </div>
 
       </div>
 
