@@ -84,63 +84,66 @@ const capabilities: Capability[] = [
 
 export function ServicesCapabilityMatrix() {
   return (
-    <section id="leistungen" className="relative py-16 sm:py-20 md:py-24 lg:py-32 overflow-hidden">
+    <section id="leistungen" className="relative py-20 sm:py-24 md:py-28 lg:py-32 overflow-hidden">
 
       {/* Background - Same as Hero */}
       <div className="absolute inset-0 bg-[#0A0E27]" />
 
-      {/* Top Fade Transition (from Hero) */}
-      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0A0E27] to-transparent pointer-events-none z-10" />
+      {/* Smooth Gradient Fade from Hero (longer fade) */}
+      <div className="absolute top-0 left-0 right-0 h-48 bg-gradient-to-b from-[#0A0E27] via-[#0A0E27]/80 to-transparent pointer-events-none z-10" />
 
-      {/* Technical Grid Pattern (Control Room Aesthetic) - More Visible */}
+      {/* Technical Grid Pattern (Control Room Aesthetic) - Subtle */}
       <div
-        className="absolute inset-0 opacity-[0.06]"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage: `
             linear-gradient(to right, #06B6D4 1px, transparent 1px),
             linear-gradient(to bottom, #06B6D4 1px, transparent 1px)
           `,
-          backgroundSize: '50px 50px'
+          backgroundSize: '60px 60px'
         }}
       />
 
+      {/* Subtle Accent Glow - Top Center */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-gradient-to-b from-cyan-500/5 to-transparent rounded-full blur-[120px] pointer-events-none z-0" />
+
       <div className="relative z-10 w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12">
 
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20">
+        {/* Header - More spacious */}
+        <div className="text-center max-w-4xl mx-auto mb-16 sm:mb-20 md:mb-24">
 
-          {/* System Badge - Larger & Brighter */}
+          {/* System Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-cyan-500/10 border border-cyan-500/30 backdrop-blur-xl shadow-lg shadow-cyan-500/20"
+            className="inline-flex items-center gap-2.5 px-5 py-2.5 mb-8 rounded-full bg-cyan-500/10 border border-cyan-500/30 backdrop-blur-xl"
           >
             <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-            <span className="text-sm font-bold text-cyan-300 tracking-wide uppercase font-mono">
-              Performance Layer
+            <span className="text-sm font-bold text-cyan-300 tracking-wider uppercase font-mono">
+              Leistungen
             </span>
           </motion.div>
 
-          {/* Headline - Shorter & More Direct */}
+          {/* Headline - Balanced size */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-black text-white mb-4 sm:mb-5 leading-tight tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+            className="font-black text-white mb-6 leading-tight tracking-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
           >
-            Drei Hochleistungs-Systeme
+            Drei Hochleistungs-Systeme.
           </motion.h2>
 
-          {/* Supporting Line */}
+          {/* Supporting Line - Larger */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-sm sm:text-base md:text-lg text-gray-400 leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto"
           >
             Messbare Resultate. Keine Agentur-Floskeln. Nur Systeme, die funktionieren.
           </motion.p>

@@ -117,26 +117,26 @@ export function HeroControlRoom() {
               </Link>
             </motion.div>
 
-            {/* Stats Row */}
+            {/* Stats Row - Closer to CTA, smaller text */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex items-center justify-center gap-8 lg:gap-12 flex-wrap"
+              className="flex items-center justify-center gap-8 lg:gap-12 flex-wrap -mt-4"
             >
               <div className="text-center">
-                <div className="text-4xl font-black text-white mb-1">127</div>
-                <div className="text-sm text-gray-400 font-medium">Projekte</div>
+                <div className="text-3xl font-black text-white mb-1">127</div>
+                <div className="text-xs text-gray-400 font-medium">Projekte</div>
               </div>
-              <div className="w-px h-12 bg-gray-700" />
+              <div className="w-px h-10 bg-gray-700" />
               <div className="text-center">
-                <div className="text-4xl font-black text-white mb-1">&lt;47min</div>
-                <div className="text-sm text-gray-400 font-medium">Response</div>
+                <div className="text-3xl font-black text-white mb-1">&lt;47min</div>
+                <div className="text-xs text-gray-400 font-medium">Response</div>
               </div>
-              <div className="w-px h-12 bg-gray-700" />
+              <div className="w-px h-10 bg-gray-700" />
               <div className="text-center">
-                <div className="text-4xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-1">98+</div>
-                <div className="text-sm text-gray-400 font-medium">Performance</div>
+                <div className="text-3xl font-black bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-1">98+</div>
+                <div className="text-xs text-gray-400 font-medium">Performance</div>
               </div>
             </motion.div>
 
