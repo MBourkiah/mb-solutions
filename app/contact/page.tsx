@@ -76,6 +76,29 @@ const faqs = [
 
 // ContactHero, ContactMethods and ContactFormSection removed - replaced by ContactBentoGrid
 
+// FAQPage Schema für SEO Rich Snippets
+function FAQSchema() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+    />
+  );
+}
+
 function NextStepsSection() {
   return (
     <section className="relative py-20 sm:py-24 md:py-28 lg:py-32 overflow-hidden border-t border-white/5">
@@ -262,6 +285,9 @@ function ContactCTA() {
 export default function ContactPage() {
   return (
     <main className="relative min-h-screen bg-[#0A0E27] text-white overflow-hidden">
+      {/* SEO: FAQPage Schema for Rich Snippets */}
+      <FAQSchema />
+
       {/* Header */}
       <StatementHeader />
 

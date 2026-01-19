@@ -51,14 +51,18 @@ export function StructuredData() {
     "description": "Professionelle Next.js Webentwicklung, IT-Services und Digitalisierung für mittelständische Unternehmen.",
     "address": {
       "@type": "PostalAddress",
+      "addressLocality": "Köln",
+      "addressRegion": "NRW",
+      "postalCode": "50667",
       "addressCountry": "DE"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      // Füge deine Koordinaten hinzu wenn relevant
+      "latitude": "50.9375",
+      "longitude": "6.9603"
     },
     "url": "https://mb-solutions.biz",
-    "telephone": "+49-XXX-XXXXXXX", // Ersetze mit echter Nummer
+    "telephone": "+491234567890",
     "priceRange": "€€€",
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
