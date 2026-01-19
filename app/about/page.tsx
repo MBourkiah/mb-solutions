@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
+import { StatementHeader } from "@/components/layout/StatementHeader";
 import {
   Code2,
   MessageSquare,
@@ -674,6 +675,7 @@ function Mail({ className }: { className?: string }) {
 export default function AboutPage() {
   return (
     <main className="relative min-h-screen bg-background overflow-hidden">
+      <StatementHeader />
       <AboutHero />
       <AboutValues />
       <AboutTimeline />

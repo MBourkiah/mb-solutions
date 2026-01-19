@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { StatementHeader } from "@/components/layout/StatementHeader";
 import {
   Globe,
   Code2,
@@ -594,6 +595,7 @@ function ServicesCTA() {
 export default function ServicesPageV6() {
   return (
     <main className="relative min-h-screen bg-background overflow-hidden">
+      <StatementHeader />
       {/* Hero Section */}
       <ServicesHero />
 

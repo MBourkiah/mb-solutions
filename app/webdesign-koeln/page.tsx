@@ -12,6 +12,7 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import { ArrowRight, Code2, Zap, Palette, Smartphone, Globe, CheckCircle } from "lucide-react";
+import { StatementHeader } from "@/components/layout/StatementHeader";
 
 export const metadata: Metadata = {
   title: "Webdesign Köln | Professionelle Websites | MB-Solutions",
@@ -68,6 +69,9 @@ export default function WebdesignKoelnPage() {
       />
 
       <main className="relative bg-[#0A0E27] text-white min-h-screen">
+        {/* Header */}
+        <StatementHeader />
+
         {/* Breadcrumb */}
         <div className="container mx-auto px-6 pt-32 pb-8">
           <nav className="text-sm text-gray-400">

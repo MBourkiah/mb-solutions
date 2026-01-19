@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import { ArrowRight, Smartphone, Tablet, Monitor, CheckCircle } from "lucide-react";
+import { StatementHeader } from "@/components/layout/StatementHeader";
 
 export const metadata: Metadata = {
   title: "Responsive Webdesign Köln | Mobile-First Development",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function ResponsiveWebdesignPage() {
   return (
     <main className="relative bg-[#0A0E27] text-white min-h-screen">
+      <StatementHeader />
       <div className="container mx-auto px-6 pt-32 pb-8">
         <nav className="text-sm text-gray-400">
           <Link href="/">Startseite</Link>

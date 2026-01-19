@@ -10,6 +10,7 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import { ArrowRight, TrendingUp, Target, Search, BarChart3, Megaphone, CheckCircle, Award } from "lucide-react";
+import { StatementHeader } from "@/components/layout/StatementHeader";
 
 export const metadata: Metadata = {
   title: "Marketing-Agentur Köln | SEO, Ads & Content | MB-Solutions",
@@ -66,6 +67,9 @@ export default function MarketingAgenturKoelnPage() {
       />
 
       <main className="relative bg-[#0A0E27] text-white min-h-screen">
+        {/* Header */}
+        <StatementHeader />
+
         {/* Breadcrumb */}
         <div className="container mx-auto px-6 pt-32 pb-8">
           <nav className="text-sm text-gray-400">

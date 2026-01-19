@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import { ArrowRight, Headphones, Clock, Shield, CheckCircle } from "lucide-react";
+import { StatementHeader } from "@/components/layout/StatementHeader";
 
 export const metadata: Metadata = {
   title: "IT-Support Köln | Helpdesk & Remote-Support | MB-Solutions",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function ITSupportKoelnPage() {
   return (
     <main className="relative bg-[#0A0E27] text-white min-h-screen">
+      <StatementHeader />
       <div className="container mx-auto px-6 pt-32 pb-8">
         <nav className="text-sm text-gray-400">
           <Link href="/">Startseite</Link>

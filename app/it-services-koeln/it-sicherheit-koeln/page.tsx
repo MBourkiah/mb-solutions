@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Metadata } from "next";
 import { ArrowRight, Shield, Lock, AlertTriangle, CheckCircle } from "lucide-react";
+import { StatementHeader } from "@/components/layout/StatementHeader";
 
 export const metadata: Metadata = {
   title: "IT-Sicherheit Köln | Firewall, Antivirus & Security",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function ITSicherheitKoelnPage() {
   return (
     <main className="relative bg-[#0A0E27] text-white min-h-screen">
+      <StatementHeader />
       <div className="container mx-auto px-6 pt-32 pb-8">
         <nav className="text-sm text-gray-400">
           <Link href="/">Startseite</Link>

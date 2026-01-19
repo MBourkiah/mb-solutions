@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { StatementHeader } from "@/components/layout/StatementHeader";
 
 export const metadata: Metadata = {
   title: "Projekte | MB-Solutions - Moderne Websites & IT-Lösungen",
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <main className="relative min-h-screen bg-background overflow-hidden">
+      <StatementHeader />
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 px-6">
         <div className="max-w-4xl mx-auto text-center">

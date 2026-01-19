@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { StatementHeader } from "@/components/layout/StatementHeader";
 
 export const metadata: Metadata = {
   title: "Impressum",
@@ -8,6 +9,7 @@ export const metadata: Metadata = {
 export default function ImprintPage() {
   return (
     <div className="min-h-screen py-24 px-4 sm:px-6 lg:px-8">
+      <StatementHeader />
       <article className="max-w-3xl mx-auto prose prose-slate dark:prose-invert">
         <h1 className="text-4xl font-bold mb-8">Impressum</h1>
 
