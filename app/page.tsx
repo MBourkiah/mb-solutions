@@ -16,9 +16,10 @@
 
 // STATEMENT HEADER (Top-level, independent)
 import { StatementHeader } from "@/components/layout/StatementHeader";
-// CONTROL ROOM HERO + HEADER SYSTEM (Active)
-import { HeroControlRoom } from "@/components/sections/HeroControlRoom";
+// 21ST.DEV HERO - New 3D Perspective Design (Active)
+import { Hero21st } from "@/components/blocks/hero-21st";
 // Alternative Heroes:
+// import { HeroControlRoom } from "@/components/sections/HeroControlRoom";
 // import { HeroBold } from "@/components/sections/HeroBold";
 // import { HeroConversion } from "@/components/sections/HeroConversion";
 // import { HeroFullWidth } from "@/components/sections/HeroFullWidth";
@@ -60,8 +61,8 @@ export default function HomePage() {
 
       {/* Main Content */}
       <div className="relative z-10">
-        {/* 1. HERO - Control Room System */}
-        <HeroControlRoom />
+        {/* 1. HERO - 21st.dev 3D Perspective Design */}
+        <Hero21st />
 
         {/* 2. SERVICES CAPABILITY MATRIX - Product-Style Performance Layer */}
         <section id="systeme">
